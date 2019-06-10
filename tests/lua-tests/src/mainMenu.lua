@@ -87,7 +87,7 @@ if (currPlatform == cc.PLATFORM_OS_TIZEN) then
 end
 
 local _allTests = {
-    { isSupported = true,  name = "Accelerometer"          , create_func=             AccelerometerMain  },
+    --[[{ isSupported = true,  name = "Accelerometer"          , create_func=             AccelerometerMain  },
     { isSupported = true,  name = "ActionManagerTest"      , create_func   =         ActionManagerTestMain  },
     { isSupported = true,  name = "ActionsEaseTest"        , create_func   =           EaseActionsTest      },
     { isSupported = true,  name = "ActionsProgressTest"    , create_func   =       ProgressActionsTest      },
@@ -133,7 +133,7 @@ local _allTests = {
     { isSupported = true,  name = "ParticleTest"           , create_func   =              ParticleTest      }, 
     { isSupported = true,  name = "Particle3D (PU)"        , create_func   =              Particle3DTest  },
     { isSupported = true,  name = "PhysicsTest"            , create_func =          PhysicsTest  },
-    { isSupported = true,  name = "Physics3DTest"            , create_func =          Physics3DTest  },
+    { isSupported = true,  name = "Physics3DTest"            , create_func =          Physics3DTest  },]]--
     { isSupported = true,  name = "RenderTextureTest"      , create_func   =         RenderTextureTestMain  },
     { isSupported = true,  name = "RotateWorldTest"        , create_func   =           RotateWorldTest      },
     { isSupported = true,  name = "SceneTest"              , create_func   =                 SceneTestMain  },
