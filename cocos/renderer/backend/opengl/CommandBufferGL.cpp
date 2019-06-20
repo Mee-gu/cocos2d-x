@@ -5,6 +5,7 @@
 #include "DepthStencilStateGL.h"
 #include "ProgramGL.h"
 #include "BlendStateGL.h"
+#include "StateCacheGL.h"
 #include "base/ccMacros.h"
 #include "base/CCEventDispatcher.h"
 #include "base/CCEventType.h"
@@ -173,7 +174,8 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
         
         mask |= GL_DEPTH_BUFFER_BIT;
         glClearDepth(descirptor.clearDepthValue);
-        glEnable(GL_DEPTH_TEST);
+
+//        glEnable(GL_DEPTH_TEST);
         glDepthMask(GL_TRUE);
         glDepthFunc(GL_ALWAYS);
     }
@@ -194,7 +196,7 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
     if (descirptor.needClearDepth)
     {
         if (!oldDepthTest)
-            glDisable(GL_DEPTH_TEST);
+//            glDisable(GL_DEPTH_TEST);
         
         glDepthMask(oldDepthWrite);
         glDepthFunc(oldDepthFunc);

@@ -22,7 +22,7 @@ void DepthStencilStateGL::apply(unsigned int stencilReferenceValueFront, unsigne
     
     if (_depthStencilInfo.depthTestEnabled)
     {
-        glEnable(GL_DEPTH_TEST); 
+        // glEnable(GL_DEPTH_TEST); 
     }
     else
     {
