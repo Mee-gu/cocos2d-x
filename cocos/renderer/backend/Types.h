@@ -294,13 +294,12 @@ enum class TextureCubeFace : uint32_t
 
 enum RenderStatus
 {
-    RS_NONE = 0,
     RS_BLEND = (1 << 0),
     RS_BLEND_FUNC = (1 << 1),
     RS_CULL_FACE = (1 << 2),
     RS_DEPTH_TEST = (1 << 3),
     RS_DEPTH_WRITE = (1 << 4),
-    RS_DEPTH_FUNC = (1 << 5),
+    //RS_DEPTH_FUNC = (1 << 5),
     RS_CULL_FACE_SIDE = (1 << 6),
 //            RS_STENCIL_TEST = (1 << 7),
 //            RS_STENCIL_WRITE = (1 << 8),
@@ -308,7 +307,9 @@ enum RenderStatus
 //            RS_STENCIL_OP = (1 << 10),
             RS_FRONT_FACE = (1 << 11),
 
+    RS_DEFAULT = RS_DEPTH_WRITE,
     RS_ALL_ONES = 0xFFFFFFFF,
 };
+
 
 CC_BACKEND_END
