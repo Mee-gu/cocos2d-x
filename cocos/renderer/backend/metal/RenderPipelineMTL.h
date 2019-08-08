@@ -58,7 +58,7 @@ public:
     inline id<MTLRenderPipelineState> getMTLRenderPipelineState() const { return _mtlRenderPipelineState; }
    
 private:
-    void setVertexLayout(MTLRenderPipelineDescriptor*, const RenderPipelineDescriptor&);
+    void setVertexLayout(MTLRenderPipelineDescriptor*, const VertexLayout&);
     void setBlendState(MTLRenderPipelineColorAttachmentDescriptor*);
     void setShaderModules(const RenderPipelineDescriptor&);
     void setBlendStateAndFormat(const RenderPipelineDescriptor&);

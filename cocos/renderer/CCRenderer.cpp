@@ -634,7 +634,7 @@ void Renderer::drawBatchedTriangles()
     for (int i = 0; i < batchesTotal; ++i)
     {
         beginRenderPass(_triBatchesToDraw[i].cmd);
-        _commandBuffer->setVertexBuffer(0, _vertexBuffer);
+        _commandBuffer->setVertexBuffer(_vertexBuffer);
         _commandBuffer->setIndexBuffer(_indexBuffer);
         auto& pipelineDescriptor = _triBatchesToDraw[i].cmd->getPipelineDescriptor();
         _commandBuffer->setProgramState(pipelineDescriptor.programState);
@@ -664,7 +664,7 @@ void Renderer::drawCustomCommand(RenderCommand *command)
     if (cmd->getBeforeCallback()) cmd->getBeforeCallback()();
 
     beginRenderPass(command);
-    _commandBuffer->setVertexBuffer(0, cmd->getVertexBuffer());
+    _commandBuffer->setVertexBuffer(cmd->getVertexBuffer());
     _commandBuffer->setProgramState(cmd->getPipelineDescriptor().programState);
     
     auto drawType = cmd->getDrawType();
@@ -785,26 +785,20 @@ backend::RenderPipeline* Renderer::getRenderPipeline(const backend::RenderPipeli
     hashMe.sourceAlphaBlendFactor = (unsigned int)blendDescriptor.sourceAlphaBlendFactor;
     hashMe.destinationAlphaBlendFactor = (unsigned int)blendDescriptor.destinationAlphaBlendFactor;
     int index = 0;
-    for(const auto& vertexLayout : *renderPipelineDescriptor.vertexLayouts)
+    const auto& attributes = renderPipelineDescriptor.vertexLayout.getAttributes();
+    for (const auto& it : attributes)
     {
-        if (!vertexLayout.isValid())
-            continue;
-        
-        const auto& attributes = vertexLayout.getAttributes();
-        for (const auto& it : attributes)
-        {
-            auto &attribute = it.second;
-            /*
-             stepFunction:1     stride:15       offest:10       format:5        needNormalized:1
-                bit31           bit30 ~ bit16   bit15 ~ bit6    bit5 ~ bit1     bit0
-             */
-            hashMe.vertexLayoutInfo[index++] =
-                ((unsigned int)vertexLayout.getVertexStepMode() & 0x1) << 31 |
-                ((unsigned int)(vertexLayout.getStride() & 0x7FFF)) << 16 |
-                ((unsigned int)attribute.offset & 0x3FF) << 6 |
-                ((unsigned int)attribute.format & 0x1F) << 1 |
-                ((unsigned int)attribute.needToBeNormallized & 0x1);
-        }
+        auto &attribute = it.second;
+        /*
+         stepFunction:1     stride:15       offest:10       format:5        needNormalized:1
+            bit31           bit30 ~ bit16   bit15 ~ bit6    bit5 ~ bit1     bit0
+         */
+        hashMe.vertexLayoutInfo[index++] =
+            ((unsigned int)renderPipelineDescriptor.vertexLayout.getVertexStepMode() & 0x1) << 31 |
+            ((unsigned int)(renderPipelineDescriptor.vertexLayout.getStride() & 0x7FFF)) << 16 |
+            ((unsigned int)attribute.offset & 0x3FF) << 6 |
+            ((unsigned int)attribute.format & 0x1F) << 1 |
+            ((unsigned int)attribute.needToBeNormallized & 0x1);
     }
     
     unsigned int hash = XXH32((const void*)&hashMe, sizeof(hashMe), 0);
@@ -825,7 +819,7 @@ void Renderer::setRenderPipeline(const PipelineDescriptor& pipelineDescriptor, c
 {
     backend::RenderPipelineDescriptor renderPipelineDescriptor;
     renderPipelineDescriptor.programState = pipelineDescriptor.programState;
-    renderPipelineDescriptor.vertexLayouts->push_back(pipelineDescriptor.vertexLayout);
+    renderPipelineDescriptor.vertexLayout = pipelineDescriptor.vertexLayout;
     
     auto device = backend::Device::getInstance();
     auto blendState = device->createBlendState(pipelineDescriptor.blendDescriptor);
@@ -867,7 +861,7 @@ void Renderer::setRenderPipeline(const PipelineDescriptor& pipelineDescriptor, c
     _commandBuffer->setDepthStencilState(depthStencilState);
 #ifndef CC_USE_METAL
     // Extra layout info is required in OpenGL, which can not be quried from ProgramGL
-    _commandBuffer->updateVertexLayouts(renderPipelineDescriptor.vertexLayouts);
+    _commandBuffer->updateVertexLayout(renderPipelineDescriptor.vertexLayout);
 #endif
 }
 

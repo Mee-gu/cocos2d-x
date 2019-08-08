@@ -96,7 +96,7 @@ RenderPipelineMTL::RenderPipelineMTL(id<MTLDevice> mtlDevice, const RenderPipeli
     _mtlRenderPipelineDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
     
     setShaderModules(descriptor);
-    setVertexLayout(_mtlRenderPipelineDescriptor, descriptor);
+    setVertexLayout(_mtlRenderPipelineDescriptor, descriptor.vertexLayout);
     
     auto blendState = static_cast<BlendStateMTL*>(descriptor.blendState);
     if (blendState)
@@ -117,29 +117,24 @@ RenderPipelineMTL::~RenderPipelineMTL()
     [_mtlRenderPipelineState release];
 }
 
-void RenderPipelineMTL::setVertexLayout(MTLRenderPipelineDescriptor* mtlDescriptor, const RenderPipelineDescriptor& descriptor)
+void RenderPipelineMTL::setVertexLayout(MTLRenderPipelineDescriptor* mtlDescriptor, const VertexLayout& vertexLayout)
 {
-    const auto& vertexLayouts = *descriptor.vertexLayouts;
     int vertexIndex = 0;
-    for (const auto& vertexLayout : vertexLayouts)
+    
+    if (!vertexLayout.isValid())
+        return;
+    
+    mtlDescriptor.vertexDescriptor.layouts[vertexIndex].stride = vertexLayout.getStride();
+    mtlDescriptor.vertexDescriptor.layouts[vertexIndex].stepFunction = toMTLVertexStepFunction(vertexLayout.getVertexStepMode());
+    
+    const auto& attributes = vertexLayout.getAttributes();
+    for (const auto& it : attributes)
     {
-        if (!vertexLayout.isValid())
-            continue;
-        
-        mtlDescriptor.vertexDescriptor.layouts[vertexIndex].stride = vertexLayout.getStride();
-        mtlDescriptor.vertexDescriptor.layouts[vertexIndex].stepFunction = toMTLVertexStepFunction(vertexLayout.getVertexStepMode());
-        
-        const auto& attributes = vertexLayout.getAttributes();
-        for (const auto& it : attributes)
-        {
-            auto attribute = it.second;
-            mtlDescriptor.vertexDescriptor.attributes[attribute.index].format = toMTLVertexFormat(attribute.format, attribute.needToBeNormallized);
-            mtlDescriptor.vertexDescriptor.attributes[attribute.index].offset = attribute.offset;
-            // Buffer index will always be 0;
-            mtlDescriptor.vertexDescriptor.attributes[attribute.index].bufferIndex = 0;
-        }
-        
-        ++vertexIndex;
+        const auto& attribute = it.second;
+        mtlDescriptor.vertexDescriptor.attributes[attribute.index].format = toMTLVertexFormat(attribute.format, attribute.needToBeNormallized);
+        mtlDescriptor.vertexDescriptor.attributes[attribute.index].offset = attribute.offset;
+        // Buffer index will always be 0;
+        mtlDescriptor.vertexDescriptor.attributes[attribute.index].bufferIndex = 0;
     }
 }
 
