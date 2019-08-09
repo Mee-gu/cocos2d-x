@@ -411,14 +411,15 @@ void CommandBufferGL::prepareDrawing() const
 void CommandBufferGL::bindVertexBuffer(ProgramGL *program) const
 {
     // Bind vertex buffers and set the attributes.
-    const auto& vertexLayout = getVertexLayout();
+    //const auto& vertexLayout = getVertexLayout();
+    auto vertexLayout = _programState->getVertexLayout();
     
-    if (!vertexLayout.isValid())
+    if (!vertexLayout->isValid())
         return;
     
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer->getHandler());
 
-    const auto& attributes = vertexLayout.getAttributes();
+    const auto& attributes = vertexLayout->getAttributes();
     for (const auto& attributeInfo : attributes)
     {
         const auto& attribute = attributeInfo.second;
@@ -427,7 +428,7 @@ void CommandBufferGL::bindVertexBuffer(ProgramGL *program) const
             UtilsGL::getGLAttributeSize(attribute.format),
             UtilsGL::toGLAttributeType(attribute.format),
             attribute.needToBeNormallized,
-            vertexLayout.getStride(),
+            vertexLayout->getStride(),
             (GLvoid*)attribute.offset);
     }
 }
