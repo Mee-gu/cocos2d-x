@@ -411,7 +411,6 @@ void CommandBufferGL::prepareDrawing() const
 void CommandBufferGL::bindVertexBuffer(ProgramGL *program) const
 {
     // Bind vertex buffers and set the attributes.
-    //const auto& vertexLayout = getVertexLayout();
     auto vertexLayout = _programState->getVertexLayout();
     
     if (!vertexLayout->isValid())
