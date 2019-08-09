@@ -65,7 +65,6 @@ VertexAttribBinding* VertexAttribBinding::create(MeshIndexData* meshIndexData, P
         if (b->_meshIndexData == meshIndexData && b->_programState == pass->getProgramState())
         {
             // Found a match!
-            command->getPipelineDescriptor().programState->getVertexLayout() = b->_vertexLayout;
             return b;
         }
     }

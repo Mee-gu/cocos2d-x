@@ -47,8 +47,8 @@ enum
 
 Camera3DTests::Camera3DTests()
 {
-    /*ADD_TEST_CASE(CameraRotationTest);
-    ADD_TEST_CASE(Camera3DTestDemo);*/
+    ADD_TEST_CASE(CameraRotationTest);
+    ADD_TEST_CASE(Camera3DTestDemo);
     ADD_TEST_CASE(CameraCullingDemo);
     ADD_TEST_CASE(FogTestDemo);
     ADD_TEST_CASE(CameraArcBallDemo);
