@@ -109,7 +109,7 @@ public:
      * @param descriptor Specifies render pipeline description.
      * @return A RenderPipeline object.
      */
-    virtual RenderPipeline* newRenderPipeline(const RenderPipelineDescriptor& descriptor) = 0;
+    virtual RenderPipeline* newRenderPipeline() = 0;
 
     /**
      * This property controls whether or not the drawables'

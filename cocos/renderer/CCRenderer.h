@@ -487,6 +487,7 @@ protected:
     void popStateBlock();
 
     std::unordered_map<unsigned int, backend::RenderPipeline*> _renderPipelineCache;
+    backend::RenderPipeline* _renderPipeline = nullptr;
 
     Viewport _viewport;
     CullMode _cullMode  = CullMode::NONE;

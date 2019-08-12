@@ -186,6 +186,7 @@ Renderer::~Renderer()
         pipeline.second->release();
     }
     _renderPipelineCache.clear();
+    CC_SAFE_RELEASE(_renderPipeline);
 }
 
 void Renderer::init()
@@ -197,6 +198,8 @@ void Renderer::init()
 
     auto device = backend::Device::getInstance();
     _commandBuffer = device->newCommandBuffer();
+    _renderPipeline = device->newRenderPipeline();
+    _commandBuffer->setRenderPipeline(_renderPipeline);
 }
 
 void Renderer::addCommand(RenderCommand* command)
@@ -804,13 +807,13 @@ backend::RenderPipeline* Renderer::getRenderPipeline(const backend::RenderPipeli
     
     unsigned int hash = XXH32((const void*)&hashMe, sizeof(hashMe), 0);
     auto iter = _renderPipelineCache.find(hash);
-    if (_renderPipelineCache.end() == iter)
+    /*if (_renderPipelineCache.end() == iter)
     {
         auto renderPipeline = backend::Device::getInstance()->newRenderPipeline(renderPipelineDescriptor);
         _renderPipelineCache.emplace(hash, renderPipeline);
         return renderPipeline;
     }
-    else
+    else*/
     {
         return iter->second;
     }
@@ -818,10 +821,11 @@ backend::RenderPipeline* Renderer::getRenderPipeline(const backend::RenderPipeli
 
 void Renderer::setRenderPipeline(const PipelineDescriptor& pipelineDescriptor, const backend::RenderPassDescriptor& renderPassDescriptor)
 {
+    auto device = backend::Device::getInstance();
+#ifdef CC_USE_METAL
     backend::RenderPipelineDescriptor renderPipelineDescriptor;
     renderPipelineDescriptor.programState = pipelineDescriptor.programState;
     
-    auto device = backend::Device::getInstance();
     auto blendState = device->createBlendState(pipelineDescriptor.blendDescriptor);
     renderPipelineDescriptor.blendState = blendState;
     
@@ -859,6 +863,16 @@ void Renderer::setRenderPipeline(const PipelineDescriptor& pipelineDescriptor, c
 
     _commandBuffer->setRenderPipeline(getRenderPipeline(renderPipelineDescriptor, pipelineDescriptor.blendDescriptor));
     _commandBuffer->setDepthStencilState(depthStencilState);
+#else
+    backend::DepthStencilState* depthStencilState = nullptr;
+    auto needDepthStencilAttachment = renderPassDescriptor.depthTestEnabled || renderPassDescriptor.stencilTestEnabled;
+    if (needDepthStencilAttachment)
+    {
+        depthStencilState = device->createDepthStencilState(_depthStencilDescriptor);
+    }
+    _renderPipeline->update(pipelineDescriptor, renderPassDescriptor);
+    _commandBuffer->setDepthStencilState(depthStencilState);
+#endif
 }
 
 void Renderer::beginRenderPass(RenderCommand* cmd)

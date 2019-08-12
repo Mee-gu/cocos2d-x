@@ -106,9 +106,9 @@ BlendState* DeviceGL::createBlendState(const BlendDescriptor& descriptor)
     return ret;
 }
 
-RenderPipeline* DeviceGL::newRenderPipeline(const RenderPipelineDescriptor& descriptor)
+RenderPipeline* DeviceGL::newRenderPipeline()
 {
-    return new (std::nothrow) RenderPipelineGL(descriptor);
+    return new (std::nothrow) RenderPipelineGL();
 }
 
 Program* DeviceGL::newProgram(const std::string& vertexShader, const std::string& fragmentShader)

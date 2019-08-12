@@ -133,9 +133,9 @@ BlendState* DeviceMTL::createBlendState(const BlendDescriptor& descriptor)
     return ret;
 }
 
-RenderPipeline* DeviceMTL::newRenderPipeline(const RenderPipelineDescriptor& descriptor)
+RenderPipeline* DeviceMTL::newRenderPipeline()
 {
-    return new (std::nothrow) RenderPipelineMTL(_mtlDevice, descriptor);
+    return new (std::nothrow) RenderPipelineMTL(_mtlDevice);
 }
 
 Program* DeviceMTL::newProgram(const std::string& vertexShader, const std::string& fragmentShader)
