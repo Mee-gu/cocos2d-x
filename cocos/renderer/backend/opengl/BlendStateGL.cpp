@@ -24,12 +24,14 @@
  
 #include "BlendStateGL.h"
 #include "renderer/backend/opengl/UtilsGL.h"
+#include "GLStateCached.h"
+
 CC_BACKEND_BEGIN
 
 void BlendStateGL::reset()
 {
-    glDisable(GL_BLEND);
-    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+    GL::disable(GL_BLEND);
+    GL::colorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
 }
 
 BlendStateGL::BlendStateGL(const BlendDescriptor& descriptor)
@@ -51,17 +53,17 @@ void BlendStateGL::apply() const
 {
     if (_blendEnabled)
     {
-        glEnable(GL_BLEND);
-        glBlendEquationSeparate(_rgbBlendOperation, _alphaBlendOperation);
-        glBlendFuncSeparate(_sourceRGBBlendFactor,
-                            _destinationRGBBlendFactor,
-                            _sourceAlphaBlendFactor,
-                            _destinationAlphaBlendFactor);
+        GL::enable(GL_BLEND);
+        GL::blendEquationSeparate(_rgbBlendOperation, _alphaBlendOperation);
+        GL::blendFuncSeparate(_sourceRGBBlendFactor,
+                              _destinationRGBBlendFactor,
+                              _sourceAlphaBlendFactor,
+                              _destinationAlphaBlendFactor);
     }
     else
-        glDisable(GL_BLEND);
+        GL::disable(GL_BLEND);
     
-    glColorMask(_writeMaskRed, _writeMaskGreen, _writeMaskBlue, _writeMaskAlpha);
+    GL::colorMask(_writeMaskRed, _writeMaskGreen, _writeMaskBlue, _writeMaskAlpha);
 }
 
 CC_BACKEND_END

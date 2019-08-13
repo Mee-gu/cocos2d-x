@@ -29,6 +29,7 @@
 #include "DepthStencilStateGL.h"
 #include "ProgramGL.h"
 #include "BlendStateGL.h"
+#include "GLStateCached.h"
 #include "base/ccMacros.h"
 #include "base/CCEventDispatcher.h"
 #include "base/CCEventType.h"
@@ -125,7 +126,7 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
     {
         _currentFBO = _defaultFBO;
     }
-    glBindFramebuffer(GL_FRAMEBUFFER, _currentFBO);
+    GL::bindFramebuffer(GL_FRAMEBUFFER, _currentFBO);
     
     if (useDepthAttachmentExternal)
     {
@@ -241,16 +242,17 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
     GLint oldDepthFunc = GL_LESS;
     if (descirptor.needClearDepth)
     {
-        glGetBooleanv(GL_DEPTH_WRITEMASK, &oldDepthWrite);
-        glGetBooleanv(GL_DEPTH_TEST, &oldDepthTest);
-        glGetFloatv(GL_DEPTH_CLEAR_VALUE, &oldDepthClearValue);
-        glGetIntegerv(GL_DEPTH_FUNC, &oldDepthFunc);
+        GL::getBooleanv(GL_DEPTH_WRITEMASK, &oldDepthWrite);
+        GL::getBooleanv(GL_DEPTH_TEST, &oldDepthTest);
+        GL::getFloatv(GL_DEPTH_CLEAR_VALUE, &oldDepthClearValue);
+        GL::getIntegerv(GL_DEPTH_FUNC, &oldDepthFunc);
         
         mask |= GL_DEPTH_BUFFER_BIT;
         glClearDepth(descirptor.clearDepthValue);
-        glEnable(GL_DEPTH_TEST);
-        glDepthMask(GL_TRUE);
-        glDepthFunc(GL_ALWAYS);
+
+        GL::enable(GL_DEPTH_TEST);
+        GL::depthMask(GL_TRUE);
+        GL::depthFunc(GL_ALWAYS);
     }
     
     CHECK_GL_ERROR_DEBUG();
@@ -269,10 +271,10 @@ void CommandBufferGL::applyRenderPassDescriptor(const RenderPassDescriptor& desc
     if (descirptor.needClearDepth)
     {
         if (!oldDepthTest)
-            glDisable(GL_DEPTH_TEST);
+            GL::disable(GL_DEPTH_TEST);
         
-        glDepthMask(oldDepthWrite);
-        glDepthFunc(oldDepthFunc);
+        GL::depthMask(oldDepthWrite);
+        GL::depthFunc(oldDepthFunc);
         glClearDepth(oldDepthClearValue);
     }
     
@@ -293,7 +295,7 @@ void CommandBufferGL::setRenderPipeline(RenderPipeline* renderPipeline)
 
 void CommandBufferGL::setViewport(int x, int y, unsigned int w, unsigned int h)
 {
-    glViewport(x, y, w, h);
+    GL::viewport(x, y, w, h);
     _viewPort.x = x;
     _viewPort.y = y;
     _viewPort.w = w;
@@ -307,7 +309,7 @@ void CommandBufferGL::setCullMode(CullMode mode)
 
 void CommandBufferGL::setWinding(Winding winding)
 {
-    glFrontFace(UtilsGL::toGLFrontFace(winding));
+    GL::frontFace(UtilsGL::toGLFrontFace(winding));
 }
 
 void CommandBufferGL::setIndexBuffer(Buffer* buffer)
@@ -349,7 +351,7 @@ void CommandBufferGL::drawArrays(PrimitiveType primitiveType, unsigned int start
 void CommandBufferGL::drawElements(PrimitiveType primitiveType, IndexFormat indexType, unsigned int count, unsigned int offset)
 {
     prepareDrawing();
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer->getHandler());
+    GL::bindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer->getHandler());
     glDrawElements(UtilsGL::toGLPrimitiveType(primitiveType), count, UtilsGL::toGLIndexType(indexType), (GLvoid*)offset);
     CHECK_GL_ERROR_DEBUG();
     cleanResources();
@@ -378,8 +380,7 @@ void CommandBufferGL::setDepthStencilState(DepthStencilState* depthStencilState)
 void CommandBufferGL::prepareDrawing() const
 {   
     const auto& program = _renderPipeline->getProgram();
-    glUseProgram(program->getHandler());
-    
+    program->useProgram();
     bindVertexBuffer(program);
     setUniforms(program);
 
@@ -395,12 +396,12 @@ void CommandBufferGL::prepareDrawing() const
     // Set cull mode.
     if (CullMode::NONE == _cullMode)
     {
-        glDisable(GL_CULL_FACE);
+        GL::disable(GL_CULL_FACE);
     }
     else
     {
-        glEnable(GL_CULL_FACE);
-        glCullFace(UtilsGL::toGLCullMode(_cullMode));
+        GL::enable(GL_CULL_FACE);
+        GL::cullFace(UtilsGL::toGLCullMode(_cullMode));
     }
 }
 
@@ -412,7 +413,7 @@ void CommandBufferGL::bindVertexBuffer(ProgramGL *program) const
     if (!vertexLayout->isValid())
         return;
     
-    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer->getHandler());
+    GL::bindBuffer(GL_ARRAY_BUFFER, _vertexBuffer->getHandler());
 
     const auto& attributes = vertexLayout->getAttributes();
     for (const auto& attributeInfo : attributes)
@@ -596,12 +597,12 @@ void CommandBufferGL::setScissorRect(bool isEnabled, float x, float y, float wid
 {
     if(isEnabled)
     {
-        glEnable(GL_SCISSOR_TEST);
+        GL::enable(GL_SCISSOR_TEST);
         glScissor(x, y, width, height);
     }
     else
     {
-        glDisable(GL_SCISSOR_TEST);
+        GL::disable(GL_SCISSOR_TEST);
     }
 }
 

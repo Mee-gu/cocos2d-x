@@ -57,22 +57,21 @@ void RenderPipelineGL::updateBlendState(const BlendDescriptor& descriptor)
 
     if (blendEnabled)
     {
-        glEnable(GL_BLEND);
-        glBlendEquationSeparate(rgbBlendOperation, alphaBlendOperation);
-        glBlendFuncSeparate(sourceRGBBlendFactor,
-                            destinationRGBBlendFactor,
-                            sourceAlphaBlendFactor,
-                            destinationAlphaBlendFactor);
+        GL::enable(GL_BLEND);
+        GL::blendEquationSeparate(rgbBlendOperation, alphaBlendOperation);
+        GL::blendFuncSeparate(sourceRGBBlendFactor,
+            destinationRGBBlendFactor,
+            sourceAlphaBlendFactor,
+            destinationAlphaBlendFactor);
     }
     else
-        glDisable(GL_BLEND);
-    
-    glColorMask(writeMaskRed, writeMaskGreen, writeMaskBlue, writeMaskAlpha);
+        GL::disable(GL_BLEND);
+    GL::colorMask(writeMaskRed, writeMaskGreen, writeMaskBlue, writeMaskAlpha);
 }
 
 RenderPipelineGL::~RenderPipelineGL()
 {
-    CC_SAFE_RELEASE(_programGL);
+    //CC_SAFE_RELEASE(_programGL);
 }
 
 CC_BACKEND_END

@@ -31,6 +31,7 @@
 #include "base/CCEventListenerCustom.h"
 #include "platform/CCGL.h"
 #include "../Program.h"
+#include "GLStateCached.h"
 
 #include <string>
 #include <vector>
@@ -146,6 +147,7 @@ public:
      */
     virtual const std::unordered_map<std::string, UniformInfo>& getAllActiveUniformInfo(ShaderStage stage) const override ;
 
+    inline void useProgram() const { GL::useProgram(_program); }
 private:
     void compileProgram();
     bool getAttributeLocation(const std::string& attributeName, unsigned int& location) const;
