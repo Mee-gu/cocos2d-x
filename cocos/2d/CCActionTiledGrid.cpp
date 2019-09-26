@@ -231,9 +231,9 @@ ShuffleTiles::~ShuffleTiles()
 
 void ShuffleTiles::shuffle(unsigned int *array, unsigned int len)
 {
-    for (int i = len - 1; i >= 0; i-- )
+    for (unsigned int i = len - 1; i >= 0; i-- )
     {
-        unsigned int j = rand() % (i+1);
+        unsigned int j = (unsigned int)(rand()) % (i+1);
         unsigned int v = array[i];
         array[i] = array[j];
         array[j] = v;
@@ -245,7 +245,7 @@ Size ShuffleTiles::getDelta(const Size& pos) const
     unsigned int idx = static_cast<unsigned int>(pos.width * _gridSize.height + pos.height);
 
     float x = _tilesOrder[idx] / (_gridSize.height - pos.width);
-    float y = (float)(_tilesOrder[idx] % (int)(_gridSize.height - pos.height));
+    float y = (float)(_tilesOrder[idx] % (unsigned int)(_gridSize.height - pos.height));
 
     return Size(x, y);
 }
@@ -574,9 +574,9 @@ TurnOffTiles::~TurnOffTiles()
 
 void TurnOffTiles::shuffle(unsigned int *array, unsigned int len)
 {
-    for (int i = len - 1; i >= 0; i--)
+    for (unsigned int i = len - 1; i >= 0; i--)
     {
-        unsigned int j = rand() % (i+1);
+        unsigned int j = (unsigned int)(rand()) % (i+1);
         unsigned int v = array[i];
         array[i] = array[j];
         array[j] = v;

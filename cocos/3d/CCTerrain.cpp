@@ -1149,7 +1149,7 @@ void Terrain::Chunk::updateIndicesLOD()
     unsigned short gridY = (unsigned short)_size.height;
     unsigned short gridX = (unsigned short)_size.width;
 
-    unsigned short step = 1 << _currentLod;
+    unsigned short step = (unsigned short)(1 << _currentLod);
     if ((_left&&_left->_currentLod > _currentLod) || (_right&&_right->_currentLod > _currentLod)
         || (_back&&_back->_currentLod > _currentLod) || (_front && _front->_currentLod > _currentLod))
         //need update indices.
@@ -1171,7 +1171,7 @@ void Terrain::Chunk::updateIndicesLOD()
             }
         }
         //fix T-crack
-        unsigned short next_step = 1 << (_currentLod + 1);
+        unsigned short next_step = (unsigned short)(1 << (_currentLod + 1));
         if (_left&&_left->_currentLod > _currentLod)//left
         {
             for (unsigned short i = 0; i < gridY; i += next_step)
@@ -1432,7 +1432,7 @@ void Terrain::Chunk::updateIndicesLODSkirt()
 
     unsigned short gridY = (unsigned short)_size.height;
     unsigned short gridX = (unsigned short)_size.width;
-    unsigned short step = 1 << _currentLod;
+    unsigned short step = (unsigned short)(1 << _currentLod);
     int k = 0;
     for (unsigned short i = 0; i < gridY; i += step, k += step)
     {

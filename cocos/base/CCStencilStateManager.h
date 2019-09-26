@@ -64,10 +64,10 @@ private:
     bool _inverted = false;
     
     bool _currentStencilEnabled = false;
-    unsigned int _currentStencilWriteMask = ~0;
+    unsigned int _currentStencilWriteMask = ~0u;
     backend::CompareFunction _currentStencilFunc = backend::CompareFunction::ALWAYS;
     unsigned int _currentStencilRef = 0;
-    unsigned int _currentStencilReadMask = ~0;
+    unsigned int _currentStencilReadMask = ~0u;
     backend::StencilOperation _currentStencilFail = backend::StencilOperation::KEEP;
     backend::StencilOperation _currentStencilPassDepthFail = backend::StencilOperation::KEEP;
     backend::StencilOperation _currentStencilPassDepthPass = backend::StencilOperation::KEEP;

@@ -1617,7 +1617,7 @@ inline flatbuffers::Offset<ScrollViewOptions> CreateScrollViewOptions(flatbuffer
    uint8_t bounceEnabled = 0,
    uint8_t scrollbarEnabeld = 1,
    uint8_t scrollbarAutoHide = 1,
-   float scrollbarAutoHideTime = 0.2) {
+   float scrollbarAutoHideTime = 0.2f) {
   ScrollViewOptionsBuilder builder_(_fbb);
   builder_.add_scrollbarAutoHideTime(scrollbarAutoHideTime);
   builder_.add_direction(direction);

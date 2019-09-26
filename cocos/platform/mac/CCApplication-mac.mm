@@ -42,14 +42,14 @@ static long getCurrentMillSecond()
     struct timeval stCurrentTime;
     
     gettimeofday(&stCurrentTime,NULL);
-    lLastTime = stCurrentTime.tv_sec*1000+stCurrentTime.tv_usec*0.001; // milliseconds
+    lLastTime = long(stCurrentTime.tv_sec*1000+stCurrentTime.tv_usec*0.001f); // milliseconds
     return lLastTime;
 }
 
 Application* Application::sm_pSharedApplication = nullptr;
 
 Application::Application()
-: _animationInterval(1.0f/60.0f*1000.0f)
+: _animationInterval((long)(1.0f/60.0f*1000.0f))
 {
     CCASSERT(! sm_pSharedApplication, "sm_pSharedApplication already exist");
     sm_pSharedApplication = this;
@@ -110,7 +110,7 @@ int Application::run()
 
 void Application::setAnimationInterval(float interval)
 {
-    _animationInterval = interval*1000.0f;
+    _animationInterval = (long)(interval*1000.0f);
 }
 
 Application::Platform Application::getTargetPlatform()

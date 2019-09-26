@@ -52,8 +52,8 @@ Vec2 bezierTo(float t, Vec2 &point1, Vec2 &point2, Vec2 &point3)
 
     Vec2 p;
 
-    p.x = pow((1 - t), 2) * point1.x + 2 * t * (1 - t) * point2.x + pow(t, 2) * point3.x;
-    p.y = pow((1 - t), 2) * point1.y + 2 * t * (1 - t) * point2.y + pow(t, 2) * point3.y;
+    p.x = (float)(pow((1 - t), 2) * point1.x + 2 * t * (1 - t) * point2.x + pow(t, 2) * point3.x);
+    p.y = (float)(pow((1 - t), 2) * point1.y + 2 * t * (1 - t) * point2.y + pow(t, 2) * point3.y);
 
     return p;
 }
@@ -62,8 +62,8 @@ Vec2 bezierTo(float t, Vec2 &point1, Vec2 &point2, Vec2 &point3, Vec2 &point4)
 {
     Vec2 p;
 
-    p.x = point1.x * pow((1 - t), 3) + 3 * t * point2.x * pow((1 - t), 2) + 3 * point3.x * pow(t, 2) * (1 - t) + point4.x * pow(t, 3);
-    p.y = point1.y * pow((1 - t), 3) + 3 * t * point2.y * pow((1 - t), 2) + 3 * point3.y * pow(t, 2) * (1 - t) + point4.y * pow(t, 3);
+    p.x = point1.x * (float)(pow((1 - t), 3) + 3 * t * point2.x * pow((1 - t), 2) + 3 * point3.x * pow(t, 2) * (1 - t) + point4.x * pow(t, 3));
+    p.y = point1.y * (float)(pow((1 - t), 3) + 3 * t * point2.y * pow((1 - t), 2) + 3 * point3.y * pow(t, 2) * (1 - t) + point4.y * pow(t, 3));
 
     return p;
 }

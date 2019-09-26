@@ -110,7 +110,7 @@ public:
             auto old = _buffer->getBytes();
             void* buffer = realloc(old, size);
             if (buffer)
-                _buffer->fastSet((unsigned char*)buffer, size);
+                _buffer->fastSet((unsigned char*)buffer, static_cast<ssize_t>(size));
         }
     }
     virtual void* buffer() const override {

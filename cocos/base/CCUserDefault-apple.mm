@@ -250,7 +250,7 @@ float UserDefault::getFloatForKey(const char* pKey, float defaultValue)
     {
         if (node->FirstChild())
         {
-            float ret = atof((const char*)node->FirstChild()->Value());
+            float ret = (float)atof((const char*)node->FirstChild()->Value());
 
             // set value in NSUserDefaults
             setFloatForKey(pKey, ret);

@@ -50,10 +50,11 @@ UIListViewTest_Vertical::UIListViewTest_Vertical()
 _spawnCount(5), //spawnCount should > listview.width / templateWidth + 2
 _totalCount(50),
 _bufferZone(45), //bufferZone should be larger than List item width
-_updateTimer(0),
+_itemTemplateHeight(0),
 _updateInterval(1.0f / 24), // you could tweak this value to adjust ListView data update rate
-_lastContentPosY(0), //use this value to detect if we are scrolling left or right
-_itemTemplateHeight(0)
+_updateTimer(0),
+_lastContentPosY(0) //use this value to detect if we are scrolling left or right
+
 {
     
 }
@@ -307,10 +308,10 @@ UIListViewTest_Horizontal::UIListViewTest_Horizontal()
 _spawnCount(4), //spawnCount should > listview.width / templateWidth + 2
 _totalCount(50),
 _bufferZone(140), //bufferZone should be larger than List item width
-_updateTimer(0),
+_itemTemplateWidth(0),
 _updateInterval(1.0f / 24), // you could tweak this value to adjust ListView data update rate
-_lastContentPosX(0), //use this value to detect if we are scrolling left or right
-_itemTemplateWidth(0)
+_updateTimer(0),
+_lastContentPosX(0) //use this value to detect if we are scrolling left or right
 {
 }
 
@@ -875,7 +876,7 @@ bool UIListViewTest_Magnetic::init()
             eNextType = ListView::MagneticType::BOTTOM;
             sString = "BOTTOM";
         }
-        else if(eCurrentType == ListView::MagneticType::BOTTOM)
+        else
         {
             eNextType = ListView::MagneticType::NONE;
             sString = "NONE";

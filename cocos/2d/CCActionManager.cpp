@@ -412,7 +412,7 @@ size_t ActionManager::getNumberOfRunningActionsInTargetByTag(const Node *target,
     if(!element || !element->actions)
         return 0;
 
-    int count = 0;
+    unsigned int count = 0;
     auto limit = element->actions->num;
     for(int i = 0; i < limit; ++i)
     {

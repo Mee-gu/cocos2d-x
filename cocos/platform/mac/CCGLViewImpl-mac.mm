@@ -301,8 +301,8 @@ bool GLViewImpl::initWithRect(const std::string& viewName, Rect rect, float fram
     // Don't create gl context.
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
-    int neededWidth = rect.size.width * _frameZoomFactor;
-    int neededHeight = rect.size.height * _frameZoomFactor;
+    int neededWidth = (int)(rect.size.width * _frameZoomFactor);
+    int neededHeight = (int)(rect.size.height * _frameZoomFactor);
 
     _mainWindow = glfwCreateWindow(neededWidth, neededHeight, _viewName.c_str(), _monitor, nullptr);
 
@@ -636,7 +636,7 @@ void GLViewImpl::updateFrameSize()
            {
                _retinaFactor = 2;
            }
-           glfwSetWindowSize(_mainWindow, _screenSize.width/2 * _retinaFactor * _frameZoomFactor, _screenSize.height/2 * _retinaFactor * _frameZoomFactor);
+           glfwSetWindowSize(_mainWindow, (int)(_screenSize.width/2 * _retinaFactor * _frameZoomFactor), (int)(_screenSize.height/2 * _retinaFactor * _frameZoomFactor));
            _isInRetinaMonitor = true;
        }
        else
@@ -645,7 +645,7 @@ void GLViewImpl::updateFrameSize()
             {
                 _retinaFactor = 1;
             }
-            glfwSetWindowSize(_mainWindow, _screenSize.width * _retinaFactor * _frameZoomFactor, _screenSize.height *_retinaFactor * _frameZoomFactor);
+            glfwSetWindowSize(_mainWindow, (int)(_screenSize.width * _retinaFactor * _frameZoomFactor), (int)(_screenSize.height *_retinaFactor * _frameZoomFactor));
 
             _isInRetinaMonitor = false;
         }
@@ -661,10 +661,10 @@ void GLViewImpl::setFrameSize(float width, float height)
 void GLViewImpl::setViewPortInPoints(float x , float y , float w , float h)
 {
     Viewport vp;
-    vp.x = x * _scaleX * _retinaFactor * _frameZoomFactor + _viewPortRect.origin.x * _retinaFactor *_frameZoomFactor;
-    vp.y  = y * _scaleY * _retinaFactor *_frameZoomFactor + _viewPortRect.origin.y * _retinaFactor *_frameZoomFactor;
-    vp.w = w * _scaleX *_retinaFactor * _frameZoomFactor;
-    vp.h = h * _scaleY * _retinaFactor * _frameZoomFactor;
+    vp.x = (int)(x * _scaleX * _retinaFactor * _frameZoomFactor + _viewPortRect.origin.x * _retinaFactor *_frameZoomFactor);
+    vp.y  = (int)(y * _scaleY * _retinaFactor *_frameZoomFactor + _viewPortRect.origin.y * _retinaFactor *_frameZoomFactor);
+    vp.w = (unsigned int)(w * _scaleX *_retinaFactor * _frameZoomFactor);
+    vp.h = (unsigned int)(h * _scaleY * _retinaFactor * _frameZoomFactor);
     Camera::setDefaultViewport(vp);
 }
 
@@ -872,8 +872,8 @@ void GLViewImpl::onGLFWWindowSizeFunCallback(GLFWwindow* /*window*/, int width, 
         Size baseDesignSize = _designResolutionSize;
         ResolutionPolicy baseResolutionPolicy = _resolutionPolicy;
 
-        int frameWidth = width / _frameZoomFactor;
-        int frameHeight = height / _frameZoomFactor;
+        int frameWidth = (int)(width / _frameZoomFactor);
+        int frameHeight = (int)(height / _frameZoomFactor);
         setFrameSize(frameWidth, frameHeight);
         setDesignResolutionSize(baseDesignSize.width, baseDesignSize.height, baseResolutionPolicy);
         Director::getInstance()->setViewport();

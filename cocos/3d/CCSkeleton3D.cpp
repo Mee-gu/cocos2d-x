@@ -205,7 +205,7 @@ void Bone3D::updateLocalMat()
         for (const auto& it: _blendStates) {
             total += it.weight;
         }
-        if (total)
+        if (total != 0)
         {
             if (_blendStates.size() == 1)
             {

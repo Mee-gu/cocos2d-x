@@ -51,7 +51,7 @@
         NSSize textSize = [self cellSizeForBounds:theRect];
         
         // Center that in the proposed rect
-        float heightDelta = newRect.size.height - textSize.height;
+        float heightDelta = (float)(newRect.size.height - textSize.height);
         if (heightDelta > 0)
         {
             newRect.size.height -= heightDelta;

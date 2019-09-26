@@ -211,7 +211,7 @@ void ClippingNode::visit(Renderer *renderer, const Mat4 &parentTransform, uint32
     _afterDrawStencilCmd.func = CC_CALLBACK_0(StencilStateManager::onAfterDrawStencil, _stencilStateManager);
     renderer->addCommand(&_afterDrawStencilCmd);
 
-    int i = 0;
+    size_t i = 0;
     bool visibleByCamera = isVisitableByVisitingCamera();
     
 
@@ -239,7 +239,7 @@ void ClippingNode::visit(Renderer *renderer, const Mat4 &parentTransform, uint32
         if (visibleByCamera)
             this->draw(renderer, _modelViewTransform, flags);
 
-        for(auto it=_children.cbegin()+i, itCend = _children.cend(); it != itCend; ++it)
+        for(auto it=_children.cbegin()+(ssize_t)i, itCend = _children.cend(); it != itCend; ++it)
             (*it)->visit(renderer, _modelViewTransform, flags);
     }
     else if (visibleByCamera)

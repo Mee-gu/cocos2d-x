@@ -84,7 +84,7 @@ NSFont* EditBoxImplMac::constructFont(const char *fontName, float fontSize)
     if (fontSize == -1)
     {
         NSRect frameRect = [_sysEdit.textInput frame];
-        fontSize = frameRect.size.height*2/3;
+        fontSize = (float)frameRect.size.height*2/3;
     }
     else
     {

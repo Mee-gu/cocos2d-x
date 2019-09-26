@@ -75,10 +75,10 @@ unsigned char* getImageData(Image* img, backend::PixelFormat&  ePixFmt)
 
             for (unsigned int i = 0; i < uLen; ++i, ++inPixel32)
             {
-                *outPixel16++ =
+                *outPixel16++ =(unsigned short)(
                     ((((*inPixel32 >> 0) & 0xFF) >> 3) << 11) |  // R
                     ((((*inPixel32 >> 8) & 0xFF) >> 2) << 5) |  // G
-                    ((((*inPixel32 >> 16) & 0xFF) >> 3) << 0);    // B
+                    ((((*inPixel32 >> 16) & 0xFF) >> 3) << 0));    // B
             }
         }
         else
@@ -94,10 +94,10 @@ unsigned char* getImageData(Image* img, backend::PixelFormat&  ePixFmt)
                 unsigned char G = *inPixel8++;
                 unsigned char B = *inPixel8++;
 
-                *outPixel16++ =
+                *outPixel16++ =(unsigned short)(
                     ((R >> 3) << 11) |  // R
                     ((G >> 2) << 5) |  // G
-                    ((B >> 3) << 0);    // B
+                    ((B >> 3) << 0));    // B
             }
         }
     }

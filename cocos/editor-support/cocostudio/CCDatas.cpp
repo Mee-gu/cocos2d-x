@@ -122,7 +122,7 @@ void BaseData::subtract(BaseData *from, BaseData *to, bool limit)
         }
     }
 
-    if (to->tweenRotate)
+    if (to->tweenRotate != 0)
     {
         skewX += to->tweenRotate * (float)M_PI * 2;
         skewY -= to->tweenRotate * (float)M_PI * 2;

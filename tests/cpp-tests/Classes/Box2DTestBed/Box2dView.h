@@ -55,7 +55,7 @@ class Box2DView : public cocos2d::Layer
     cocos2d::EventListenerKeyboard* _keyboardListener;
     TestEntry*    m_entry;
     Test*        m_test;
-    int            m_entryID;
+
 public:
     Box2DView();
     virtual ~Box2DView();

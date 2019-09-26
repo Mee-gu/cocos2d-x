@@ -118,7 +118,7 @@ public:
      * Constructor with a capacity. 
      * @param capacity Capacity of the Vector.
      */
-    explicit Vector<T>(ssize_t capacity)
+    explicit Vector<T>(size_t capacity)
     : _data()
     {
         static_assert(std::is_convertible<T, Ref*>::value, "Invalid Type for cocos2d::Vector<T>!");
@@ -197,7 +197,7 @@ public:
      * Requests that the vector capacity be at least enough to contain n elements.
      * @param capacity Minimum capacity requested of the Vector.
      */
-    void reserve(ssize_t n)
+    void reserve(size_t n)
     {
         _data.reserve(n);
     }
@@ -216,7 +216,7 @@ public:
      *  @note This is the number of actual objects held in the Vector, which is not necessarily equal to its storage capacity.
      *  @return The number of elements in the Vector.
      */
-    ssize_t size() const
+    size_t size() const
     {
         return  _data.size();
     }
@@ -266,7 +266,7 @@ public:
     }
     
     /** Returns the element at position 'index' in the Vector. */
-    T at(ssize_t index) const
+    T at(size_t index) const
     {
         CCASSERT( index >= 0 && index < size(), "index out of range in getObjectAtIndex()");
         return _data[index];

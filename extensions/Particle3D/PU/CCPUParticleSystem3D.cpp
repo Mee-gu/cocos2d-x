@@ -60,11 +60,11 @@ float PUParticle3D::calculateVelocity() const
 void PUParticle3D::setOwnDimensions( float newWidth, float newHeight, float newDepth )
 {
     ownDimensions = true;
-    if (newWidth)
+    if (newWidth != 0)
         width = newWidth;
-    if (newHeight)
+    if (newHeight != 0)
         height = newHeight;
-    if (newDepth)
+    if (newDepth != 0)
         depth = newDepth;
     calculateBoundingSphereRadius();
     //parentEmitter->getParentTechnique()->_notifyParticleResized();

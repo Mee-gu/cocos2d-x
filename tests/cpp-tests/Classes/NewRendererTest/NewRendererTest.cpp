@@ -533,7 +533,7 @@ void SpriteCreation::doTest()
         suggestDelta =(int) (0.5 * totalSprites);
     } else if (t1_ms < 1000) {
         suggestDelta =(int) (0.2 * totalSprites);
-    } else if(t1_ms) {
+    } else if(t1_ms != 0) {
         suggestDelta =(int) (0.1 * totalSprites);
     }
 

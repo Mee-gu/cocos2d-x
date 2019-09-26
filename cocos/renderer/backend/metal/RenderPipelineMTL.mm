@@ -135,6 +135,9 @@ namespace
                 return MTLBlendFactorSourceAlphaSaturated;
             case BlendFactor::BLEND_CLOLOR:
                 return MTLBlendFactorBlendColor;
+            case BlendFactor::CONSTANT_ALPHA:
+            case BlendFactor::ONE_MINUS_CONSTANT_ALPHA:
+                return MTLBlendFactorOne;
         }
     }
     

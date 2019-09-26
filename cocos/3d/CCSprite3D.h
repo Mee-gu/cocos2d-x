@@ -101,7 +101,7 @@ public:
     Mesh* getMesh() const;
     
     /** get mesh count */
-    ssize_t getMeshCount() const { return _meshes.size(); }
+    size_t getMeshCount() const { return _meshes.size(); }
     
     Skeleton3D* getSkeleton() const { return _skeleton; }
     

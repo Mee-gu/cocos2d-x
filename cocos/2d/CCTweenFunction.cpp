@@ -378,7 +378,7 @@ float elasticEaseInOut(float time, float period)
     else
     {
         time = time * 2;
-        if (! period)
+        if (period != 0)
         {
             period = 0.3f * 1.5f;
         }

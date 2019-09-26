@@ -87,7 +87,7 @@ public:
      * as the verts memory are managed by other objects
      * @param quad  a pointer to the V3F_C4B_T2F_Quad quads
      */
-    void setQuads(V3F_C4B_T2F_Quad *quads, int numberOfQuads);
+    void setQuads(V3F_C4B_T2F_Quad *quads, unsigned int numberOfQuads);
 
 
     /**
@@ -262,7 +262,7 @@ protected:
     unsigned char getAlphaByIndex(unsigned int i);
     unsigned char getAlphaByPos(const Vec2& pos);
 
-    int getIndexFromPos(unsigned int x, unsigned int y) { return y*_width+x; }
+    unsigned int getIndexFromPos(unsigned int x, unsigned int y) { return y*_width+x; }
     cocos2d::Vec2 getPosFromIndex(unsigned int i) { return cocos2d::Vec2(static_cast<float>(i%_width), static_cast<float>(i/_width)); }
 
     std::vector<cocos2d::Vec2> rdp(const std::vector<cocos2d::Vec2>& v, float optimization);

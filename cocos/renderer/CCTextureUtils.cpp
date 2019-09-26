@@ -84,9 +84,9 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (size_t i = 0; i < dataLen; ++i)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i] & 0x00FC) << 3         //G
-            | (data[i] & 0x00F8) >> 3;        //B
+            | (data[i] & 0x00F8) >> 3);        //B
         }
     }
     
@@ -96,9 +96,9 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 1; i < l; i += 2)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i] & 0x00FC) << 3         //G
-            | (data[i] & 0x00F8) >> 3;        //B
+            | (data[i] & 0x00F8) >> 3);        //B
         }
     }
     
@@ -108,10 +108,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (size_t i = 0; i < dataLen; ++i)
         {
-            *out16++ = (data[i] & 0x00F0) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F0) << 8    //R
             | (data[i] & 0x00F0) << 4             //G
             | (data[i] & 0x00F0)                  //B
-            | 0x000F;                             //A
+            | 0x000F);                             //A
         }
     }
     
@@ -121,10 +121,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 1; i < l; i += 2)
         {
-            *out16++ = (data[i] & 0x00F0) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F0) << 8    //R
             | (data[i] & 0x00F0) << 4             //G
             | (data[i] & 0x00F0)                  //B
-            | (data[i + 1] & 0x00F0) >> 4;          //A
+            | (data[i + 1] & 0x00F0) >> 4);          //A
         }
     }
     
@@ -134,9 +134,9 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t* out16 = (uint16_t*)outData;
         for (ssize_t i = 0, l = dataLen - 1; i < l; i += 2)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (uint16_t)((data[i] & 0x00F8) << 8    //R
             | (data[i] & 0x00FC) << 3             //G
-            | (data[i] & 0x00F8) >> 3;            //B
+            | (data[i] & 0x00F8) >> 3);            //B
         }
     }
     
@@ -146,10 +146,10 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t* out16 = (uint16_t*)outData;
         for (ssize_t i = 0, l = dataLen - 1; i < l; i += 2)
         {
-            *out16++ = (data[i] & 0x00F8) << 7    //R
+            *out16++ = (uint16_t)((data[i] & 0x00F8) << 7    //R
             | (data[i] & 0x00F8) << 2             //G
             | (data[i] & 0x00F8) >> 3             //B
-            | (data[i + 1] & 0x0080) << 8;          //A
+            | (data[i + 1] & 0x0080) << 8);          //A
         }
     }
     
@@ -159,10 +159,10 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t* out16 = (uint16_t*)outData;
         for (ssize_t i = 0, l = dataLen - 1; i < l; i += 2)
         {
-            *out16++ = (data[i] & 0x00F0) << 8    //R
+            *out16++ = (uint16_t)((data[i] & 0x00F0) << 8    //R
             | (data[i] & 0x00F0) << 4             //G
             | (data[i] & 0x00F0)                  //B
-            | (data[i + 1] & 0x00F0) >> 4;        //A
+            | (data[i + 1] & 0x00F0) >> 4);        //A
         }
     }
     
@@ -173,10 +173,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (size_t i = 0; i < dataLen; ++i)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i] & 0x00F8) << 3         //G
             | (data[i] & 0x00F8) >> 2         //B
-            | 0x0001;                         //A
+            | 0x0001);                         //A
         }
     }
     
@@ -186,10 +186,10 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *out16 = (uint16_t*)outData;
         for (size_t i = 0; i < dataLen; ++i)
         {
-            *out16++ = (data[i] & 0xF8) << 7    //R
+            *out16++ = (uint16_t)((data[i] & 0xF8) << 7    //R
             | (data[i] & 0xF8) << 2             //G
             | (data[i] & 0xF8) >> 3             //B
-            | 0x8000;                           //A
+            | 0x8000);                           //A
         }
     }
     
@@ -199,9 +199,9 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *out16 = (uint16_t*)outData;
         for (size_t i = 0; i < dataLen; ++i)
         {
-            *out16++ = (data[i] & 0xF8) << 8    //R
+            *out16++ = (uint16_t)((data[i] & 0xF8) << 8    //R
             | (data[i] & 0xFC) << 3             //G
-            | (data[i] & 0xF8) >> 3             //B
+            | (data[i] & 0xF8) >> 3)             //B
             ;
         }
     }
@@ -212,10 +212,10 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *out16 = (uint16_t*)outData;
         for (size_t i = 0; i < dataLen; ++i)
         {
-            *out16++ = (data[i] & 0xF0) << 8    //R
+            *out16++ = (uint16_t)((data[i] & 0xF0) << 8    //R
             | (data[i] & 0xF0) << 4             //G
             | (data[i] & 0xF0)                  //B
-            | 0x000F;
+            | 0x000F);
         }
     }
     
@@ -225,10 +225,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 1; i < l; i += 2)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i] & 0x00F8) << 3         //G
             | (data[i] & 0x00F8) >> 2         //B
-            | (data[i + 1] & 0x0080) >> 7;    //A
+            | (data[i + 1] & 0x0080) >> 7);    //A
         }
     }
     
@@ -290,9 +290,9 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 2; i < l; i += 3)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i + 1] & 0x00FC) << 3     //G
-            | (data[i + 2] & 0x00F8) >> 3;    //B
+            | (data[i + 2] & 0x00F8) >> 3);    //B
         }
     }
     
@@ -302,9 +302,9 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 3; i < l; i += 4)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i + 1] & 0x00FC) << 3     //G
-            | (data[i + 2] & 0x00F8) >> 3;    //B
+            | (data[i + 2] & 0x00F8) >> 3);    //B
         }
     }
     
@@ -371,10 +371,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 2; i < l; i += 3)
         {
-            *out16++ = ((data[i] & 0x00F0) << 8           //R
+            *out16++ = (unsigned short)(((data[i] & 0x00F0) << 8           //R
                         | (data[i + 1] & 0x00F0) << 4     //G
                         | (data[i + 2] & 0xF0)            //B
-                        | 0x0F);                         //A
+                        | 0x0F));                         //A
         }
     }
     
@@ -384,10 +384,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 3; i < l; i += 4)
         {
-            *out16++ = (data[i] & 0x00F0) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F0) << 8    //R
             | (data[i + 1] & 0x00F0) << 4         //G
             | (data[i + 2] & 0xF0)                //B
-            | (data[i + 3] & 0xF0) >> 4;         //A
+            | (data[i + 3] & 0xF0) >> 4);         //A
         }
     }
     
@@ -397,10 +397,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 2; i < l; i += 3)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i + 1] & 0x00F8) << 3     //G
             | (data[i + 2] & 0x00F8) >> 2     //B
-            | 0x01;                          //A
+            | 0x01);                          //A
         }
     }
     
@@ -410,9 +410,9 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *outData = (uint16_t*) out;
         for(size_t i = 0;i < dataLen ; i += 3)
         {
-            *outData++ = ((data[i] & 0xF8) << 8)|
+            *outData++ = (uint16_t)(((data[i] & 0xF8) << 8)|
             ((data[i + 1] &0xFC) << 3) |
-            ((data[i + 2] & 0xF8)>> 3);
+            ((data[i + 2] & 0xF8)>> 3));
         }
     }
     
@@ -422,9 +422,9 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *outData = (uint16_t*) out;
         for(size_t i = 0;i < dataLen ; i += 3)
         {
-            *outData++ = ((data[i] & 0xF8) << 7) |
+            *outData++ = (uint16_t)(((data[i] & 0xF8) << 7) |
             ((data[i + 1] & 0xF8) << 2) |
-            ((data[i + 2] &0xF8) >> 3) | 0x8000;
+            ((data[i + 2] &0xF8) >> 3) | 0x8000);
         }
     }
     
@@ -434,10 +434,10 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *outData = (uint16_t*) out;
         for(size_t i = 0;i < dataLen ; i += 3)
         {
-            *outData++ = ((data[i] & 0xF0) << 8) | //r
+            *outData++ = (uint16_t)(((data[i] & 0xF0) << 8) | //r
             ((data[i + 1] & 0xF0) << 4) |          //g
             ((data[i + 2] & 0xF0)) |               //b
-            0x000F;                                //a
+            0x000F);                                //a
         }
     }
     
@@ -447,10 +447,10 @@ namespace backend { namespace PixelFormatUtils {
         unsigned short* out16 = (unsigned short*)outData;
         for (ssize_t i = 0, l = dataLen - 2; i < l; i += 4)
         {
-            *out16++ = (data[i] & 0x00F8) << 8    //R
+            *out16++ = (unsigned short)((data[i] & 0x00F8) << 8    //R
             | (data[i + 1] & 0x00F8) << 3     //G
             | (data[i + 2] & 0x00F8) >> 2     //B
-            | (data[i + 3] & 0x0080) >> 7;   //A
+            | (data[i + 3] & 0x0080) >> 7);   //A
         }
     }
     
@@ -461,9 +461,9 @@ namespace backend { namespace PixelFormatUtils {
         const size_t pixelCnt = dataLen / 4;
         for(size_t i=0;i < pixelCnt; i++ )
         {
-            outData[i] = ((data[i*4 + 2] & 0xF8) >> 3) |     //b
+            outData[i] = (uint16_t)(((data[i*4 + 2] & 0xF8) >> 3) |     //b
             ((data[i * 4 + 1] & 0xFC ) << 3) |           //g
-            (((data[i * 4 + 0] & 0xF8) << 8));             //r
+            (((data[i * 4 + 0] & 0xF8) << 8)));             //r
         }
     }
     
@@ -473,10 +473,10 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *outData = (uint16_t*)out;
         for(size_t i=0;i < dataLen; i+=4 )
         {
-            *outData++ = ((data[i] & 0xF0) << 8) |     //r
+            *outData++ = (uint16_t)(((data[i] & 0xF0) << 8) |     //r
             ((data[i + 1] & 0xF0) << 4) |              //g
             ((data[i + 2] & 0xF0)) |                   //b
-            ((data[i + 3] & 0xF0) >> 4);               //a
+            ((data[i + 3] & 0xF0) >> 4));               //a
         }
     }
     
@@ -486,10 +486,10 @@ namespace backend { namespace PixelFormatUtils {
         uint16_t *outData = (uint16_t*)out;
         for(size_t i = 0; i < dataLen; i += 4)
         {
-            *outData++ = ((data[i + 2] & 0xF8) >> 3)|     //b
+            *outData++ = (uint16_t)(((data[i + 2] & 0xF8) >> 3)|     //b
             ((data[i + 1] & 0xF8 ) << 2) |                //g
             ((data[i + 0] & 0xF8 ) << 7) |                //r
-            ((data[i + 3] & 0x80) << 8);                  //a
+            ((data[i + 3] & 0x80) << 8));                  //a
         }
     }
     
@@ -502,10 +502,10 @@ namespace backend { namespace PixelFormatUtils {
         for (size_t i = 0; i < pixelLen; i++)
         {
             pixel = inData[i];
-            *outData++ = (pixel & (0x001F << 11)) >> 8;
+            *outData++ = (unsigned char)((pixel & (0x001F << 11)) >> 8);
             *outData++ = (unsigned char)((pixel & (0x001F << 6)) >> 3);
-            *outData++ = (pixel & (0x001F << 1)) << 2;
-            *outData++ = (pixel & 0x0001) * 255;
+            *outData++ = (unsigned char)((pixel & (0x001F << 1)) << 2);
+            *outData++ = (unsigned char)((pixel & 0x0001) * 255);
         }
     }
     
@@ -519,7 +519,7 @@ namespace backend { namespace PixelFormatUtils {
         for (size_t i = 0; i < pixelLen; i++ )
         {
             pixel = inData[i];
-            outData[i] = (pixel >> 1) | ((pixel & 0x0001) << 15);
+            outData[i] = (uint16_t)((pixel >> 1) | ((pixel & 0x0001) << 15));
         }
     }
     
@@ -532,9 +532,9 @@ namespace backend { namespace PixelFormatUtils {
         for (size_t i = 0; i < pixelLen; i++)
         {
             pixel = inData[i];
-            *outData++ = (pixel & (0x001F << 11)) >> 8;
+            *outData++ = (unsigned char)((pixel & (0x001F << 11)) >> 8);
             *outData++ = (unsigned char)((pixel & (0x003F << 5)) >> 3);
-            *outData++ = (pixel & (0x001F)) << 3;
+            *outData++ = (unsigned char)((pixel & (0x001F)) << 3);
             *outData++ = 0xFF;
         }
     }

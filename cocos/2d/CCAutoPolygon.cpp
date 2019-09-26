@@ -112,7 +112,7 @@ void PolygonInfo::setQuad(V3F_C4B_T2F_Quad *quad)
     triangles.verts = (V3F_C4B_T2F*)quad;
 }
 
-void PolygonInfo::setQuads(V3F_C4B_T2F_Quad *quad, int numberOfQuads)
+void PolygonInfo::setQuads(V3F_C4B_T2F_Quad *quad, unsigned int numberOfQuads)
 {
     CCASSERT(numberOfQuads >= 1 && numberOfQuads <= 9, "Invalid number of Quads");
 
@@ -189,8 +189,8 @@ AutoPolygon::AutoPolygon(const std::string &filename)
     _image->initWithImageFile(filename);
     CCASSERT(_image->getPixelFormat()==backend::PixelFormat::RGBA8888, "unsupported format, currently only supports rgba8888");
     _data = _image->getData();
-    _width = _image->getWidth();
-    _height = _image->getHeight();
+    _width = (unsigned int)_image->getWidth();
+    _height = (unsigned int)_image->getHeight();
     _scaleFactor = Director::getInstance()->getContentScaleFactor();
 }
 
@@ -232,7 +232,7 @@ unsigned char AutoPolygon::getAlphaByIndex(unsigned int i)
 }
 unsigned char AutoPolygon::getAlphaByPos(const Vec2& pos)
 {
-    return *(_data+((int)pos.y*_width+(int)pos.x)*4+3);
+    return *(_data+((int)(pos.y*_width)+(int)pos.x)*4+3);
 }
 
 unsigned int AutoPolygon::getSquareValue(unsigned int x, unsigned int y, const Rect& rect, float threshold)
@@ -267,10 +267,10 @@ std::vector<cocos2d::Vec2> AutoPolygon::marchSquare(const Rect& rect, const Vec2
     int stepy = 0;
     int prevx = 0;
     int prevy = 0;
-    int startx = (int)start.x;
-    int starty = (int)start.y;
-    int curx = startx;
-    int cury = starty;
+    unsigned int startx = (unsigned int)start.x;
+    unsigned int starty = (unsigned int)start.y;
+    unsigned int curx = startx;
+    unsigned int cury = starty;
     unsigned int count = 0;
     std::vector<int> case9s;
     std::vector<int> case6s;

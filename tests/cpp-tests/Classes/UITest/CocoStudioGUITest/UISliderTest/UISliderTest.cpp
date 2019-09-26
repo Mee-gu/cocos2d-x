@@ -171,7 +171,7 @@ void UISliderTest_Scale9::sliderEvent(Ref *pSender, Slider::EventType type)
     {
         Slider* slider = dynamic_cast<Slider*>(pSender);
         auto percent = slider->getPercent();
-        _displayValueLabel->setString(StringUtils::format("Percent %d", percent));
+        _displayValueLabel->setString(StringUtils::format("Percent %.2f", percent));
     }
 }
 

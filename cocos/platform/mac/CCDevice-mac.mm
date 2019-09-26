@@ -63,7 +63,7 @@ int Device::getDPI()
     NSSize displayPixelSize = [[description objectForKey:NSDeviceSize] sizeValue];
     CGSize displayPhysicalSize = CGDisplayScreenSize([[description objectForKey:@"NSScreenNumber"] unsignedIntValue]);
     
-    return ((displayPixelSize.width / displayPhysicalSize.width) * 25.4f);
+    return (int)((displayPixelSize.width / displayPhysicalSize.width) * 25.4f);
 }
 
 void Device::setAccelerometerEnabled(bool isEnabled)
@@ -114,8 +114,8 @@ static NSSize _calculateStringSize(NSAttributedString *str, id font, CGSize *con
 #endif
     
     
-    dim.width = ceilf(dim.width);
-    dim.height = ceilf(dim.height);
+    dim.width = ceilf((float)dim.width);
+    dim.height = ceilf((float)dim.height);
 
     return dim;
 }
@@ -123,7 +123,7 @@ static NSSize _calculateStringSize(NSAttributedString *str, id font, CGSize *con
 static NSSize _calculateRealSizeForString(NSAttributedString **str, id font, NSSize constrainSize, bool enableWrap)
 {
     CGRect actualSize = CGRectMake(0, 0, constrainSize.width + 1, constrainSize.height + 1);
-    int fontSize = [font pointSize];
+    int fontSize = (int)([font pointSize]);
     fontSize = fontSize + 1;
 
     if (!enableWrap) {
@@ -220,7 +220,7 @@ static NSFont* _createSystemFont(const char* fontName, int size)
 
 static CGFloat _calculateTextDrawStartHeight(cocos2d::Device::TextAlign align, CGSize realDimensions, CGSize dimensions)
 {
-    float startH = 0;
+    CGFloat startH = 0;
     // vertical alignment
     unsigned int vAlignment = ((int)align >> 4) & 0x0F;
     switch (vAlignment) {
@@ -296,8 +296,8 @@ static bool _initWithString(const char * text, Device::TextAlign align, const ch
 
         CGFloat yPadding = _calculateTextDrawStartHeight(align, realDimensions, dimensions);
 
-        NSInteger POTWide = dimensions.width;
-        NSInteger POTHigh = dimensions.height;
+        NSInteger POTWide = (NSInteger)dimensions.width;
+        NSInteger POTHigh = (NSInteger)dimensions.height;
         NSRect textRect = NSMakeRect(xPadding, POTHigh - dimensions.height + yPadding,
                                      realDimensions.width, realDimensions.height);
 
@@ -343,10 +343,10 @@ Data Device::getTextureDataForText(const char * text, const FontDefinition& text
     Data ret;
     do {
         tImageInfo info = {0};
-        info.width = textDefinition._dimensions.width;
-        info.height = textDefinition._dimensions.height;
+        info.width = (int)textDefinition._dimensions.width;
+        info.height = (int)textDefinition._dimensions.height;
         
-        if (! _initWithString(text, align, textDefinition._fontName.c_str(), textDefinition._fontSize, &info, &textDefinition._fontFillColor, textDefinition._fontAlpha, textDefinition._enableWrap, textDefinition._overflow))
+        if (! _initWithString(text, align, textDefinition._fontName.c_str(), (int)textDefinition._fontSize, &info, &textDefinition._fontFillColor, textDefinition._fontAlpha, textDefinition._enableWrap, textDefinition._overflow))
         {
             break;
         }

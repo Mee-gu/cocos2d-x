@@ -130,7 +130,7 @@ float ActionFrameEasing::easeValue(float t)
 			newT = t;
 		else {
 			t = t * 2;
-			if(! period )
+			if(period != 0)
 				period = 0.3f * 1.5f;
 			float s = period / 4;
 

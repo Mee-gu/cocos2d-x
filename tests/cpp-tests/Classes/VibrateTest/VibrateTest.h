@@ -55,7 +55,6 @@ private:
     
     void* _durationLabel;
     void* _durationSlider;
-    bool _updateTimeSlider;
 };
 
 

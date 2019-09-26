@@ -115,7 +115,7 @@ bool AtlasNode::initWithTexture(Texture2D* texture, int tileWidth, int tileHeigh
         return false;
     }
     
-    _textureAtlas->initWithTexture(texture, itemsToRender);
+    _textureAtlas->initWithTexture(texture, static_cast<size_t>(itemsToRender));
 
     this->updateBlendFunc();
     this->updateOpacityModifyRGB();
@@ -270,7 +270,7 @@ TextureAtlas * AtlasNode::getTextureAtlas() const
     return _textureAtlas;
 }
 
-size_t AtlasNode::getQuadsToDraw() const
+ssize_t AtlasNode::getQuadsToDraw() const
 {
     return _quadsToDraw;
 }

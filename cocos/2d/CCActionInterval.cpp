@@ -242,7 +242,7 @@ bool Sequence::init(const Vector<FiniteTimeAction*>& arrayOfActions)
 
     // else size > 1
     auto prev = arrayOfActions.at(0);
-    for (int i = 1; i < count-1; ++i)
+    for (size_t i = 1; i < count-1; ++i)
     {
         prev = createWithTwoActions(prev, arrayOfActions.at(i));
     }
@@ -696,7 +696,7 @@ bool Spawn::init(const Vector<FiniteTimeAction*>& arrayOfActions)
     
     // else count > 1
     auto prev = arrayOfActions.at(0);
-    for (int i = 1; i < count-1; ++i)
+    for (size_t i = 1; i < count-1; ++i)
     {
         prev = createWithTwoActions(prev, arrayOfActions.at(i));
     }
@@ -2621,7 +2621,7 @@ void Animate::update(float t)
     auto numberOfFrames = frames.size();
     SpriteFrame *frameToDisplay = nullptr;
 
-    for( int i=_nextFrame; i < numberOfFrames; i++ )
+    for( unsigned int i=_nextFrame; i < numberOfFrames; i++ )
     {
         float splitTime = _splitTimes->at(i);
 

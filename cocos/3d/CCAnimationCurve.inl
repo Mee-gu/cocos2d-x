@@ -125,7 +125,7 @@ template <int componentSize>
 int AnimationCurve<componentSize>::determineIndex(float time) const
 {
     unsigned int min = 0;
-    unsigned int max = _count - 1;
+    unsigned int max = (unsigned int)(_count - 1);
     unsigned int mid = 0;
     
     do
@@ -133,7 +133,7 @@ int AnimationCurve<componentSize>::determineIndex(float time) const
         mid = (min + max) >> 1;
         
         if (time >= _keytime[mid] && time <= _keytime[mid + 1])
-            return mid;
+            return (int)mid;
         else if (time < _keytime[mid])
             max = mid - 1;
         else

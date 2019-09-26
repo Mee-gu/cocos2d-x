@@ -97,7 +97,7 @@ public:
     TextureAtlas* getTextureAtlas() const;
     
     void setQuadsToDraw(ssize_t quadsToDraw);
-    size_t getQuadsToDraw() const;
+    ssize_t getQuadsToDraw() const;
 
 CC_CONSTRUCTOR_ACCESS:
     AtlasNode();
@@ -135,7 +135,7 @@ protected:
     BlendFunc _blendFunc;
 
     /** Quads to draw. */
-    size_t _quadsToDraw = 0;
+    ssize_t _quadsToDraw = 0;
 
     /** This variable is only used for LabelAtlas FPS display. So plz don't modify its value. */
     bool _ignoreContentScaleFactor = false;

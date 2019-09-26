@@ -117,12 +117,12 @@ void Mat4::createPerspective(float fieldOfView, float aspectRatio,
         return;
     }
     float divisor = std::tan(theta);
-    GP_ASSERT(divisor);
+    GP_ASSERT(divisor != 0);
     float factor = 1.0f / divisor;
 
     memset(dst, 0, MATRIX_SIZE);
 
-    GP_ASSERT(aspectRatio);
+    GP_ASSERT(aspectRatio != 0);
     dst->m[0] = (1.0f / aspectRatio) * factor;
     dst->m[5] = factor;
     dst->m[10] = (-(zFarPlane + zNearPlane)) * f_n;

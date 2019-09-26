@@ -191,7 +191,7 @@ void TextureCacheUnbindTest::textureLoadedA(Texture2D* texture)
 {
   auto size = Director::getInstance()->getWinSize();
   auto s = Sprite::create("Images/texture2048x2048.png");
-  s->setScale(0.15);
+  s->setScale(0.15f);
   s->setPosition(size.width / 4, size.height / 2);
   this->addChild(s);
 }
@@ -200,7 +200,7 @@ void TextureCacheUnbindTest::textureLoadedB(Texture2D* texture)
 {
   auto size = Director::getInstance()->getWinSize();
   auto s = Sprite::create("Images/texture2048x2048.png");
-  s->setScale(0.15);
+  s->setScale(0.15f);
   s->setPosition(3 * size.width / 4, size.height / 2);
   this->addChild(s);
 }

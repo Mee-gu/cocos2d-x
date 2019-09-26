@@ -525,7 +525,7 @@ void Renderer::setViewPort(int x, int y, unsigned int w, unsigned int h)
     _viewport.h = h;
 }
 
-void Renderer::fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned short vertexBufferOffset)
+void Renderer::fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned int vertexBufferOffset)
 {
     unsigned short vertexCount = (unsigned short)cmd->getVertexCount();
     memcpy(&_verts[_filledVertex], cmd->getVertices(), sizeof(V3F_C4B_T2F) * vertexCount);
@@ -542,7 +542,7 @@ void Renderer::fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned shor
     unsigned short indexCount = (unsigned short)cmd->getIndexCount();
     for (unsigned short i = 0; i < indexCount; ++i)
     {
-        _indices[_filledIndex + i] = vertexBufferOffset + _filledVertex + indices[i];
+        _indices[_filledIndex + i] = (unsigned short)vertexBufferOffset + _filledVertex + indices[i];
     }
     
     _filledVertex += vertexCount;

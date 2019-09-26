@@ -1665,7 +1665,7 @@ const Mat4& Node::getNodeToParentTransform() const
             y += _anchorPointInPoints.y;
         }
         
-        bool needsSkewMatrix = ( _skewX || _skewY );
+        bool needsSkewMatrix = (_skewX != 0) || (_skewY != 0);
 
         // Build Transform Matrix = translation * rotation * scale
         Mat4 translation;

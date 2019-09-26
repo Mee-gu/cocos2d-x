@@ -104,7 +104,7 @@ public:
     /**Get a sub group of the render queue.*/
     std::vector<RenderCommand*>& getSubQueue(QUEUE_GROUP group) { return _commands[group]; }
     /**Get the number of render commands contained in a subqueue.*/
-    ssize_t getSubQueueSize(QUEUE_GROUP group) const { return _commands[group].size(); }
+    size_t getSubQueueSize(QUEUE_GROUP group) const { return _commands[group].size(); }
     
 protected:
     /**The commands in the render queue.*/
@@ -469,7 +469,7 @@ protected:
     void visitRenderQueue(RenderQueue& queue);
     void doVisitRenderQueue(const std::vector<RenderCommand*>&);
 
-    void fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned short vertexBufferOffset);
+    void fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned int vertexBufferOffset);
     void beginRenderPass(RenderCommand*); /// Begin a render pass.
     
     /**

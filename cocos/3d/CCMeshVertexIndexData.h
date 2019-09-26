@@ -122,9 +122,9 @@ public:
     const MeshVertexAttrib& getMeshVertexAttrib(size_t index) const { return _attribs[index]; }
     
     /** get index data count */
-    ssize_t getMeshIndexDataCount() const { return _indexs.size(); }
+    size_t getMeshIndexDataCount() const { return _indexs.size(); }
     /** get index data by index */
-    MeshIndexData* getMeshIndexDataByIndex(int index) const { return _indexs.at(index); }
+    MeshIndexData* getMeshIndexDataByIndex(unsigned int index) const { return _indexs.at(index); }
     /** get index data by id */
     MeshIndexData* getMeshIndexDataById(const std::string& id) const;
     

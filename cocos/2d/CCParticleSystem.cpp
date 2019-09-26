@@ -866,7 +866,7 @@ void ParticleSystem::update(float dt)
 {
     CC_PROFILER_START_CATEGORY(kProfilerCategoryParticles , "CCParticleSystem - update");
 
-    if (_isActive && _emissionRate)
+    if (_isActive && _emissionRate != 0)
     {
         float rate = 1.0f / _emissionRate;
         int totalParticles = static_cast<int>(_totalParticles * __totalParticleCountFactor);
@@ -934,7 +934,7 @@ void ParticleSystem::update(float dt)
                 particle_point tmp, radial = {0.0f, 0.0f}, tangential;
                 
                 // radial acceleration
-                if (_particleData.posx[i] || _particleData.posy[i])
+                if ((_particleData.posx[i] != 0) || (_particleData.posy[i] != 0))
                 {
                     normalize_point(_particleData.posx[i], _particleData.posy[i], &radial);
                 }

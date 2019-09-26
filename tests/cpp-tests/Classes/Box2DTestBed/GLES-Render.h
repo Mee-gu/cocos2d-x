@@ -31,7 +31,6 @@ struct b2AABB;
 class GLESDebugDraw : public b2Draw
 {
     float32 mRatio;
-    int        mColorLocation;
 
     void initShader( void );
 public:

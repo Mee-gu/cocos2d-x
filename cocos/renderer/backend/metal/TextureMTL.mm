@@ -228,8 +228,8 @@ void TextureMTL::updateSubData(int xoffset, int yoffset, int width, int height, 
 {
     MTLRegion region =
     {
-        {xoffset, yoffset, 0},  // MTLOrigin
-        {width, height, 1}      // MTLSize
+        {(unsigned int)xoffset, (unsigned int)yoffset, 0},  // MTLOrigin
+        {(unsigned int)width, (unsigned int)height, 1}      // MTLSize
     };
     
     uint8_t* convertedData = nullptr;
