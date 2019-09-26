@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_3d_auto.hpp"
 #include "cocos2d.h"
 #include "3d/CCBundle3D.h"
@@ -87,7 +89,7 @@ int lua_cocos2dx_3d_Animation3D_init(lua_State* tolua_S)
     {
         cocos2d::Animation3DData arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR Animation3DData
+        //#pragma warning NO CONVERSION TO NATIVE FOR Animation3DData
 		ok = false;
         if(!ok)
         {
@@ -5470,7 +5472,7 @@ int lua_cocos2dx_3d_Terrain_setDetailMap(lua_State* tolua_S)
 
         ok &= luaval_to_uint32(tolua_S, 2,&arg0, "cc.Terrain:setDetailMap");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR DetailMap
+        //#pragma warning NO CONVERSION TO NATIVE FOR DetailMap
 		ok = false;
         if(!ok)
         {
@@ -5866,7 +5868,7 @@ int lua_cocos2dx_3d_Terrain_initWithTerrainData(lua_State* tolua_S)
         cocos2d::Terrain::TerrainData arg0;
         cocos2d::Terrain::CrackFixedType arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR TerrainData
+        //#pragma warning NO CONVERSION TO NATIVE FOR TerrainData
 		ok = false;
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.Terrain:initWithTerrainData");
@@ -6501,7 +6503,7 @@ int lua_cocos2dx_3d_Bundle3D_loadSkinData(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.Bundle3D:loadSkinData");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR SkinData*
+        //#pragma warning NO CONVERSION TO NATIVE FOR SkinData*
 		ok = false;
         if(!ok)
         {
@@ -6599,7 +6601,7 @@ int lua_cocos2dx_3d_Bundle3D_loadMaterials(lua_State* tolua_S)
     {
         cocos2d::MaterialDatas arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR MaterialDatas
+        //#pragma warning NO CONVERSION TO NATIVE FOR MaterialDatas
 		ok = false;
         if(!ok)
         {
@@ -6650,7 +6652,7 @@ int lua_cocos2dx_3d_Bundle3D_loadNodes(lua_State* tolua_S)
     {
         cocos2d::NodeDatas arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR NodeDatas
+        //#pragma warning NO CONVERSION TO NATIVE FOR NodeDatas
 		ok = false;
         if(!ok)
         {
@@ -6704,7 +6706,7 @@ int lua_cocos2dx_3d_Bundle3D_loadAnimationData(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.Bundle3D:loadAnimationData");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR Animation3DData*
+        //#pragma warning NO CONVERSION TO NATIVE FOR Animation3DData*
 		ok = false;
         if(!ok)
         {
@@ -6958,3 +6960,4 @@ TOLUA_API int register_all_cocos2dx_3d(lua_State* tolua_S)
 	return 1;
 }
 
+#pragma warning(pop)

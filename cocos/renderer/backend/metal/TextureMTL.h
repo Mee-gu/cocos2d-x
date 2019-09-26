@@ -54,7 +54,7 @@ public:
      * @param height Specifies the height of the texture image.
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      */
-    virtual void updateData(uint8_t* data, uint32_t width , uint32_t height, uint32_t level) override;
+    virtual void updateData(uint8_t* data, int width , int height, unsigned int level) override;
     
     /**
      * Update a two-dimensional texture image in a compressed format
@@ -64,7 +64,7 @@ public:
      * @param dataLen Specifies the totoal size of compressed image in bytes.
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      */
-    virtual void updateCompressedData(uint8_t* data, uint32_t width , uint32_t height, uint32_t dataLen, uint32_t level) override;
+    virtual void updateCompressedData(uint8_t* data, int width , int height, size_t dataLen, unsigned int level) override;
     
     /**
      * Update a two-dimensional texture subimage
@@ -75,7 +75,7 @@ public:
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      * @param data Specifies a pointer to the image data in memory.
      */
-    virtual void updateSubData(uint32_t xoffset, uint32_t yoffset, uint32_t width, uint32_t height, uint32_t level, uint8_t* data) override;
+    virtual void updateSubData(int xoffset, int yoffset, int width, int height, unsigned int level, uint8_t* data) override;
     
     /**
      * Update a two-dimensional texture subimage in a compressed format
@@ -87,7 +87,7 @@ public:
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      * @param data Specifies a pointer to the compressed image data in memory.
      */
-    virtual void updateCompressedSubData(uint32_t xoffset, uint32_t yoffset, uint32_t width, uint32_t height, uint32_t dataLen, uint32_t level, uint8_t* data) override;
+    virtual void updateCompressedSubData(int xoffset, int yoffset, int width, int height, size_t dataLen, unsigned int level, uint8_t* data) override;
     
     /**
      * Update sampler

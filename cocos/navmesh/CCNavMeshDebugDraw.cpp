@@ -135,10 +135,10 @@ void NavMeshDebugDraw::end()
 
 Vec4 NavMeshDebugDraw::getColor(unsigned int col)
 {
-    const unsigned int r = col & 0xff;
-    const unsigned int g = (col >> 8) & 0xff;
-    const unsigned int b = (col >> 16) & 0xff;
-    const unsigned int a = (col >> 24) & 0xff;
+    const float r = (float)(col & 0xff);
+    const float g = (float)((col >> 8) & 0xff);
+    const float b = (float)((col >> 16) & 0xff);
+    const float a = (float)((col >> 24) & 0xff);
 
     float factor = 1.0f / 255.0f;
     return Vec4(r, g, b, a) * factor;

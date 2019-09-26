@@ -108,8 +108,8 @@ private:
     int getPixelOriginOffset(Direction direction)const;
     Vec2 parseHorizontalMargin()const;
     Vec2 parseVerticalMargin()const;
-    int getFrameWidth()const;
-    int getFrameHeight()const;
+    float getFrameWidth()const;
+    float getFrameHeight()const;
 
     Image* _image;
     Rect _imageFrame;

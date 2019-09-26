@@ -966,7 +966,7 @@ void Issue870::onEnter()
 void Issue870::updateQuads(float dt)
 {
     _index = (_index + 1) % 4;
-    auto rect = Rect(_index * 32, 0, 32, 32);
+    auto rect = Rect(_index * 32.0f, 0, 32.0f, 32.0f);
     auto system = (ParticleSystemQuad*)_emitter;
     system->setTextureWithRect(_emitter->getTexture(), rect);
 }
@@ -1655,7 +1655,7 @@ void AddAndDeleteParticleSystems::removeSystem(float dt)
         particleSystem->setPositionType(ParticleSystem::PositionType::GROUPED);
         particleSystem->setTotalParticles(200);
 
-        particleSystem->setPosition(Vec2(rand() % 300 ,rand() % 400));
+        particleSystem->setPosition(Vec2((float)(rand() % 300) , (float)(rand() % 400)));
 
         CCLOG("add a new system");
         unsigned int randZ = rand() % 100;

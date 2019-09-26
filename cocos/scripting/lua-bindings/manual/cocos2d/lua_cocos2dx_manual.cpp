@@ -2343,7 +2343,7 @@ int tolua_cocos2d_Node_setContentSize(lua_State* tolua_S)
         if (!ok)
             return 0;
 
-        cobj->setContentSize(Size(width, height));
+        cobj->setContentSize(Size((float)width, (float)height));
         lua_settop(tolua_S, 1);
         return 1;
     }
@@ -6154,7 +6154,7 @@ static int lua_cocos2dx_Label_createWithTTF00(lua_State* L)
 
 
         int alignment = (int)tolua_tonumber(L, 4, 1);
-        int lineSize  = (int)tolua_tonumber(L, 5, 0);
+        float lineSize  = (float)tolua_tonumber(L, 5, 0);
         cocos2d::Label* ret = cocos2d::Label::createWithTTF(ttfConfig, text, static_cast<TextHAlignment>(alignment), lineSize);
         int ID = ret ? (int)(ret->_ID) : -1;
         int* luaID = ret ? &(ret->_luaID) : nullptr;
@@ -7413,7 +7413,7 @@ static int lua_cocos2dx_ProgramState_setUniform(lua_State *tolua_S)
             for (int i = 0; i < len; i++)
             {
                 lua_rawgeti(tolua_S, 3, i + 1);
-                buffer[i] = lua_tointeger(tolua_S, -1);
+                buffer[i] = static_cast<uint8_t>(lua_tointeger(tolua_S, -1));
                 lua_pop(tolua_S, 1);
             }
 
@@ -7830,10 +7830,10 @@ static int tolua_cocos2d_Mat4_transformVector(lua_State* tolua_S)
             if (!ok)
                 return 0;
 
-            x = tolua_tonumber(tolua_S, 2, 0);
-            y = tolua_tonumber(tolua_S, 3, 0);
-            z = tolua_tonumber(tolua_S, 4, 0);
-            w = tolua_tonumber(tolua_S, 5, 0);
+            x = static_cast<float>(tolua_tonumber(tolua_S, 2, 0));
+            y = static_cast<float>(tolua_tonumber(tolua_S, 3, 0));
+            z = static_cast<float>(tolua_tonumber(tolua_S, 4, 0));
+            w = static_cast<float>(tolua_tonumber(tolua_S, 5, 0));
 
             mat.transformVector(x,y,z,w, &dst);
             vec3_to_luaval(tolua_S, dst);

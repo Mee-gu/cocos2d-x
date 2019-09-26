@@ -398,7 +398,7 @@ public:
      * @param wdith Specifies the width of the scissor box
      * @param height Specifies the height of the scissor box
      */
-    void setScissorRect(float x, float y, float width, float height);
+    void setScissorRect(int x, int y, unsigned int width, unsigned int height);
     bool getScissorTest() const; ///< Get whether scissor test is enabled or not.
     const ScissorRect& getScissorRect() const; ///< Get scissor rectangle.
 
@@ -469,7 +469,7 @@ protected:
     void visitRenderQueue(RenderQueue& queue);
     void doVisitRenderQueue(const std::vector<RenderCommand*>&);
 
-    void fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned int vertexBufferOffset);
+    void fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned short vertexBufferOffset);
     void beginRenderPass(RenderCommand*); /// Begin a render pass.
     
     /**
@@ -523,8 +523,8 @@ protected:
     unsigned int _queuedTotalIndexCount = 0;
     unsigned int _queuedVertexCount = 0;
     unsigned int _queuedIndexCount = 0;
-    unsigned int _filledIndex = 0;
-    unsigned int _filledVertex = 0;
+    unsigned short _filledIndex = 0;
+    unsigned short _filledVertex = 0;
 
     // stats
     unsigned int _drawnBatches = 0;

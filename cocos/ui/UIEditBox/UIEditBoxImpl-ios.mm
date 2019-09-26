@@ -96,7 +96,7 @@ void EditBoxImplIOS::doAnimationWhenKeyboardMove(float duration, float distance)
     }
 }
     
-void EditBoxImplIOS::setNativeFont(const char* pFontName, int fontSize)
+void EditBoxImplIOS::setNativeFont(const char* pFontName, float fontSize)
 {
     UIFont* textFont = constructFont(pFontName, fontSize);
     if (textFont != nil) {
@@ -113,7 +113,7 @@ void EditBoxImplIOS::setNativeFontColor(const Color4B& color)
 
 }
 
-void EditBoxImplIOS::setNativePlaceholderFont(const char* pFontName, int fontSize)
+void EditBoxImplIOS::setNativePlaceholderFont(const char* pFontName, float fontSize)
 {
     UIFont* textFont = constructFont(pFontName, fontSize);
     if (textFont != nil) {
@@ -214,7 +214,7 @@ void EditBoxImplIOS::nativeCloseKeyboard()
     [_systemControl closeKeyboard];
 }
     
-UIFont* EditBoxImplIOS::constructFont(const char *fontName, int fontSize)
+UIFont* EditBoxImplIOS::constructFont(const char *fontName, float fontSize)
 {
     CCASSERT(fontName != nullptr, "fontName can't be nullptr");
     CCEAGLView *eaglview = static_cast<CCEAGLView *>(cocos2d::Director::getInstance()->getOpenGLView()->getEAGLView());

@@ -802,7 +802,7 @@ TMXIsoZorderNew::TMXIsoZorderNew()
     _tamara = Sprite::create(s_pathSister1);
     map->addChild(_tamara, (int)map->getChildren().size() );
     _tamara->retain();
-    int mapWidth = map->getMapSize().width * map->getTileSize().width;
+    auto mapWidth = map->getMapSize().width * map->getTileSize().width;
     _tamara->setPosition(CC_POINT_PIXELS_TO_POINTS(Vec2( mapWidth/2.0f,0.0f)));
     _tamara->setAnchorPoint(Vec2(0.5f,0.0f));
 
@@ -837,7 +837,7 @@ void TMXIsoZorderNew::repositionSprite(float dt)
     // if tamara < 96, z=3
     // if tamara < 144,z=2
     
-    int newZ = 4 - (p.y / 48);
+    int newZ = 4 - ((int)p.y / 48);
     newZ = std::max(newZ,0);
     
     map->reorderChild(_tamara, newZ);    
@@ -898,7 +898,7 @@ void TMXOrthoZorderNew::repositionSprite(float dt)
     // if tamara < 243,z=2
 
     // -10: customization for this particular sample
-    int newZ = 4 - ( (p.y-10) / 81);
+    int newZ = 4 - ( ((int)p.y-10) / 81);
     newZ = std::max(newZ,0);
 
     map->reorderChild(_tamara, newZ);

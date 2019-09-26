@@ -384,13 +384,13 @@ namespace tinyobj {
                 i1 = i2;
                 i2 = face[k];
                 
-                unsigned int v0 = updateVertex(
+                unsigned short v0 = (unsigned short)updateVertex(
                                                vertexCache, shape.mesh.positions, shape.mesh.normals,
                                                shape.mesh.texcoords, in_positions, in_normals, in_texcoords, i0);
-                unsigned int v1 = updateVertex(
+                unsigned short v1 = (unsigned short)updateVertex(
                                                vertexCache, shape.mesh.positions, shape.mesh.normals,
                                                shape.mesh.texcoords, in_positions, in_normals, in_texcoords, i1);
-                unsigned int v2 = updateVertex(
+                unsigned short v2 = (unsigned short)updateVertex(
                                                vertexCache, shape.mesh.positions, shape.mesh.normals,
                                                shape.mesh.texcoords, in_positions, in_normals, in_texcoords, i2);
                 

@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_auto.hpp"
 #include "cocos2d.h"
 #include "2d/CCProtectedNode.h"
@@ -13732,7 +13734,7 @@ int lua_cocos2dx_GLView_setGLContextAttrs(lua_State* tolua_S)
     if (argc == 1)
     {
         GLContextAttrs arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR GLContextAttrs
+        //#pragma warning NO CONVERSION TO NATIVE FOR GLContextAttrs
 		ok = false;
         if(!ok)
         {
@@ -17723,7 +17725,7 @@ int lua_cocos2dx_AsyncTaskPool_enqueue(lua_State* tolua_S)
 
             if (!ok) { break; }
             void* arg2;
-            #pragma warning NO CONVERSION TO NATIVE FOR void*
+            //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
             if (!ok) { break; }
@@ -20618,7 +20620,7 @@ int lua_cocos2dx_PolygonInfo_setQuads(lua_State* tolua_S)
         cocos2d::V3F_C4B_T2F_Quad* arg0;
         int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR V3F_C4B_T2F_Quad*
+        //#pragma warning NO CONVERSION TO NATIVE FOR V3F_C4B_T2F_Quad*
 		ok = false;
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.PolygonInfo:setQuads");
@@ -20765,7 +20767,7 @@ int lua_cocos2dx_PolygonInfo_setQuad(lua_State* tolua_S)
     {
         cocos2d::V3F_C4B_T2F_Quad* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR V3F_C4B_T2F_Quad*
+        //#pragma warning NO CONVERSION TO NATIVE FOR V3F_C4B_T2F_Quad*
 		ok = false;
         if(!ok)
         {
@@ -20816,7 +20818,7 @@ int lua_cocos2dx_PolygonInfo_setTriangles(lua_State* tolua_S)
     {
         cocos2d::TrianglesCommand::Triangles arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR Triangles
+        //#pragma warning NO CONVERSION TO NATIVE FOR Triangles
 		ok = false;
         if(!ok)
         {
@@ -26527,7 +26529,7 @@ int lua_cocos2dx_BezierBy_initWithDuration(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.BezierBy:initWithDuration");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR _ccBezierConfig
+        //#pragma warning NO CONVERSION TO NATIVE FOR _ccBezierConfig
 		ok = false;
         if(!ok)
         {
@@ -26639,7 +26641,7 @@ int lua_cocos2dx_BezierTo_initWithDuration(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.BezierTo:initWithDuration");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR _ccBezierConfig
+        //#pragma warning NO CONVERSION TO NATIVE FOR _ccBezierConfig
 		ok = false;
         if(!ok)
         {
@@ -29141,7 +29143,7 @@ int lua_cocos2dx_Properties_getPath(lua_State* tolua_S)
 
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.Properties:getPath"); arg0 = arg0_tmp.c_str();
 
-        #pragma warning NO CONVERSION TO NATIVE FOR basic_string*
+        //#pragma warning NO CONVERSION TO NATIVE FOR basic_string*
 		ok = false;
         if(!ok)
         {
@@ -34029,7 +34031,7 @@ int lua_cocos2dx_EventDispatcher_dispatchCustomEvent(lua_State* tolua_S)
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.EventDispatcher:dispatchCustomEvent");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
         if(!ok)
         {
@@ -49543,7 +49545,7 @@ int lua_register_cocos2dx_ActionTween(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_AtlasNode_updateAtlasValues(lua_State* tolua_S)
+int lua_cocos2dx_AtlasNode_getBlendFunc(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::AtlasNode* cobj = nullptr;
@@ -49563,7 +49565,7 @@ int lua_cocos2dx_AtlasNode_updateAtlasValues(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_updateAtlasValues'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_getBlendFunc'", nullptr);
         return 0;
     }
 #endif
@@ -49573,19 +49575,19 @@ int lua_cocos2dx_AtlasNode_updateAtlasValues(lua_State* tolua_S)
     {
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_AtlasNode_updateAtlasValues'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_AtlasNode_getBlendFunc'", nullptr);
             return 0;
         }
-        cobj->updateAtlasValues();
-        lua_settop(tolua_S, 1);
+        const cocos2d::BlendFunc& ret = cobj->getBlendFunc();
+        blendfunc_to_luaval(tolua_S, ret);
         return 1;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.AtlasNode:updateAtlasValues",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.AtlasNode:getBlendFunc",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_AtlasNode_updateAtlasValues'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_AtlasNode_getBlendFunc'.",&tolua_err);
 #endif
 
     return 0;
@@ -49843,7 +49845,7 @@ int lua_cocos2dx_AtlasNode_getTextureAtlas(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_AtlasNode_getBlendFunc(lua_State* tolua_S)
+int lua_cocos2dx_AtlasNode_updateAtlasValues(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::AtlasNode* cobj = nullptr;
@@ -49863,7 +49865,7 @@ int lua_cocos2dx_AtlasNode_getBlendFunc(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_getBlendFunc'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_AtlasNode_updateAtlasValues'", nullptr);
         return 0;
     }
 #endif
@@ -49873,19 +49875,19 @@ int lua_cocos2dx_AtlasNode_getBlendFunc(lua_State* tolua_S)
     {
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_AtlasNode_getBlendFunc'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_AtlasNode_updateAtlasValues'", nullptr);
             return 0;
         }
-        const cocos2d::BlendFunc& ret = cobj->getBlendFunc();
-        blendfunc_to_luaval(tolua_S, ret);
+        cobj->updateAtlasValues();
+        lua_settop(tolua_S, 1);
         return 1;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.AtlasNode:getBlendFunc",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.AtlasNode:updateAtlasValues",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_AtlasNode_getBlendFunc'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_AtlasNode_updateAtlasValues'.",&tolua_err);
 #endif
 
     return 0;
@@ -50188,13 +50190,13 @@ int lua_register_cocos2dx_AtlasNode(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"AtlasNode");
         tolua_function(tolua_S,"new",lua_cocos2dx_AtlasNode_constructor);
-        tolua_function(tolua_S,"updateAtlasValues",lua_cocos2dx_AtlasNode_updateAtlasValues);
+        tolua_function(tolua_S,"getBlendFunc",lua_cocos2dx_AtlasNode_getBlendFunc);
         tolua_function(tolua_S,"initWithTileFile",lua_cocos2dx_AtlasNode_initWithTileFile);
         tolua_function(tolua_S,"setBlendFunc",lua_cocos2dx_AtlasNode_setBlendFunc);
         tolua_function(tolua_S,"setTextureAtlas",lua_cocos2dx_AtlasNode_setTextureAtlas);
         tolua_function(tolua_S,"getTexture",lua_cocos2dx_AtlasNode_getTexture);
         tolua_function(tolua_S,"getTextureAtlas",lua_cocos2dx_AtlasNode_getTextureAtlas);
-        tolua_function(tolua_S,"getBlendFunc",lua_cocos2dx_AtlasNode_getBlendFunc);
+        tolua_function(tolua_S,"updateAtlasValues",lua_cocos2dx_AtlasNode_updateAtlasValues);
         tolua_function(tolua_S,"setTexture",lua_cocos2dx_AtlasNode_setTexture);
         tolua_function(tolua_S,"initWithTexture",lua_cocos2dx_AtlasNode_initWithTexture);
         tolua_function(tolua_S,"getQuadsToDraw",lua_cocos2dx_AtlasNode_getQuadsToDraw);
@@ -53520,8 +53522,8 @@ int lua_cocos2dx_Label_initWithTTF(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "cc.Label:initWithTTF");
 
             if (!ok) { break; }
-            int arg3;
-            ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3, "cc.Label:initWithTTF");
+            double arg3;
+            ok &= luaval_to_number(tolua_S, 5,&arg3, "cc.Label:initWithTTF");
 
             if (!ok) { break; }
             bool ret = cobj->initWithTTF(arg0, arg1, arg2, arg3);
@@ -54122,11 +54124,11 @@ int lua_cocos2dx_Label_enableOutline(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Color4B arg0;
-        int arg1;
+        double arg1;
 
         ok &=luaval_to_color4b(tolua_S, 2, &arg0, "cc.Label:enableOutline");
 
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.Label:enableOutline");
+        ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.Label:enableOutline");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Label_enableOutline'", nullptr);
@@ -55841,11 +55843,11 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         std::string arg0;
         std::string arg1;
         cocos2d::TextHAlignment arg2;
-        int arg3;
+        double arg3;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.Label:createWithBMFont");
         ok &= luaval_to_std_string(tolua_S, 3,&arg1, "cc.Label:createWithBMFont");
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "cc.Label:createWithBMFont");
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3, "cc.Label:createWithBMFont");
+        ok &= luaval_to_number(tolua_S, 5,&arg3, "cc.Label:createWithBMFont");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Label_createWithBMFont'", nullptr);
@@ -55860,12 +55862,12 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         std::string arg0;
         std::string arg1;
         cocos2d::TextHAlignment arg2;
-        int arg3;
+        double arg3;
         cocos2d::Vec2 arg4;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.Label:createWithBMFont");
         ok &= luaval_to_std_string(tolua_S, 3,&arg1, "cc.Label:createWithBMFont");
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "cc.Label:createWithBMFont");
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3, "cc.Label:createWithBMFont");
+        ok &= luaval_to_number(tolua_S, 5,&arg3, "cc.Label:createWithBMFont");
         ok &= luaval_to_vec2(tolua_S, 6, &arg4, "cc.Label:createWithBMFont");
         if(!ok)
         {
@@ -60314,7 +60316,7 @@ int lua_cocos2dx_MenuItemFont_getFontSizeObj(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_getFontSizeObj'", nullptr);
             return 0;
         }
-        int ret = cobj->getFontSizeObj();
+        double ret = cobj->getFontSizeObj();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -60356,9 +60358,9 @@ int lua_cocos2dx_MenuItemFont_setFontSizeObj(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        double arg0;
 
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.MenuItemFont:setFontSizeObj");
+        ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.MenuItemFont:setFontSizeObj");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_setFontSizeObj'", nullptr);
@@ -62280,7 +62282,7 @@ int lua_cocos2dx_MotionStreak_reset(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_MotionStreak_setTexture(lua_State* tolua_S)
+int lua_cocos2dx_MotionStreak_getBlendFunc(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::MotionStreak* cobj = nullptr;
@@ -62300,32 +62302,29 @@ int lua_cocos2dx_MotionStreak_setTexture(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_setTexture'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_getBlendFunc'", nullptr);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        cocos2d::Texture2D* arg0;
-
-        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0, "cc.MotionStreak:setTexture");
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MotionStreak_setTexture'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MotionStreak_getBlendFunc'", nullptr);
             return 0;
         }
-        cobj->setTexture(arg0);
-        lua_settop(tolua_S, 1);
+        const cocos2d::BlendFunc& ret = cobj->getBlendFunc();
+        blendfunc_to_luaval(tolua_S, ret);
         return 1;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MotionStreak:setTexture",argc, 1);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MotionStreak:getBlendFunc",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MotionStreak_setTexture'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MotionStreak_getBlendFunc'.",&tolua_err);
 #endif
 
     return 0;
@@ -62527,7 +62526,7 @@ int lua_cocos2dx_MotionStreak_setStartingPositionInitialized(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_MotionStreak_getBlendFunc(lua_State* tolua_S)
+int lua_cocos2dx_MotionStreak_setTexture(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::MotionStreak* cobj = nullptr;
@@ -62547,29 +62546,32 @@ int lua_cocos2dx_MotionStreak_getBlendFunc(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_getBlendFunc'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_MotionStreak_setTexture'", nullptr);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 1) 
     {
+        cocos2d::Texture2D* arg0;
+
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0, "cc.MotionStreak:setTexture");
         if(!ok)
         {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MotionStreak_getBlendFunc'", nullptr);
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MotionStreak_setTexture'", nullptr);
             return 0;
         }
-        const cocos2d::BlendFunc& ret = cobj->getBlendFunc();
-        blendfunc_to_luaval(tolua_S, ret);
+        cobj->setTexture(arg0);
+        lua_settop(tolua_S, 1);
         return 1;
     }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MotionStreak:getBlendFunc",argc, 0);
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.MotionStreak:setTexture",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MotionStreak_getBlendFunc'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_MotionStreak_setTexture'.",&tolua_err);
 #endif
 
     return 0;
@@ -63025,12 +63027,12 @@ int lua_register_cocos2dx_MotionStreak(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"MotionStreak");
         tolua_function(tolua_S,"new",lua_cocos2dx_MotionStreak_constructor);
         tolua_function(tolua_S,"reset",lua_cocos2dx_MotionStreak_reset);
-        tolua_function(tolua_S,"setTexture",lua_cocos2dx_MotionStreak_setTexture);
+        tolua_function(tolua_S,"getBlendFunc",lua_cocos2dx_MotionStreak_getBlendFunc);
         tolua_function(tolua_S,"setBlendFunc",lua_cocos2dx_MotionStreak_setBlendFunc);
         tolua_function(tolua_S,"tintWithColor",lua_cocos2dx_MotionStreak_tintWithColor);
         tolua_function(tolua_S,"getTexture",lua_cocos2dx_MotionStreak_getTexture);
         tolua_function(tolua_S,"setStartingPositionInitialized",lua_cocos2dx_MotionStreak_setStartingPositionInitialized);
-        tolua_function(tolua_S,"getBlendFunc",lua_cocos2dx_MotionStreak_getBlendFunc);
+        tolua_function(tolua_S,"setTexture",lua_cocos2dx_MotionStreak_setTexture);
         tolua_function(tolua_S,"isStartingPositionInitialized",lua_cocos2dx_MotionStreak_isStartingPositionInitialized);
         tolua_function(tolua_S,"isFastMode",lua_cocos2dx_MotionStreak_isFastMode);
         tolua_function(tolua_S,"getStroke",lua_cocos2dx_MotionStreak_getStroke);
@@ -77541,12 +77543,12 @@ int lua_cocos2dx_RenderTexture_initWithWidthAndHeight(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 4) {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.RenderTexture:initWithWidthAndHeight");
+            double arg0;
+            ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.RenderTexture:initWithWidthAndHeight");
 
             if (!ok) { break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.RenderTexture:initWithWidthAndHeight");
+            double arg1;
+            ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.RenderTexture:initWithWidthAndHeight");
 
             if (!ok) { break; }
             cocos2d::backend::PixelFormat arg2;
@@ -77565,12 +77567,12 @@ int lua_cocos2dx_RenderTexture_initWithWidthAndHeight(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 3) {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.RenderTexture:initWithWidthAndHeight");
+            double arg0;
+            ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.RenderTexture:initWithWidthAndHeight");
 
             if (!ok) { break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.RenderTexture:initWithWidthAndHeight");
+            double arg1;
+            ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.RenderTexture:initWithWidthAndHeight");
 
             if (!ok) { break; }
             cocos2d::backend::PixelFormat arg2;
@@ -77611,11 +77613,11 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
     {
         if (argc == 3)
         {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.RenderTexture:create");
+            double arg0;
+            ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.RenderTexture:create");
             if (!ok) { break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.RenderTexture:create");
+            double arg1;
+            ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.RenderTexture:create");
             if (!ok) { break; }
             cocos2d::backend::PixelFormat arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "cc.RenderTexture:create");
@@ -77630,11 +77632,11 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
     {
         if (argc == 4)
         {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.RenderTexture:create");
+            double arg0;
+            ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.RenderTexture:create");
             if (!ok) { break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.RenderTexture:create");
+            double arg1;
+            ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.RenderTexture:create");
             if (!ok) { break; }
             cocos2d::backend::PixelFormat arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "cc.RenderTexture:create");
@@ -77652,11 +77654,11 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
     {
         if (argc == 2)
         {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.RenderTexture:create");
+            double arg0;
+            ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.RenderTexture:create");
             if (!ok) { break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.RenderTexture:create");
+            double arg1;
+            ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.RenderTexture:create");
             if (!ok) { break; }
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1);
             object_to_luaval<cocos2d::RenderTexture>(tolua_S, "cc.RenderTexture",(cocos2d::RenderTexture*)ret);
@@ -83987,7 +83989,7 @@ int lua_cocos2dx_Camera_setDefaultViewport(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::Viewport arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR Viewport
+        //#pragma warning NO CONVERSION TO NATIVE FOR Viewport
 		ok = false;
         if(!ok)
         {
@@ -89508,7 +89510,7 @@ int lua_cocos2dx_Pass_setUniformPointLightPosition(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformPointLightPosition");
@@ -89562,7 +89564,7 @@ int lua_cocos2dx_Pass_setUniformDirLightDir(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformDirLightDir");
@@ -89713,7 +89715,7 @@ int lua_cocos2dx_Pass_setUniformSpotLightOuterAngleCos(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformSpotLightOuterAngleCos");
@@ -89767,7 +89769,7 @@ int lua_cocos2dx_Pass_setUniformSpotLightDir(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformSpotLightDir");
@@ -89821,7 +89823,7 @@ int lua_cocos2dx_Pass_setUniformMatrixPalette(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformMatrixPalette");
@@ -89972,7 +89974,7 @@ int lua_cocos2dx_Pass_setUniformSpotLightRangeInverse(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformSpotLightRangeInverse");
@@ -90144,7 +90146,7 @@ int lua_cocos2dx_Pass_setUniformPointLightRangeInverse(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformPointLightRangeInverse");
@@ -90348,7 +90350,7 @@ int lua_cocos2dx_Pass_setUniformSpotLightColor(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformSpotLightColor");
@@ -90402,7 +90404,7 @@ int lua_cocos2dx_Pass_setUniformAmbientLigthColor(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformAmbientLigthColor");
@@ -90456,7 +90458,7 @@ int lua_cocos2dx_Pass_setUniformDirLightColor(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformDirLightColor");
@@ -90510,7 +90512,7 @@ int lua_cocos2dx_Pass_setUniformSpotLightPosition(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformSpotLightPosition");
@@ -90667,7 +90669,7 @@ int lua_cocos2dx_Pass_setUniformSpotLightInnerAngleCos(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformSpotLightInnerAngleCos");
@@ -90721,7 +90723,7 @@ int lua_cocos2dx_Pass_setUniformColor(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformColor");
@@ -90775,7 +90777,7 @@ int lua_cocos2dx_Pass_setUniformPointLightColor(lua_State* tolua_S)
         const void* arg0;
         unsigned int arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
 
         ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.Pass:setUniformPointLightColor");
@@ -91925,18 +91927,18 @@ int lua_cocos2dx_Renderer_setScissorRect(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 4) 
     {
-        double arg0;
-        double arg1;
-        double arg2;
-        double arg3;
+        int arg0;
+        int arg1;
+        unsigned int arg2;
+        unsigned int arg3;
 
-        ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.Renderer:setScissorRect");
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.Renderer:setScissorRect");
 
-        ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.Renderer:setScissorRect");
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.Renderer:setScissorRect");
 
-        ok &= luaval_to_number(tolua_S, 4,&arg2, "cc.Renderer:setScissorRect");
+        ok &= luaval_to_uint32(tolua_S, 4,&arg2, "cc.Renderer:setScissorRect");
 
-        ok &= luaval_to_number(tolua_S, 5,&arg3, "cc.Renderer:setScissorRect");
+        ok &= luaval_to_uint32(tolua_S, 5,&arg3, "cc.Renderer:setScissorRect");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Renderer_setScissorRect'", nullptr);
@@ -95738,10 +95740,10 @@ int lua_cocos2dx_SpriteBatchNode_removeChildAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        ssize_t arg0;
+        unsigned int arg0;
         bool arg1;
 
-        ok &= luaval_to_ssize(tolua_S, 2, &arg0, "cc.SpriteBatchNode:removeChildAtIndex");
+        ok &= luaval_to_uint32(tolua_S, 2,&arg0, "cc.SpriteBatchNode:removeChildAtIndex");
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1, "cc.SpriteBatchNode:removeChildAtIndex");
         if(!ok)
@@ -95908,7 +95910,7 @@ int lua_cocos2dx_SpriteBatchNode_atlasIndexForChild(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_atlasIndexForChild'", nullptr);
             return 0;
         }
-        ssize_t ret = cobj->atlasIndexForChild(arg0, arg1);
+        unsigned int ret = cobj->atlasIndexForChild(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -96005,7 +96007,7 @@ int lua_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild'", nullptr);
             return 0;
         }
-        ssize_t ret = cobj->lowestAtlasIndexInChild(arg0);
+        unsigned int ret = cobj->lowestAtlasIndexInChild(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -96109,11 +96111,11 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Texture2D* arg0;
-        ssize_t arg1;
+        unsigned int arg1;
 
         ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0, "cc.SpriteBatchNode:initWithTexture");
 
-        ok &= luaval_to_ssize(tolua_S, 3, &arg1, "cc.SpriteBatchNode:initWithTexture");
+        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.SpriteBatchNode:initWithTexture");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_initWithTexture'", nullptr);
@@ -96211,9 +96213,9 @@ int lua_cocos2dx_SpriteBatchNode_reserveCapacity(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        ssize_t arg0;
+        unsigned int arg0;
 
-        ok &= luaval_to_ssize(tolua_S, 2, &arg0, "cc.SpriteBatchNode:reserveCapacity");
+        ok &= luaval_to_uint32(tolua_S, 2,&arg0, "cc.SpriteBatchNode:reserveCapacity");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_reserveCapacity'", nullptr);
@@ -96312,11 +96314,11 @@ int lua_cocos2dx_SpriteBatchNode_insertQuadFromSprite(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Sprite* arg0;
-        ssize_t arg1;
+        unsigned int arg1;
 
         ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0, "cc.SpriteBatchNode:insertQuadFromSprite");
 
-        ok &= luaval_to_ssize(tolua_S, 3, &arg1, "cc.SpriteBatchNode:insertQuadFromSprite");
+        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.SpriteBatchNode:insertQuadFromSprite");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_insertQuadFromSprite'", nullptr);
@@ -96379,11 +96381,11 @@ int lua_cocos2dx_SpriteBatchNode_initWithFile(lua_State* tolua_S)
     if (argc == 2) 
     {
         std::string arg0;
-        ssize_t arg1;
+        unsigned int arg1;
 
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.SpriteBatchNode:initWithFile");
 
-        ok &= luaval_to_ssize(tolua_S, 3, &arg1, "cc.SpriteBatchNode:initWithFile");
+        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.SpriteBatchNode:initWithFile");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_initWithFile'", nullptr);
@@ -96482,17 +96484,17 @@ int lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Sprite* arg0;
-        ssize_t arg1;
+        unsigned int arg1;
 
         ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0, "cc.SpriteBatchNode:rebuildIndexInOrder");
 
-        ok &= luaval_to_ssize(tolua_S, 3, &arg1, "cc.SpriteBatchNode:rebuildIndexInOrder");
+        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.SpriteBatchNode:rebuildIndexInOrder");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder'", nullptr);
             return 0;
         }
-        ssize_t ret = cobj->rebuildIndexInOrder(arg0, arg1);
+        unsigned int ret = cobj->rebuildIndexInOrder(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -96589,7 +96591,7 @@ int lua_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild'", nullptr);
             return 0;
         }
-        ssize_t ret = cobj->highestAtlasIndexInChild(arg0);
+        unsigned int ret = cobj->highestAtlasIndexInChild(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -96634,9 +96636,9 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
     if (argc == 2)
     {
         std::string arg0;
-        ssize_t arg1;
+        unsigned int arg1;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.SpriteBatchNode:create");
-        ok &= luaval_to_ssize(tolua_S, 3, &arg1, "cc.SpriteBatchNode:create");
+        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.SpriteBatchNode:create");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_create'", nullptr);
@@ -96685,9 +96687,9 @@ int lua_cocos2dx_SpriteBatchNode_createWithTexture(lua_State* tolua_S)
     if (argc == 2)
     {
         cocos2d::Texture2D* arg0;
-        ssize_t arg1;
+        unsigned int arg1;
         ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0, "cc.SpriteBatchNode:createWithTexture");
-        ok &= luaval_to_ssize(tolua_S, 3, &arg1, "cc.SpriteBatchNode:createWithTexture");
+        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "cc.SpriteBatchNode:createWithTexture");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_SpriteBatchNode_createWithTexture'", nullptr);
@@ -98728,56 +98730,6 @@ int lua_cocos2dx_TMXMapInfo_setTileSize(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_TMXMapInfo_initWithTMXFile(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::TMXMapInfo* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.TMXMapInfo",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_initWithTMXFile'", nullptr);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        std::string arg0;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.TMXMapInfo:initWithTMXFile");
-        if(!ok)
-        {
-            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_TMXMapInfo_initWithTMXFile'", nullptr);
-            return 0;
-        }
-        bool ret = cobj->initWithTMXFile(arg0);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.TMXMapInfo:initWithTMXFile",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXMapInfo_initWithTMXFile'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_TMXMapInfo_getOrientation(lua_State* tolua_S)
 {
     int argc = 0;
@@ -99266,49 +99218,52 @@ int lua_cocos2dx_TMXMapInfo_setHexSideLength(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_TMXMapInfo_getTilesets(lua_State* tolua_S)
+int lua_cocos2dx_TMXMapInfo_initWithTMXFile(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::TMXMapInfo* cobj = nullptr;
     bool ok  = true;
+
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
     if (!tolua_isusertype(tolua_S,1,"cc.TMXMapInfo",0,&tolua_err)) goto tolua_lerror;
 #endif
+
     cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
+
 #if COCOS2D_DEBUG >= 1
-    if (!cobj)
+    if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getTilesets'", nullptr);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_initWithTMXFile'", nullptr);
         return 0;
     }
 #endif
+
     argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 0) {
-            cocos2d::Vector<cocos2d::TMXTilesetInfo *>& ret = cobj->getTilesets();
-            ccvector_to_luaval(tolua_S, ret);
-            return 1;
+    if (argc == 1) 
+    {
+        std::string arg0;
+
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.TMXMapInfo:initWithTMXFile");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_TMXMapInfo_initWithTMXFile'", nullptr);
+            return 0;
         }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 0) {
-            const cocos2d::Vector<cocos2d::TMXTilesetInfo *>& ret = cobj->getTilesets();
-            ccvector_to_luaval(tolua_S, ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.TMXMapInfo:getTilesets",argc, 0);
+        bool ret = cobj->initWithTMXFile(arg0);
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "cc.TMXMapInfo:initWithTMXFile",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXMapInfo_getTilesets'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXMapInfo_initWithTMXFile'.",&tolua_err);
 #endif
 
     return 0;
@@ -99356,6 +99311,53 @@ int lua_cocos2dx_TMXMapInfo_getParentGID(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXMapInfo_getParentGID'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_TMXMapInfo_getTilesets(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::TMXMapInfo* cobj = nullptr;
+    bool ok  = true;
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"cc.TMXMapInfo",0,&tolua_err)) goto tolua_lerror;
+#endif
+    cobj = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,1,0);
+#if COCOS2D_DEBUG >= 1
+    if (!cobj)
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXMapInfo_getTilesets'", nullptr);
+        return 0;
+    }
+#endif
+    argc = lua_gettop(tolua_S)-1;
+    do{
+        if (argc == 0) {
+            cocos2d::Vector<cocos2d::TMXTilesetInfo *>& ret = cobj->getTilesets();
+            ccvector_to_luaval(tolua_S, ret);
+            return 1;
+        }
+    }while(0);
+    ok  = true;
+    do{
+        if (argc == 0) {
+            const cocos2d::Vector<cocos2d::TMXTilesetInfo *>& ret = cobj->getTilesets();
+            ccvector_to_luaval(tolua_S, ret);
+            return 1;
+        }
+    }while(0);
+    ok  = true;
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.TMXMapInfo:getTilesets",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXMapInfo_getTilesets'.",&tolua_err);
 #endif
 
     return 0;
@@ -100607,7 +100609,6 @@ int lua_register_cocos2dx_TMXMapInfo(lua_State* tolua_S)
         tolua_function(tolua_S,"setCurrentString",lua_cocos2dx_TMXMapInfo_setCurrentString);
         tolua_function(tolua_S,"getHexSideLength",lua_cocos2dx_TMXMapInfo_getHexSideLength);
         tolua_function(tolua_S,"setTileSize",lua_cocos2dx_TMXMapInfo_setTileSize);
-        tolua_function(tolua_S,"initWithTMXFile",lua_cocos2dx_TMXMapInfo_initWithTMXFile);
         tolua_function(tolua_S,"getOrientation",lua_cocos2dx_TMXMapInfo_getOrientation);
         tolua_function(tolua_S,"setObjectGroups",lua_cocos2dx_TMXMapInfo_setObjectGroups);
         tolua_function(tolua_S,"setLayers",lua_cocos2dx_TMXMapInfo_setLayers);
@@ -100618,8 +100619,9 @@ int lua_register_cocos2dx_TMXMapInfo(lua_State* tolua_S)
         tolua_function(tolua_S,"getLayers",lua_cocos2dx_TMXMapInfo_getLayers);
         tolua_function(tolua_S,"getStaggerAxis",lua_cocos2dx_TMXMapInfo_getStaggerAxis);
         tolua_function(tolua_S,"setHexSideLength",lua_cocos2dx_TMXMapInfo_setHexSideLength);
-        tolua_function(tolua_S,"getTilesets",lua_cocos2dx_TMXMapInfo_getTilesets);
+        tolua_function(tolua_S,"initWithTMXFile",lua_cocos2dx_TMXMapInfo_initWithTMXFile);
         tolua_function(tolua_S,"getParentGID",lua_cocos2dx_TMXMapInfo_getParentGID);
+        tolua_function(tolua_S,"getTilesets",lua_cocos2dx_TMXMapInfo_getTilesets);
         tolua_function(tolua_S,"setParentElement",lua_cocos2dx_TMXMapInfo_setParentElement);
         tolua_function(tolua_S,"initWithXML",lua_cocos2dx_TMXMapInfo_initWithXML);
         tolua_function(tolua_S,"setParentGID",lua_cocos2dx_TMXMapInfo_setParentGID);
@@ -104276,8 +104278,6 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_ShakyTiles3D(tolua_S);
 	lua_register_cocos2dx_PageTurn3D(tolua_S);
 	lua_register_cocos2dx_PolygonInfo(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInL(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInT(tolua_S);
 	lua_register_cocos2dx_Grid3D(tolua_S);
 	lua_register_cocos2dx_EventListenerController(tolua_S);
 	lua_register_cocos2dx_TransitionProgressInOut(tolua_S);
@@ -104317,6 +104317,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_ComponentLua(tolua_S);
 	lua_register_cocos2dx_MotionStreak3D(tolua_S);
 	lua_register_cocos2dx_EaseOut(tolua_S);
+	lua_register_cocos2dx_TransitionSlideInL(tolua_S);
 	lua_register_cocos2dx_MenuItemFont(tolua_S);
 	lua_register_cocos2dx_TransitionFadeUp(tolua_S);
 	lua_register_cocos2dx_LayerRadialGradient(tolua_S);
@@ -104330,6 +104331,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_RotateBy(tolua_S);
 	lua_register_cocos2dx_FileUtils(tolua_S);
 	lua_register_cocos2dx_Sprite(tolua_S);
+	lua_register_cocos2dx_TransitionSlideInT(tolua_S);
 	lua_register_cocos2dx_ProgressTo(tolua_S);
 	lua_register_cocos2dx_TransitionProgressOutIn(tolua_S);
 	lua_register_cocos2dx_AnimationFrame(tolua_S);
@@ -104350,3 +104352,4 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	return 1;
 }
 
+#pragma warning(pop)

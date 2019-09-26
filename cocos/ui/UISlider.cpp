@@ -433,17 +433,17 @@ void Slider::loadSlidBallTextureDisabled(SpriteFrame* spriteframe)
     this->updateChildrenDisplayedRGBA();
 }
 
-void Slider::setMaxPercent(int percent)
+void Slider::setMaxPercent(float percent)
 {
     _maxPercent = percent;
 }
 
-int Slider::getMaxPercent()const
+float Slider::getMaxPercent()const
 {
     return _maxPercent;
 }
 
-void Slider::setPercent(int percent)
+void Slider::setPercent(float percent)
 {
     if (percent > _maxPercent)
     {
@@ -555,7 +555,7 @@ void Slider::percentChangedEvent(EventType event)
     this->release();
 }
 
-int Slider::getPercent()const
+float Slider::getPercent()const
 {
     return _percent;
 }

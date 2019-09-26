@@ -943,7 +943,7 @@ void TwoSchedulers::onEnter()
         sprite->setActionManager(actionManager1);
 
         addChild(sprite);
-        sprite->setPosition(Vec2(30+15*i,100.0f));
+        sprite->setPosition(Vec2(30.0f+15*i,100.0f));
 
         sprite->runAction(action->clone());
     }

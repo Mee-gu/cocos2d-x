@@ -674,14 +674,14 @@ void WidgetPropertiesReader0250::setColorPropsForWidgetFromJsonDictionary(Widget
     bool op = DICTOOL->checkObjectExist_json(options, "opacity");
     if (op)
     {
-        widget->setOpacity(DICTOOL->getIntValue_json(options, "opacity"));
+        widget->setOpacity(static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "opacity")));
     }
     bool cr = DICTOOL->checkObjectExist_json(options, "colorR");
     bool cg = DICTOOL->checkObjectExist_json(options, "colorG");
     bool cb = DICTOOL->checkObjectExist_json(options, "colorB");
-    int colorR = cr ? DICTOOL->getIntValue_json(options, "colorR") : 255;
-    int colorG = cg ? DICTOOL->getIntValue_json(options, "colorG") : 255;
-    int colorB = cb ? DICTOOL->getIntValue_json(options, "colorB") : 255;
+    uint8_t colorR = cr ? static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "colorR")) : 255;
+    uint8_t colorG = cg ? static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "colorG")) : 255;
+    uint8_t colorB = cb ? static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "colorB")) : 255;
     widget->setColor(Color3B(colorR, colorG, colorB));
     
     this->setAnchorPointForWidget(widget, options);
@@ -759,14 +759,14 @@ void WidgetPropertiesReader0250::setPropsForButtonFromJsonDictionary(Widget*widg
     bool cr = DICTOOL->checkObjectExist_json(options, "textColorR");
     bool cg = DICTOOL->checkObjectExist_json(options, "textColorG");
     bool cb = DICTOOL->checkObjectExist_json(options, "textColorB");
-    int cri = cr?DICTOOL->getIntValue_json(options, "textColorR"):255;
-    int cgi = cg?DICTOOL->getIntValue_json(options, "textColorG"):255;
-    int cbi = cb?DICTOOL->getIntValue_json(options, "textColorB"):255;
+    uint8_t cri = cr ? static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "textColorR")):255;
+    uint8_t cgi = cg ? static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "textColorG")):255;
+    uint8_t cbi = cb ? static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "textColorB")):255;
     button->setTitleColor(Color3B(cri,cgi,cbi));
     bool fs = DICTOOL->checkObjectExist_json(options, "fontSize");
     if (fs)
     {
-        button->setTitleFontSize(DICTOOL->getIntValue_json(options, "fontSize"));
+        button->setTitleFontSize(DICTOOL->getFloatValue_json(options, "fontSize"));
     }
     bool fn = DICTOOL->checkObjectExist_json(options, "fontName");
     if (fn)
@@ -888,7 +888,7 @@ void WidgetPropertiesReader0250::setPropsForLabelFromJsonDictionary(Widget*widge
     bool fs = DICTOOL->checkObjectExist_json(options, "fontSize");
     if (fs)
     {
-        label->setFontSize(DICTOOL->getIntValue_json(options, "fontSize"));
+        label->setFontSize(DICTOOL->getFloatValue_json(options, "fontSize"));
     }
     bool fn = DICTOOL->checkObjectExist_json(options, "fontName");
     if (fn)
@@ -935,7 +935,7 @@ void WidgetPropertiesReader0250::setPropsForLabelAtlasFromJsonDictionary(Widget*
         const char* cmf_tp = tp_c.append(cmft).c_str();
         
         labelAtlas->setProperty(DICTOOL->getStringValue_json(options, "stringValue"),cmf_tp,DICTOOL->getIntValue_json(options, "itemWidth"),DICTOOL->getIntValue_json(options,"itemHeight"),DICTOOL->getStringValue_json(options, "startCharMap"));
-        labelAtlas->setProperty(DICTOOL->getStringValue_json(options, "stringValue"),cmf_tp,DICTOOL->getIntValue_json(options, "itemWidth") / CC_CONTENT_SCALE_FACTOR() ,DICTOOL->getIntValue_json(options,"itemHeight") / CC_CONTENT_SCALE_FACTOR(), DICTOOL->getStringValue_json(options, "startCharMap"));
+        labelAtlas->setProperty(DICTOOL->getStringValue_json(options, "stringValue"),cmf_tp,(int)(DICTOOL->getIntValue_json(options, "itemWidth") / CC_CONTENT_SCALE_FACTOR()) ,(int)(DICTOOL->getIntValue_json(options,"itemHeight") / CC_CONTENT_SCALE_FACTOR()), DICTOOL->getStringValue_json(options, "startCharMap"));
     }
     setColorPropsForWidgetFromJsonDictionary(widget,options);
 }
@@ -952,23 +952,23 @@ void WidgetPropertiesReader0250::setPropsForLayoutFromJsonDictionary(Widget*widg
     Layout* panel = (Layout*)widget;
     bool backGroundScale9Enable = DICTOOL->getBooleanValue_json(options, "backGroundScale9Enable");
     panel->setBackGroundImageScale9Enabled(backGroundScale9Enable);
-    int cr = DICTOOL->getIntValue_json(options, "bgColorR");
-    int cg = DICTOOL->getIntValue_json(options, "bgColorG");
-    int cb = DICTOOL->getIntValue_json(options, "bgColorB");
+    uint8_t cr = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgColorR"));
+    uint8_t cg = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgColorG"));
+    uint8_t cb = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgColorB"));
     
-    int scr = DICTOOL->getIntValue_json(options, "bgStartColorR");
-    int scg = DICTOOL->getIntValue_json(options, "bgStartColorG");
-    int scb = DICTOOL->getIntValue_json(options, "bgStartColorB");
+    uint8_t scr = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgStartColorR"));
+    uint8_t scg = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgStartColorG"));
+    uint8_t scb = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgStartColorB"));
     
-    int ecr = DICTOOL->getIntValue_json(options, "bgEndColorR");
-    int ecg = DICTOOL->getIntValue_json(options, "bgEndColorG");
-    int ecb = DICTOOL->getIntValue_json(options, "bgEndColorB");
+    uint8_t ecr = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgEndColorR"));
+    uint8_t ecg = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgEndColorG"));
+    uint8_t ecb = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgEndColorB"));
     
     float bgcv1 = DICTOOL->getFloatValue_json(options, "vectorX");
     float bgcv2 = DICTOOL->getFloatValue_json(options, "vectorY");
     panel->setBackGroundColorVector(Vec2(bgcv1, bgcv2));
     
-    int co = DICTOOL->getIntValue_json(options, "bgColorOpacity");
+    uint8_t co = static_cast<uint8_t>(DICTOOL->getIntValue_json(options, "bgColorOpacity"));
     
     int colorType = DICTOOL->getIntValue_json(options, "colorType");
     panel->setBackGroundColorType(Layout::BackGroundColorType(colorType));
@@ -1018,7 +1018,7 @@ void WidgetPropertiesReader0250::setPropsForScrollViewFromJsonDictionary(Widget*
     float innerWidth = DICTOOL->getFloatValue_json(options, "innerWidth");
     float innerHeight = DICTOOL->getFloatValue_json(options, "innerHeight");
     scrollView->setInnerContainerSize(Size(innerWidth, innerHeight));
-	int direction = DICTOOL->getFloatValue_json(options, "direction");
+	int direction = DICTOOL->getIntValue_json(options, "direction");
     scrollView->setDirection((ScrollView::Direction)direction);
     scrollView->setBounceEnabled(DICTOOL->getBooleanValue_json(options, "bounceEnable"));
     setColorPropsForWidgetFromJsonDictionary(widget,options);
@@ -1085,7 +1085,7 @@ void WidgetPropertiesReader0250::setPropsForSliderFromJsonDictionary(Widget*widg
     {
         slider->loadSlidBallTextures(normalFileName_tp,pressedFileName_tp,disabledFileName_tp);
     }
-    slider->setPercent(DICTOOL->getIntValue_json(options, "percent"));
+    slider->setPercent(DICTOOL->getFloatValue_json(options, "percent"));
     
     std::string tp_b = m_strFilePath;
     const char* imageFileName = DICTOOL->getStringValue_json(options, "progressBarFileName");
@@ -1114,7 +1114,7 @@ void WidgetPropertiesReader0250::setPropsForTextFieldFromJsonDictionary(Widget*w
     bool fs = DICTOOL->checkObjectExist_json(options, "fontSize");
     if (fs)
     {
-        textField->setFontSize(DICTOOL->getIntValue_json(options, "fontSize"));
+        textField->setFontSize((float)DICTOOL->getIntValue_json(options, "fontSize"));
     }
     bool fn = DICTOOL->checkObjectExist_json(options, "fontName");
     if (fn)
@@ -1172,7 +1172,7 @@ void WidgetPropertiesReader0250::setPropsForLoadingBarFromJsonDictionary(Widget 
         loadingBar->loadTexture(imageFileName_tp);
     }
     loadingBar->setDirection(LoadingBar::Direction(DICTOOL->getIntValue_json(options, "direction")));
-    loadingBar->setPercent(DICTOOL->getIntValue_json(options, "percent"));
+    loadingBar->setPercent((int)DICTOOL->getFloatValue_json(options, "percent"));
     setColorPropsForWidgetFromJsonDictionary(widget,options);
 }
 
@@ -1295,9 +1295,9 @@ Widget* WidgetPropertiesReader0300::createWidget(const rapidjson::Value& data, c
                 SpriteFrameCache::getInstance()->addSpriteFramesWithFile(file);
             }
         }else if (key == "designWidth"){
-            fileDesignWidth =  utils::atof(tpChildArray[i].GetValue(cocoLoader));
+            fileDesignWidth = (float)utils::atof(tpChildArray[i].GetValue(cocoLoader));
         }else if (key == "designHeight"){
-            fileDesignHeight = utils::atof(tpChildArray[i].GetValue(cocoLoader));
+            fileDesignHeight = (float)utils::atof(tpChildArray[i].GetValue(cocoLoader));
         }else if (key == "widgetTree"){
             
             if (fileDesignWidth <= 0 || fileDesignHeight <= 0) {

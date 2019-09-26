@@ -1107,7 +1107,7 @@ float Layout::calculateNearestDistance(Widget* baseWidget)
     for (Node* node : _children)
     {
         Layout *layout = dynamic_cast<Layout*>(node);
-        int length;
+        float length;
         if (layout)
         {
             length = layout->calculateNearestDistance(baseWidget);
@@ -1145,7 +1145,7 @@ float Layout::calculateFarthestDistance(cocos2d::ui::Widget *baseWidget)
     for (Node* node : _children)
     {
         Layout *layout = dynamic_cast<Layout*>(node);
-        int length;
+        float length;
         if (layout)
         {
             length = layout->calculateFarthestDistance(baseWidget);

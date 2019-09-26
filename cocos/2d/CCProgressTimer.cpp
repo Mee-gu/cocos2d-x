@@ -237,7 +237,7 @@ void ProgressTimer::updateColor()
     if (!_vertexData.empty())
     {
         const Color4B& sc = _sprite->getQuad().tl.colors;
-        for (int i = 0; i < _vertexData.size(); ++i)
+        for (size_t i = 0; i < _vertexData.size(); ++i)
         {
             _vertexData[i].colors = sc;
         }
@@ -342,7 +342,7 @@ void ProgressTimer::updateRadial()
         float min_t = FLT_MAX;
 
         for (int i = 0; i <= kProgressTextureCoordsCount; ++i) {
-            int pIndex = (i + (kProgressTextureCoordsCount - 1))%kProgressTextureCoordsCount;
+            char pIndex = (i + (kProgressTextureCoordsCount - 1))%kProgressTextureCoordsCount;
 
             Vec2 edgePtA = boundaryTexCoord(i % kProgressTextureCoordsCount);
             Vec2 edgePtB = boundaryTexCoord(pIndex);
@@ -415,12 +415,12 @@ void ProgressTimer::updateRadial()
 
         for(int i = 0; i < index; ++i)
         {
-            Vec2 alphaPoint = boundaryTexCoord(i);
+            Vec2 alphaPoint = boundaryTexCoord((char)i);
             _vertexData[i+2].texCoords = textureCoordFromAlphaPoint(alphaPoint);
             _vertexData[i+2].vertices = vertexFromAlphaPoint(alphaPoint);
         }
 
-        for (int i = 0; i < index + 1; i++)
+        for (unsigned short i = 0; i < index + 1; i++)
         {
             _indexData[i * 3] = 0;
             _indexData[i * 3 + 1] = i + 2;
@@ -556,9 +556,9 @@ Vec2 ProgressTimer::boundaryTexCoord(char index)
     if (index < kProgressTextureCoordsCount)
     {
         if (_reverseDirection)
-            return Vec2((kProgressTextureCoords>>(7-(index<<1)))&1,(kProgressTextureCoords>>(7-((index<<1)+1)))&1);
+            return Vec2((float)((kProgressTextureCoords>>(7-(index<<1)))&1),(float)((kProgressTextureCoords>>(7-((index<<1)+1)))&1));
         else
-            return Vec2((kProgressTextureCoords>>((index<<1)+1))&1,(kProgressTextureCoords>>(index<<1))&1);
+            return Vec2((float)((kProgressTextureCoords>>((index<<1)+1))&1), (float)((kProgressTextureCoords>>(index<<1))&1));
     }
     else
         return Vec2::ZERO;

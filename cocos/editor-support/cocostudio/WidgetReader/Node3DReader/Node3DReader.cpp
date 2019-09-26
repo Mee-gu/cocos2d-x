@@ -88,15 +88,15 @@ namespace cocostudio
             
             if (attriname == "X")
             {
-                ret.x = atof(value.c_str());
+                ret.x = (float)atof(value.c_str());
             }
             else if (attriname == "Y")
             {
-                ret.y = atof(value.c_str());
+                ret.y = (float)atof(value.c_str());
             }
             else if(attriname == "Z")
             {
-                ret.z = atof(value.c_str());
+                ret.z = (float)atof(value.c_str());
             }
             
             attribute = attribute->Next();
@@ -166,7 +166,7 @@ namespace cocostudio
             }
             else if (attriname == "Alpha")
             {
-                alpha = atoi(value.c_str());
+                alpha = static_cast<uint8_t>(atoi(value.c_str()));
             }
             else if (attriname == "Tag")
             {
@@ -199,11 +199,11 @@ namespace cocostudio
 
                     if (attriname == "X")
                     {
-                        position.x = atof(value.c_str());
+                        position.x = (float)atof(value.c_str());
                     }
                     else if (attriname == "Y")
                     {
-                        position.y = atof(value.c_str());
+                        position.y = (float)atof(value.c_str());
                     }
 
                     attribute = attribute->Next();
@@ -220,11 +220,11 @@ namespace cocostudio
 
                     if (attriname == "X")
                     {
-                        scale.x = atof(value.c_str());
+                        scale.x = (float)atof(value.c_str());
                     }
                     else if (attriname == "Y")
                     {
-                        scale.y = atof(value.c_str());
+                        scale.y = (float)atof(value.c_str());
                     }
 
                     attribute = attribute->Next();
@@ -241,19 +241,19 @@ namespace cocostudio
 
                     if (attriname == "A")
                     {
-                        color.a = atoi(value.c_str());
+                        color.a = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (attriname == "R")
                     {
-                        color.r = atoi(value.c_str());
+                        color.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (attriname == "G")
                     {
-                        color.g = atoi(value.c_str());
+                        color.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (attriname == "B")
                     {
-                        color.b = atoi(value.c_str());
+                        color.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
 
                     attribute = attribute->Next();
@@ -383,7 +383,7 @@ namespace cocostudio
         const Vector3* position = options->position3D();
         const Vector3* rotation = options->rotation3D();
         const Vector3* scale = options->scale3D();
-        int cameraMask = options->cameramask();
+        unsigned short cameraMask = (unsigned short)options->cameramask();
         
         if(position)
         {

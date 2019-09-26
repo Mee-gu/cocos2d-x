@@ -87,7 +87,7 @@ namespace cocostudio
         LoadingBar* loadingBar = static_cast<LoadingBar*>(widget);
         this->beginSetBasicProperties(widget);
         float capsx = 0.0f, capsy = 0.0, capsWidth = 0.0, capsHeight = 0.0f;
-        int percent = loadingBar->getPercent();
+        auto percent = loadingBar->getPercent();
         
         stExpCocoNode *stChildArray = cocoNode->GetChildArray(cocoLoader);
         
@@ -126,7 +126,7 @@ namespace cocostudio
             }else if(key == P_Direction){
                 loadingBar->setDirection((LoadingBar::Direction)valueToInt(value));
             }else if(key == P_Percent){
-                percent = valueToInt(value);
+                percent = (int)valueToInt(value);
             }
             
         } //end of for loop

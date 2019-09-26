@@ -99,8 +99,8 @@ void TransformHelp::nodeToMatrix(const BaseData &node, AffineTransform &matrix)
 {
     if (node.skewX == -node.skewY)
     {
-        double sine   = sin(node.skewX);
-        double cosine = cos(node.skewX);
+        float sine   = sin(node.skewX);
+        float cosine = cos(node.skewX);
         
         matrix.a = node.scaleX * cosine;
         matrix.b = node.scaleX * -sine;
@@ -125,8 +125,8 @@ void TransformHelp::nodeToMatrix(const BaseData &node, Mat4 &matrix)
 
     if (node.skewX == -node.skewY)
     {
-        double sine   = sin(node.skewX);
-        double cosine = cos(node.skewX);
+        float sine   = sin(node.skewX);
+        float cosine = cos(node.skewX);
 
         matrix.m[0] = node.scaleX * cosine;
         matrix.m[1] = node.scaleX * -sine;

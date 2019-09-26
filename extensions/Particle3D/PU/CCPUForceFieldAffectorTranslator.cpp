@@ -103,7 +103,7 @@ bool PUForceFieldAffectorTranslator::translateChildProperty( PUScriptCompiler* c
             if(getUInt(*prop->values.front(), &val))
             {
                 affector->suppressGeneration(true);
-                affector->setOctaves(val);
+                affector->setOctaves((unsigned short)val);
                 affector->suppressGeneration(false);
                 return true;
             }

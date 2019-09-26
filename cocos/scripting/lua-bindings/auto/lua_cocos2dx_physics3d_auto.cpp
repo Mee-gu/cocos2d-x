@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_physics3d_auto.hpp"
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
 #include "physics3d/CCPhysics3D.h"
@@ -588,7 +590,7 @@ int lua_cocos2dx_physics3d_Physics3DObject_setUserData(lua_State* tolua_S)
     {
         void* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
         if(!ok)
         {
@@ -2137,7 +2139,7 @@ int lua_cocos2dx_physics3d_Physics3DRigidBody_init(lua_State* tolua_S)
     {
         cocos2d::Physics3DRigidBodyDes* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR Physics3DRigidBodyDes*
+        //#pragma warning NO CONVERSION TO NATIVE FOR Physics3DRigidBodyDes*
 		ok = false;
         if(!ok)
         {
@@ -5551,7 +5553,7 @@ int lua_cocos2dx_physics3d_Physics3DConstraint_setUserData(lua_State* tolua_S)
     {
         void* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
         if(!ok)
         {
@@ -12382,3 +12384,4 @@ TOLUA_API int register_all_cocos2dx_physics3d(lua_State* tolua_S)
 }
 
 #endif
+#pragma warning(pop)

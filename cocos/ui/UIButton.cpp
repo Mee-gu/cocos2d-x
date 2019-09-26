@@ -801,7 +801,7 @@ void Button::setTitleFontName(const std::string& fontName)
     
     if(FileUtils::getInstance()->isFileExist(fontName)) {
         std::string lowerCasedFontName = fontName;
-        std::transform(lowerCasedFontName.begin(), lowerCasedFontName.end(), lowerCasedFontName.begin(), ::tolower);
+        std::transform(lowerCasedFontName.begin(), lowerCasedFontName.end(), lowerCasedFontName.begin(), [](char c) { return static_cast<char>(::tolower(c)); });
         if (lowerCasedFontName.find(".fnt") != std::string::npos) {
             _titleRenderer->setBMFontFilePath(fontName);
         } else {

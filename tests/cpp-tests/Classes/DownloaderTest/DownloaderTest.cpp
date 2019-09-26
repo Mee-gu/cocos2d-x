@@ -220,10 +220,10 @@ struct DownloaderTest : public TestCase
         {
             Node* view = this->getChildByName(task.identifier);
             auto bar = (ui::LoadingBar*)view->getChildByTag(TAG_PROGRESS_BAR);
-            float percent = float(totalBytesReceived * 100) / totalBytesExpected;
+            int percent = (int)((totalBytesReceived * 100) / totalBytesExpected);
             bar->setPercent(percent);
             char buf[32];
-            sprintf(buf, "%.1f%%[total %d KB]", percent, int(totalBytesExpected/1024));
+            sprintf(buf, "%d%%[total %d KB]", percent, int(totalBytesExpected/1024));
             auto status = (Label*)view->getChildByTag(TAG_STATUS);
             status->setString(buf);
         };

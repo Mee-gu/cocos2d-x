@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_ui_auto.hpp"
 #include "ui/CocosGUI.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
@@ -12148,7 +12150,7 @@ int lua_cocos2dx_ui_Text_getOutlineSize(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_Text_getOutlineSize'", nullptr);
             return 0;
         }
-        int ret = cobj->getOutlineSize();
+        double ret = cobj->getOutlineSize();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -12546,11 +12548,11 @@ int lua_cocos2dx_ui_Text_enableOutline(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Color4B arg0;
-        int arg1;
+        double arg1;
 
         ok &=luaval_to_color4b(tolua_S, 2, &arg0, "ccui.Text:enableOutline");
 
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccui.Text:enableOutline");
+        ok &= luaval_to_number(tolua_S, 3,&arg1, "ccui.Text:enableOutline");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_Text_enableOutline'", nullptr);
@@ -13861,9 +13863,9 @@ int lua_cocos2dx_ui_LoadingBar_setPercent(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        double arg0;
+        int arg0;
 
-        ok &= luaval_to_number(tolua_S, 2,&arg0, "ccui.LoadingBar:setPercent");
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccui.LoadingBar:setPercent");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_LoadingBar_setPercent'", nullptr);
@@ -14321,7 +14323,7 @@ int lua_cocos2dx_ui_LoadingBar_getPercent(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_LoadingBar_getPercent'", nullptr);
             return 0;
         }
-        double ret = cobj->getPercent();
+        int ret = cobj->getPercent();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -14369,8 +14371,8 @@ int lua_cocos2dx_ui_LoadingBar_create(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "ccui.LoadingBar:create");
             if (!ok) { break; }
-            double arg1;
-            ok &= luaval_to_number(tolua_S, 3,&arg1, "ccui.LoadingBar:create");
+            int arg1;
+            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccui.LoadingBar:create");
             if (!ok) { break; }
             cocos2d::ui::LoadingBar* ret = cocos2d::ui::LoadingBar::create(arg0, arg1);
             object_to_luaval<cocos2d::ui::LoadingBar>(tolua_S, "ccui.LoadingBar",(cocos2d::ui::LoadingBar*)ret);
@@ -14414,8 +14416,8 @@ int lua_cocos2dx_ui_LoadingBar_create(lua_State* tolua_S)
             cocos2d::ui::Widget::TextureResType arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccui.LoadingBar:create");
             if (!ok) { break; }
-            double arg2;
-            ok &= luaval_to_number(tolua_S, 4,&arg2, "ccui.LoadingBar:create");
+            int arg2;
+            ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "ccui.LoadingBar:create");
             if (!ok) { break; }
             cocos2d::ui::LoadingBar* ret = cocos2d::ui::LoadingBar::create(arg0, arg1, arg2);
             object_to_luaval<cocos2d::ui::LoadingBar>(tolua_S, "ccui.LoadingBar",(cocos2d::ui::LoadingBar*)ret);
@@ -20018,9 +20020,9 @@ int lua_cocos2dx_ui_Slider_setPercent(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        double arg0;
 
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccui.Slider:setPercent");
+        ok &= luaval_to_number(tolua_S, 2,&arg0, "ccui.Slider:setPercent");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_Slider_setPercent'", nullptr);
@@ -20073,7 +20075,7 @@ int lua_cocos2dx_ui_Slider_getMaxPercent(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_Slider_getMaxPercent'", nullptr);
             return 0;
         }
-        int ret = cobj->getMaxPercent();
+        double ret = cobj->getMaxPercent();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -20748,9 +20750,9 @@ int lua_cocos2dx_ui_Slider_setMaxPercent(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        double arg0;
 
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccui.Slider:setMaxPercent");
+        ok &= luaval_to_number(tolua_S, 2,&arg0, "ccui.Slider:setMaxPercent");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_Slider_setMaxPercent'", nullptr);
@@ -21363,7 +21365,7 @@ int lua_cocos2dx_ui_Slider_getPercent(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_Slider_getPercent'", nullptr);
             return 0;
         }
-        int ret = cobj->getPercent();
+        double ret = cobj->getPercent();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -21864,7 +21866,7 @@ int lua_cocos2dx_ui_TextField_getFontSize(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_TextField_getFontSize'", nullptr);
             return 0;
         }
-        int ret = cobj->getFontSize();
+        double ret = cobj->getFontSize();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -23212,9 +23214,9 @@ int lua_cocos2dx_ui_TextField_setFontSize(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        double arg0;
 
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccui.TextField:setFontSize");
+        ok &= luaval_to_number(tolua_S, 2,&arg0, "ccui.TextField:setFontSize");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_TextField_setFontSize'", nullptr);
@@ -24004,8 +24006,8 @@ int lua_cocos2dx_ui_TextField_create(lua_State* tolua_S)
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1, "ccui.TextField:create");
             if (!ok) { break; }
-            int arg2;
-            ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "ccui.TextField:create");
+            double arg2;
+            ok &= luaval_to_number(tolua_S, 4,&arg2, "ccui.TextField:create");
             if (!ok) { break; }
             cocos2d::ui::TextField* ret = cocos2d::ui::TextField::create(arg0, arg1, arg2);
             object_to_luaval<cocos2d::ui::TextField>(tolua_S, "ccui.TextField",(cocos2d::ui::TextField*)ret);
@@ -33082,7 +33084,7 @@ int lua_cocos2dx_ui_EditBox_getFontSize(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_EditBox_getFontSize'", nullptr);
             return 0;
         }
-        int ret = cobj->getFontSize();
+        double ret = cobj->getFontSize();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -33126,7 +33128,7 @@ int lua_cocos2dx_ui_EditBox_keyboardDidShow(lua_State* tolua_S)
     {
         cocos2d::IMEKeyboardNotificationInfo arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
+        //#pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
 		ok = false;
         if(!ok)
         {
@@ -33272,9 +33274,9 @@ int lua_cocos2dx_ui_EditBox_setFontSize(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        double arg0;
 
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccui.EditBox:setFontSize");
+        ok &= luaval_to_number(tolua_S, 2,&arg0, "ccui.EditBox:setFontSize");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_EditBox_setFontSize'", nullptr);
@@ -33572,7 +33574,7 @@ int lua_cocos2dx_ui_EditBox_keyboardDidHide(lua_State* tolua_S)
     {
         cocos2d::IMEKeyboardNotificationInfo arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
+        //#pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
 		ok = false;
         if(!ok)
         {
@@ -33676,7 +33678,7 @@ int lua_cocos2dx_ui_EditBox_getPlaceholderFontSize(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_EditBox_getPlaceholderFontSize'", nullptr);
             return 0;
         }
-        int ret = cobj->getPlaceholderFontSize();
+        double ret = cobj->getPlaceholderFontSize();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -33962,9 +33964,9 @@ int lua_cocos2dx_ui_EditBox_setPlaceholderFontSize(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        double arg0;
 
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccui.EditBox:setPlaceholderFontSize");
+        ok &= luaval_to_number(tolua_S, 2,&arg0, "ccui.EditBox:setPlaceholderFontSize");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_EditBox_setPlaceholderFontSize'", nullptr);
@@ -34178,7 +34180,7 @@ int lua_cocos2dx_ui_EditBox_keyboardWillShow(lua_State* tolua_S)
     {
         cocos2d::IMEKeyboardNotificationInfo arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
+        //#pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
 		ok = false;
         if(!ok)
         {
@@ -34433,7 +34435,7 @@ int lua_cocos2dx_ui_EditBox_keyboardWillHide(lua_State* tolua_S)
     {
         cocos2d::IMEKeyboardNotificationInfo arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
+        //#pragma warning NO CONVERSION TO NATIVE FOR IMEKeyboardNotificationInfo
 		ok = false;
         if(!ok)
         {
@@ -35464,11 +35466,11 @@ int lua_cocos2dx_ui_EditBox_setPlaceholderFont(lua_State* tolua_S)
     if (argc == 2) 
     {
         const char* arg0;
-        int arg1;
+        double arg1;
 
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "ccui.EditBox:setPlaceholderFont"); arg0 = arg0_tmp.c_str();
 
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccui.EditBox:setPlaceholderFont");
+        ok &= luaval_to_number(tolua_S, 3,&arg1, "ccui.EditBox:setPlaceholderFont");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_EditBox_setPlaceholderFont'", nullptr);
@@ -35614,11 +35616,11 @@ int lua_cocos2dx_ui_EditBox_setFont(lua_State* tolua_S)
     if (argc == 2) 
     {
         const char* arg0;
-        int arg1;
+        double arg1;
 
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "ccui.EditBox:setFont"); arg0 = arg0_tmp.c_str();
 
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccui.EditBox:setFont");
+        ok &= luaval_to_number(tolua_S, 3,&arg1, "ccui.EditBox:setFont");
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_EditBox_setFont'", nullptr);
@@ -40105,7 +40107,7 @@ int lua_cocos2dx_ui_TabControl_getHeaderHeight(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ui_TabControl_getHeaderHeight'", nullptr);
             return 0;
         }
-        int ret = cobj->getHeaderHeight();
+        double ret = cobj->getHeaderHeight();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -40238,3 +40240,4 @@ TOLUA_API int register_all_cocos2dx_ui(lua_State* tolua_S)
 	return 1;
 }
 
+#pragma warning(pop)

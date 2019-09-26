@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_navmesh_auto.hpp"
 #if CC_USE_NAVMESH
 #include "navmesh/CCNavMesh.h"
@@ -1187,7 +1189,7 @@ int lua_cocos2dx_navmesh_NavMeshAgent_setUserData(lua_State* tolua_S)
     {
         void* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
         if(!ok)
         {
@@ -2552,3 +2554,4 @@ TOLUA_API int register_all_cocos2dx_navmesh(lua_State* tolua_S)
 }
 
 #endif
+#pragma warning(pop)

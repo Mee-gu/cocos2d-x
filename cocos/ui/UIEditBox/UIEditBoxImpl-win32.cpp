@@ -140,7 +140,7 @@ namespace ui {
         this->createEditCtrl(false);
     }
 
-    void EditBoxImplWin::setNativeFont(const char* pFontName, int fontSize)
+    void EditBoxImplWin::setNativeFont(const char* pFontName, float fontSize)
     {
         auto glView = Director::getInstance()->getOpenGLView();
         HFONT hFont = ::CreateFontW(static_cast<int>(fontSize * glView->getScaleX()), 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
@@ -158,7 +158,7 @@ namespace ui {
         //not implemented yet
     }
 
-    void EditBoxImplWin::setNativePlaceholderFont(const char* pFontName, int fontSize)
+    void EditBoxImplWin::setNativePlaceholderFont(const char* pFontName, float fontSize)
     {
         //not implemented yet
     }
@@ -274,10 +274,10 @@ namespace ui {
         ::SetWindowPos(
             _hwndEdit,
             HWND_NOTOPMOST,
-            rect.origin.x,
-            rect.origin.y,
-            rect.size.width,
-            rect.size.height,
+            (int)rect.origin.x,
+            (int)rect.origin.y,
+            (int)rect.size.width,
+            (int)rect.size.height,
             SWP_NOZORDER);
     }
 

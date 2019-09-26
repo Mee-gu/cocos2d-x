@@ -479,7 +479,7 @@ bool UILoadingBarIssue12249::init()
         // Create the loading bar
         LoadingBar* loadingBar = LoadingBar::create("cocosui/sliderProgress.png");
         loadingBar->setScale9Enabled(true);
-        loadingBar->setContentSize(Size(200, loadingBar->getContentSize().height * 1.5));
+        loadingBar->setContentSize(Size(200, loadingBar->getContentSize().height * 1.5f));
         loadingBar->setTag(0);
         loadingBar->setPosition(Vec2(widgetSize.width / 2.0f,
                                      widgetSize.height / 2.0f + loadingBar->getContentSize().height / 4.0f));
@@ -487,7 +487,7 @@ bool UILoadingBarIssue12249::init()
         LoadingBar* loadingBarCopy = LoadingBar::create();
         loadingBarCopy->setScale9Enabled(true);
         loadingBarCopy->loadTexture("cocosui/sliderProgress.png");
-        loadingBarCopy->setContentSize(Size(200, loadingBarCopy->getContentSize().height * 1.5));
+        loadingBarCopy->setContentSize(Size(200, loadingBarCopy->getContentSize().height * 1.5f));
         loadingBarCopy->setTag(1);
         loadingBarCopy->setPosition(loadingBar->getPosition()
                                     + Vec2(0, -40));

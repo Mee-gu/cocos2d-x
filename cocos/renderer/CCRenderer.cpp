@@ -525,22 +525,22 @@ void Renderer::setViewPort(int x, int y, unsigned int w, unsigned int h)
     _viewport.h = h;
 }
 
-void Renderer::fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned int vertexBufferOffset)
+void Renderer::fillVerticesAndIndices(const TrianglesCommand* cmd, unsigned short vertexBufferOffset)
 {
-    size_t vertexCount = cmd->getVertexCount();
+    unsigned short vertexCount = (unsigned short)cmd->getVertexCount();
     memcpy(&_verts[_filledVertex], cmd->getVertices(), sizeof(V3F_C4B_T2F) * vertexCount);
     
     // fill vertex, and convert them to world coordinates
     const Mat4& modelView = cmd->getModelView();
-    for (size_t i=0; i < vertexCount; ++i)
+    for (unsigned short i=0; i < vertexCount; ++i)
     {
         modelView.transformPoint(&(_verts[i + _filledVertex].vertices));
     }
     
     // fill index
     const unsigned short* indices = cmd->getIndices();
-    size_t indexCount = cmd->getIndexCount();
-    for (size_t i = 0; i < indexCount; ++i)
+    unsigned short indexCount = (unsigned short)cmd->getIndexCount();
+    for (unsigned short i = 0; i < indexCount; ++i)
     {
         _indices[_filledIndex + i] = vertexBufferOffset + _filledVertex + indices[i];
     }
@@ -559,8 +559,8 @@ void Renderer::drawBatchedTriangles()
     unsigned int vertexBufferFillOffset = _queuedTotalVertexCount - _queuedVertexCount;
     unsigned int indexBufferFillOffset = _queuedTotalIndexCount - _queuedIndexCount;
 #else
-    unsigned int vertexBufferFillOffset = 0;
-    unsigned int indexBufferFillOffset = 0;
+    unsigned short vertexBufferFillOffset = 0;
+    unsigned short indexBufferFillOffset = 0;
 #endif
 
     _triBatchesToDraw[0].offset = indexBufferFillOffset;
@@ -609,7 +609,7 @@ void Renderer::drawBatchedTriangles()
         // capacity full ?
         if (batchesTotal + 1 >= _triBatchesToDrawCapacity)
         {
-            _triBatchesToDrawCapacity *= 1.4;
+            _triBatchesToDrawCapacity = (int)(_triBatchesToDrawCapacity * 1.4f);
             _triBatchesToDraw = (TriBatchToDraw*) realloc(_triBatchesToDraw, sizeof(_triBatchesToDraw[0]) * _triBatchesToDrawCapacity);
         }
         
@@ -924,7 +924,7 @@ const ScissorRect& Renderer::getScissorRect() const
     return _scissorState.rect;
 }
 
-void Renderer::setScissorRect(float x, float y, float width, float height)
+void Renderer::setScissorRect(int x, int y, unsigned int width, unsigned int height)
 {
     _scissorState.rect.x = x;
     _scissorState.rect.y = y;

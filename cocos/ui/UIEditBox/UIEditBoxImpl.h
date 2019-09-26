@@ -47,9 +47,9 @@ namespace cocos2d {
             virtual ~EditBoxImpl() {}
             
             virtual bool initWithSize(const Size& size) = 0;
-            virtual void setFont(const char* pFontName, int fontSize) = 0;
+            virtual void setFont(const char* pFontName, float fontSize) = 0;
             virtual void setFontColor(const Color4B& color) = 0;
-            virtual void setPlaceholderFont(const char* pFontName, int fontSize) = 0;
+            virtual void setPlaceholderFont(const char* pFontName, float fontSize) = 0;
             virtual void setPlaceholderFontColor(const Color4B& color) = 0;
             virtual void setInputMode(EditBox::InputMode inputMode) = 0;
             virtual void setInputFlag(EditBox::InputFlag inputFlag) = 0;
@@ -65,11 +65,11 @@ namespace cocos2d {
             virtual const char* getPlaceHolder() = 0;
 
             virtual const char* getFontName() = 0;
-            virtual int getFontSize() = 0;
+            virtual float getFontSize() = 0;
             virtual const Color4B& getFontColor() = 0;
 
             virtual const char* getPlaceholderFontName() = 0;
-            virtual int getPlaceholderFontSize() = 0;
+            virtual float getPlaceholderFontSize() = 0;
             virtual const Color4B& getPlaceholderFontColor() = 0;
 
             virtual EditBox::InputMode getInputMode() = 0;

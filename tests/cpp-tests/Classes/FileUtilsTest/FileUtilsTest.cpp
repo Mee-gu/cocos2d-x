@@ -295,7 +295,7 @@ void TestIsDirectoryExist::onEnter()
     FileUtilsDemo::onEnter();
     auto s = Director::getInstance()->getWinSize();
     auto util = FileUtils::getInstance();
-    int x = s.width/2, y = s.height/3;
+    float x = s.width/2, y = s.height/3;
 
     Label* label = nullptr;
     std::string dir;
@@ -351,8 +351,7 @@ void TestFileFuncs::onEnter()
     auto s = Director::getInstance()->getWinSize();
     auto sharedFileUtils = FileUtils::getInstance();
 
-    int x = s.width/2,
-        y = s.height/5;
+    float x = s.width/2, y = s.height/5;
     Label* label = nullptr;
 
     std::string filename = "__test.test";
@@ -434,8 +433,8 @@ void TestDirectoryFuncs::onEnter()
     auto s = Director::getInstance()->getWinSize();
     auto sharedFileUtils = FileUtils::getInstance();
 
-    int x = s.width/2,
-    y = s.height/4;
+    float x = s.width / 2;
+    float y = s.height / 4;
     Label* label = nullptr;
 
     std::string dir = sharedFileUtils->getWritablePath() + "__test";
@@ -957,8 +956,8 @@ void TestUnicodePath::onEnter()
     auto s = Director::getInstance()->getWinSize();
     auto util = FileUtils::getInstance();
 
-    int x = s.width/2,
-    y = s.height/5;
+    float x = s.width / 2;
+    float y = s.height/5;
     Label* label = nullptr;
 
     std::string dir = "中文路径/";
@@ -1094,7 +1093,7 @@ void TestIsDirectoryExistAsync::onEnter()
     FileUtilsDemo::onEnter();
     auto s = Director::getInstance()->getWinSize();
     auto util = FileUtils::getInstance();
-    int x = s.width/2, y = s.height/3;
+    float x = s.width/2, y = s.height/3;
     
     std::string dir;
     auto getMsg = [](bool b, const std::string& dir)-> std::string
@@ -1140,8 +1139,8 @@ void TestFileFuncsAsync::onEnter()
     auto s = Director::getInstance()->getWinSize();
     auto sharedFileUtils = FileUtils::getInstance();
     
-    int x = s.width/2,
-    y = s.height/5;
+    float x = s.width / 2;
+    float y = s.height/5;
     
     std::string filename = "__test.test";
     std::string filename2 = "__newtest.test";

@@ -553,7 +553,7 @@ struct CC_DLL FontDefinition
     /// font name
     std::string           _fontName;
     /// font size
-    int                   _fontSize = 0;
+    float                   _fontSize = 0.0f;
     /// horizontal alignment
     TextHAlignment        _alignment = TextHAlignment::CENTER;
     /// vertical alignment
@@ -629,10 +629,10 @@ struct CC_DLL Viewport
     
 struct CC_DLL ScissorRect
 {
-    float x = 0;
-    float y = 0;
-    float width = 0;
-    float height = 0;
+    int x = 0;
+    int y = 0;
+    unsigned int width = 0;
+    unsigned int height = 0;
 };
 
 enum class ClearFlag : uint8_t

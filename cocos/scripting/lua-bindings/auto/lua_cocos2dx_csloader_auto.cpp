@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_csloader_auto.hpp"
 #include "editor-support/cocostudio/ActionTimeline/CSLoader.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
@@ -757,3 +759,4 @@ TOLUA_API int register_all_cocos2dx_csloader(lua_State* tolua_S)
 	return 1;
 }
 
+#pragma warning(pop)

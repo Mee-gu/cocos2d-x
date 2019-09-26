@@ -98,9 +98,9 @@ void UISliderTest::sliderEvent(Ref *pSender, Slider::EventType type)
     if (type == Slider::EventType::ON_PERCENTAGE_CHANGED)
     {
         Slider* slider = dynamic_cast<Slider*>(pSender);
-        int percent = slider->getPercent();
-        int maxPercent = slider->getMaxPercent();
-        _displayValueLabel->setString(StringUtils::format("Percent %f", 10000.0 * percent / maxPercent));
+        auto percent = slider->getPercent();
+        auto maxPercent = slider->getMaxPercent();
+        _displayValueLabel->setString(StringUtils::format("Percent %f", 10000.0f * percent / maxPercent));
     }
 }
 void UISliderTest::printWidgetResources(cocos2d::Ref* /*sender*/)
@@ -170,7 +170,7 @@ void UISliderTest_Scale9::sliderEvent(Ref *pSender, Slider::EventType type)
     if (type == Slider::EventType::ON_PERCENTAGE_CHANGED)
     {
         Slider* slider = dynamic_cast<Slider*>(pSender);
-        int percent = slider->getPercent();
+        auto percent = slider->getPercent();
         _displayValueLabel->setString(StringUtils::format("Percent %d", percent));
     }
 }
@@ -238,8 +238,8 @@ void UISliderTest_Scale9_State_Change::sliderEvent(Ref *pSender, Slider::EventTy
     if (type == Slider::EventType::ON_PERCENTAGE_CHANGED)
     {
         Slider* slider = dynamic_cast<Slider*>(pSender);
-        int percent = slider->getPercent();
-        _displayValueLabel->setString(StringUtils::format("Percent %d", percent));
+        auto percent = slider->getPercent();
+        _displayValueLabel->setString(StringUtils::format("Percent %f", percent));
     }
 }
 
@@ -449,7 +449,7 @@ bool UISliderIssue12249Test::init()
         slider->loadBarTexture("cocosui/sliderTrack.png");
         slider->loadSlidBallTextures("cocosui/sliderThumb.png", "cocosui/sliderThumb.png", "");
         slider->loadProgressBarTexture("cocosui/sliderProgress.png");
-        slider->setContentSize(Size(300, slider->getContentSize().height * 1.5));
+        slider->setContentSize(Size(300.0f, slider->getContentSize().height * 1.5f));
         slider->setMaxPercent(10000);
         slider->setPosition(Vec2(widgetSize.width / 2.0f, widgetSize.height / 2.0f/* + slider->getSize().height * 2.0f*/));
         slider->addEventListener(CC_CALLBACK_2(UISliderIssue12249Test::sliderEvent, this));
@@ -466,8 +466,8 @@ void UISliderIssue12249Test::sliderEvent(Ref *pSender, Slider::EventType type)
     if (type == Slider::EventType::ON_PERCENTAGE_CHANGED)
     {
         Slider* slider = dynamic_cast<Slider*>(pSender);
-        int percent = slider->getPercent();
-        int maxPercent = slider->getMaxPercent();
-        _displayValueLabel->setString(StringUtils::format("Percent %f", 10000.0 * percent / maxPercent));
+        auto percent = slider->getPercent();
+        auto maxPercent = slider->getMaxPercent();
+        _displayValueLabel->setString(StringUtils::format("Percent %f", 10000.0f * percent / maxPercent));
     }
 }

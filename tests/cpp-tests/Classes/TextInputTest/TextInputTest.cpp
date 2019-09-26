@@ -336,7 +336,7 @@ bool TextFieldTTFActionTest::onTextFieldDeleteBackward(TextFieldTTF * sender, co
     beginPos.x += (textfieldSize.width - labelSize.width) / 2.0f;
     
     auto winSize = Director::getInstance()->getWinSize();
-    Vec2 endPos(- winSize.width / 4.0f, winSize.height * (0.5 + (float)rand() / (2.0f * RAND_MAX)));
+    Vec2 endPos(- winSize.width / 4.0f, winSize.height * (0.5f + (float)rand() / (2.0f * RAND_MAX)));
 
     float duration = 1;
     float rotateDuration = 0.2f;
@@ -347,7 +347,7 @@ bool TextFieldTTFActionTest::onTextFieldDeleteBackward(TextFieldTTF * sender, co
         Spawn::create(
             MoveTo::create(duration, endPos),
             Repeat::create(
-                RotateBy::create(rotateDuration, (rand()%2) ? 360 : -360),
+                RotateBy::create(rotateDuration, (rand()%2) ? 360.0f : -360.0f),
                 repeatTime),
             FadeOut::create(duration),
         nullptr),

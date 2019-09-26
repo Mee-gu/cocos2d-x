@@ -104,7 +104,7 @@ namespace cocostudio
         
         ListView* listView = static_cast<ListView*>(widget);
                 
-        int direction = DICTOOL->getFloatValue_json(options, P_Direction,2);
+        int direction = (int)DICTOOL->getFloatValue_json(options, P_Direction,2);
         listView->setDirection((ScrollView::Direction)direction);
         
         ListView::Gravity gravity = (ListView::Gravity)DICTOOL->getIntValue_json(options, P_Gravity,3);
@@ -159,7 +159,7 @@ namespace cocostudio
             }
             else if (name == "BackColorAlpha")
             {
-                bgColorOpacity = atoi(value.c_str());
+                bgColorOpacity = static_cast<uint8_t>(atoi(value.c_str()));
             }
             else if (name == "Scale9Enable")
             {
@@ -170,19 +170,19 @@ namespace cocostudio
             }
             else if (name == "Scale9OriginX")
             {
-                capInsets.origin.x = atof(value.c_str());
+                capInsets.origin.x = (float)atof(value.c_str());
             }
             else if (name == "Scale9OriginY")
             {
-                capInsets.origin.y = atof(value.c_str());
+                capInsets.origin.y = (float)atof(value.c_str());
             }
             else if (name == "Scale9Width")
             {
-                capInsets.size.width = atof(value.c_str());
+                capInsets.size.width = (float)atof(value.c_str());
             }
             else if (name == "Scale9Height")
             {
-                capInsets.size.height = atof(value.c_str());
+                capInsets.size.height = (float)atof(value.c_str());
             }
             else if (name == "DirectionType")
             {
@@ -224,11 +224,11 @@ namespace cocostudio
                     
                     if (name == "Width")
                     {
-                        innerSize.width = atof(value.c_str());
+                        innerSize.width = (float)atof(value.c_str());
                     }
                     else if (name == "Height")
                     {
-                        innerSize.height = atof(value.c_str());
+                        innerSize.height = (float)atof(value.c_str());
                     }
                     
                     attributeInnerNodeSize = attributeInnerNodeSize->Next();
@@ -245,11 +245,11 @@ namespace cocostudio
                     
                     if (name == "X")
                     {
-                        scale9Size.width = atof(value.c_str());
+                        scale9Size.width = (float)atof(value.c_str());
                     }
                     else if (name == "Y")
                     {
-                        scale9Size.height = atof(value.c_str());
+                        scale9Size.height = (float)atof(value.c_str());
                     }
                     
                     attributeSize = attributeSize->Next();
@@ -266,15 +266,15 @@ namespace cocostudio
                     
                     if (name == "R")
                     {
-                        bgColor.r = atoi(value.c_str());
+                        bgColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        bgColor.g = atoi(value.c_str());
+                        bgColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        bgColor.b = atoi(value.c_str());
+                        bgColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attributeSingleColor = attributeSingleColor->Next();
@@ -291,15 +291,15 @@ namespace cocostudio
                     
                     if (name == "R")
                     {
-                        bgEndColor.r = atoi(value.c_str());
+                        bgEndColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        bgEndColor.g = atoi(value.c_str());
+                        bgEndColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        bgEndColor.b = atoi(value.c_str());
+                        bgEndColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attributeEndColor = attributeEndColor->Next();
@@ -316,15 +316,15 @@ namespace cocostudio
                     
                     if (name == "R")
                     {
-                        bgStartColor.r = atoi(value.c_str());
+                        bgStartColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        bgStartColor.g = atoi(value.c_str());
+                        bgStartColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        bgStartColor.b = atoi(value.c_str());
+                        bgStartColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attributeFirstColor = attributeFirstColor->Next();
@@ -340,11 +340,11 @@ namespace cocostudio
                     
                     if (name == "ScaleX")
                     {
-                        colorVector.x = atof(value.c_str());
+                        colorVector.x = (float)atof(value.c_str());
                     }
                     else if (name == "ScaleY")
                     {
-                        colorVector.y = atof(value.c_str());
+                        colorVector.y = (float)atof(value.c_str());
                     }
                     
                     attributeColorVector = attributeColorVector->Next();
@@ -447,7 +447,7 @@ namespace cocostudio
         Vec2 colorVector(f_colorVecor->vectorX(), f_colorVecor->vectorY());
         listView->setBackGroundColorVector(colorVector);
         
-        int bgColorOpacity = options->bgColorOpacity();
+        auto bgColorOpacity = options->bgColorOpacity();
         
         int colorType = options->colorType();
         listView->setBackGroundColorType(Layout::BackGroundColorType(colorType));
@@ -523,7 +523,7 @@ namespace cocostudio
         Color3B color(f_color->r(), f_color->g(), f_color->b());
         listView->setColor(color);
         
-        int opacity = widgetOptions->alpha();
+        auto opacity = widgetOptions->alpha();
         listView->setOpacity(opacity);
         
         auto f_innerSize = options->innerSize();
@@ -574,7 +574,7 @@ namespace cocostudio
             }
         }
         
-        float itemMargin = options->itemMargin();
+        float itemMargin =(float) options->itemMargin();
         listView->setItemsMargin(itemMargin);
         
         auto widgetReader = WidgetReader::getInstance();

@@ -158,11 +158,12 @@ Sprite1::Sprite1()
 void Sprite1::addNewSpriteWithCoords(Vec2 p)
 {
     int idx = (int)(CCRANDOM_0_1() * 1400.0f / 100.0f);
-    int x = (idx%5) * 85;
-    int y = (idx/5) * 121;
+    float w = 85.0f;
+    float h = 121.0f;
+    float x = (idx%5) * w;
+    float y = (idx/5) * h;
     
-    
-    auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(x,y,85,121) );
+    auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(x,y,w,h) );
     addChild( sprite );
     
     sprite->setPosition( Vec2( p.x, p.y) );
@@ -171,15 +172,15 @@ void Sprite1::addNewSpriteWithCoords(Vec2 p)
     float random = CCRANDOM_0_1();
     
     if( random < 0.20 )
-        action = ScaleBy::create(3, 2);
+        action = ScaleBy::create(3.0f, 2.0f);
     else if(random < 0.40)
-        action = RotateBy::create(3, 360);
+        action = RotateBy::create(3.0f, 360.0f);
     else if( random < 0.60)
-        action = Blink::create(1, 3);
+        action = Blink::create(1.0f, 3);
     else if( random < 0.8 )
-        action = TintBy::create(2, 0, -255, -255);
+        action = TintBy::create(2.0f, 0, -255, -255);
     else 
-        action = FadeOut::create(2);
+        action = FadeOut::create(2.0f);
     auto action_back = action->reverse();
     auto seq = Sequence::create( action, action_back, nullptr );
     
@@ -305,12 +306,13 @@ void SpriteBatchNode1::addNewSpriteWithCoords(Vec2 p)
 {
     auto BatchNode = static_cast<SpriteBatchNode*>( getChildByTag(kTagSpriteBatchNode) );
     
-    int idx = CCRANDOM_0_1() * 1400 / 100;
-    int x = (idx%5) * 85;
-    int y = (idx/5) * 121;
-    
+    int idx = (int)(CCRANDOM_0_1() * 1400 / 100);
+    float w = 85.0f;
+    float h = 121.0f;
+    float x = (idx%5) * w;
+    float y = (idx/5) * h;
 
-    auto sprite = Sprite::createWithTexture(BatchNode->getTexture(), Rect(x,y,85,121));
+    auto sprite = Sprite::createWithTexture(BatchNode->getTexture(), Rect(x,y,w,h));
     BatchNode->addChild(sprite);
 
     sprite->setPosition( Vec2( p.x, p.y) );
@@ -319,15 +321,15 @@ void SpriteBatchNode1::addNewSpriteWithCoords(Vec2 p)
     float random = CCRANDOM_0_1();
     
     if( random < 0.20 )
-        action = ScaleBy::create(3, 2);
+        action = ScaleBy::create(3.0f, 2.0f);
     else if(random < 0.40)
-        action = RotateBy::create(3, 360);
+        action = RotateBy::create(3.0f, 360.0f);
     else if( random < 0.60)
-        action = Blink::create(1, 3);
+        action = Blink::create(1.0f, 3);
     else if( random < 0.8 )
-        action = TintBy::create(2, 0, -255, -255);
+        action = TintBy::create(2.0f, 0, -255, -255);
     else 
-        action = FadeOut::create(2);
+        action = FadeOut::create(2.0f);
 
     auto action_back = action->reverse();
     auto seq = Sequence::create(action, action_back, nullptr);
@@ -979,9 +981,9 @@ SpriteZVertex::SpriteZVertex()
 
     for(int i=0;i<5;i++) 
     {
-        auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(85*0, 121*1, 85, 121));
+        auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(85*0.0f, 121*1.0f, 85.0f, 121.0f));
         sprite->setPosition( Vec2((i+1)*step, s.height/2) );
-        sprite->setPositionZ( 10 + i*40 );
+        sprite->setPositionZ( 10.0f + i*40 );
 //        sprite->setGLProgram(alphaTestShader);
         node->addChild(sprite, 0);
         
@@ -989,14 +991,14 @@ SpriteZVertex::SpriteZVertex()
     
     for(int i=5;i<11;i++) 
     {
-        auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(85*1, 121*0, 85, 121));
+        auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(85*1.0f, 121*0.0f, 85.0f, 121.0f));
         sprite->setPosition( Vec2( (i+1)*step, s.height/2) );
-        sprite->setPositionZ( 10 + (10-i)*40 );
+        sprite->setPositionZ( 10.0f + (10-i)*40 );
 //        sprite->setGLProgram(alphaTestShader);
         node->addChild(sprite, 0);
     }
 
-    node->runAction( OrbitCamera::create(10, 1, 0, 0, 360, 0, 0) );
+    node->runAction( OrbitCamera::create(10.0f, 1.0f, 0.0f, 0.0f, 360.0f, 0.0f, 0.0f) );
 }
 
 std::string SpriteZVertex::title() const
@@ -1068,21 +1070,21 @@ SpriteBatchNodeZVertex::SpriteBatchNodeZVertex()
     
     for(int i=0;i<5;i++) 
     {
-        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85*0, 121*1, 85, 121));
+        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85*0.0f, 121*1.0f, 85.0f, 121.0f));
         sprite->setPosition( Vec2( (i+1)*step, s.height/2) );
-        sprite->setPositionZ(  10 + i*40 );
+        sprite->setPositionZ(  10.0f + i*40 );
         batch->addChild(sprite, 0);
         
     }
     
     for(int i=5;i<11;i++) {
-        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85*1, 121*0, 85, 121));
+        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85*1.0f, 121*0.0f, 85.0f, 121.0f));
         sprite->setPosition( Vec2( (i+1)*step, s.height/2) );
-        sprite->setPositionZ(  10 + (10-i)*40 );
+        sprite->setPositionZ(10.0f + (10-i)*40 );
         batch->addChild(sprite, 0);
     }
     
-    batch->runAction(OrbitCamera::create(10, 1, 0, 0, 360, 0, 0) );
+    batch->runAction(OrbitCamera::create(10.0f, 1.0f, 0.0f, 0.0f, 360.0f, 0.0f, 0.0f) );
 }
 
 std::string SpriteBatchNodeZVertex::title() const
@@ -1106,12 +1108,12 @@ SpriteAnchorPoint::SpriteAnchorPoint()
     auto s = Director::getInstance()->getWinSize();
     
     
-    auto rotate = RotateBy::create(10, 360);
+    auto rotate = RotateBy::create(10.0f, 360.0f);
     auto action = RepeatForever::create(rotate);
     
     for(int i=0;i<3;i++) 
     {
-        auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(85*i, 121*1, 85, 121) );
+        auto sprite = Sprite::create("Images/grossini_dance_atlas.png", Rect(85.0f*i, 121.0f *1, 85.0f, 121.0f) );
         sprite->setPosition( Vec2( s.width/4*(i+1), s.height/2) );
         
         auto point = Sprite::create("Images/r1.png");
@@ -1168,7 +1170,7 @@ SpriteBatchNodeAnchorPoint::SpriteBatchNodeAnchorPoint()
     auto action = RepeatForever::create(rotate);
     for(int i=0;i<3;i++) 
     {
-        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85*i, 121*1, 85, 121));
+        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85.0f*i, 121.0f*1, 85.0f, 121.0f));
         sprite->setPosition( Vec2( s.width/4*(i+1), s.height/2) );
         
         auto point = Sprite::create("Images/r1.png");
@@ -1306,7 +1308,7 @@ Sprite6::Sprite6()
 
     for(int i=0;i<3;i++) 
     {
-        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85*i, 121*1, 85, 121));
+        auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(85.0f*i, 121.0f *1, 85.0f, 121.0f));
         sprite->setPosition( Vec2( (i+1)*step, s.height/2) );
 
         sprite->runAction( action->clone());
@@ -1574,13 +1576,15 @@ void SpriteNewTexture::addNewSprite()
 
     auto p = Vec2( CCRANDOM_0_1() * s.width, CCRANDOM_0_1() * s.height);
 
-    int idx = CCRANDOM_0_1() * 1400 / 100;
-    int x = (idx%5) * 85;
-    int y = (idx/5) * 121;
+    int idx = (int)(CCRANDOM_0_1() * 1400 / 100);
+    float w = 85.0f;
+    float h = 121.0f;
+    float x = (idx % 5) * w;
+    float y = (idx/5) * h;
     
     
     auto node = getChildByTag( kTagSpriteBatchNode );
-    auto sprite = Sprite::createWithTexture(_texture1, Rect(x,y,85,121));
+    auto sprite = Sprite::createWithTexture(_texture1, Rect(x,y,w,h));
     node->addChild(sprite);
     
     sprite->setPosition( Vec2( p.x, p.y) );
@@ -1588,13 +1592,13 @@ void SpriteNewTexture::addNewSprite()
     ActionInterval* action;
     float random = CCRANDOM_0_1();
     
-    if( random < 0.20 )
+    if( random < 0.20f)
         action = ScaleBy::create(3, 2);
-    else if(random < 0.40)
+    else if(random < 0.40f)
         action = RotateBy::create(3, 360);
-    else if( random < 0.60)
+    else if( random < 0.60f)
         action = Blink::create(1, 3);
-    else if( random < 0.8 )
+    else if( random < 0.8f )
         action = TintBy::create(2, 0, -255, -255);
     else 
         action = FadeOut::create(2);
@@ -1681,12 +1685,14 @@ void SpriteBatchNodeNewTexture::addNewSprite()
     
     auto batch = static_cast<SpriteBatchNode*>( getChildByTag( kTagSpriteBatchNode ) );
     
-    int idx = CCRANDOM_0_1() * 1400 / 100;
-    int x = (idx%5) * 85;
-    int y = (idx/5) * 121;
+    int idx = (int)(CCRANDOM_0_1() * 1400 / 100);
+    float w = 85.0f;
+    float h = 121.0f;
+    float x = (idx%5) * w;
+    float y = (idx/5) * h;
     
     
-    auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(x,y,85,121));
+    auto sprite = Sprite::createWithTexture(batch->getTexture(), Rect(x,y,w,h));
     batch->addChild(sprite);
     
     sprite->setPosition( Vec2( p.x, p.y) );
@@ -2444,7 +2450,7 @@ SpriteHybrid::SpriteHybrid()
     // only show 80% of them
     for(int i = 0; i < 250; i++) 
     {
-        int spriteIdx = CCRANDOM_0_1() * 14;
+        int spriteIdx = (int)(CCRANDOM_0_1() * 14);
         char str[25] = {0};
         sprintf(str, "grossini_dance_%02d.png", (spriteIdx+1));
         auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(str);
@@ -2711,7 +2717,7 @@ SpriteChildrenVisibility::SpriteChildrenVisibility()
     sprite1->addChild(sprite2, -2);
     sprite1->addChild(sprite3, 2);
     
-    sprite1->runAction(Blink::create(5.0f, 10.0f));
+    sprite1->runAction(Blink::create(5.0f, 10));
     
     //
     // Sprite
@@ -2733,7 +2739,7 @@ SpriteChildrenVisibility::SpriteChildrenVisibility()
     sprite1->addChild(sprite2, -2);
     sprite1->addChild(sprite3, 2);
     
-    sprite1->runAction(Blink::create(5.0f, 10.0f));
+    sprite1->runAction(Blink::create(5.0f, 10));
 }
 
 void SpriteChildrenVisibility::onExit()
@@ -5277,9 +5283,9 @@ SpriteSlice9Test3::SpriteSlice9Test3()
 
         // enable slice 9, only in the first row
         if (i==2) {
-            s1->setCenterRectNormalized(Rect(0.4, 0.4, 0.2, 0.2));
-            s2->setCenterRectNormalized(Rect(0.4, 0.4, 0.2, 0.2));
-            s3->setCenterRectNormalized(Rect(0.4, 0.4, 0.2, 0.2));
+            s1->setCenterRectNormalized(Rect(0.4f, 0.4f, 0.2f, 0.2f));
+            s2->setCenterRectNormalized(Rect(0.4f, 0.4f, 0.2f, 0.2f));
+            s3->setCenterRectNormalized(Rect(0.4f, 0.4f, 0.2f, 0.2f));
         }
 
 
@@ -5422,18 +5428,18 @@ void SpriteSlice9Test5::update(float dt)
 
     // cap the value between 0 and 0.8
     float x = ((cos(angle) + sin(angle*3)) + 2) / 5.0f;
-    float y1 = (sin(angle) + 1) / 2.5;
-    float y2 = (sin(angle+M_PI_2) + 1) / 2.5;
+    float y1 = (sin(angle) + 1) / 2.5f;
+    float y2 = (sin(angle+ (float)M_PI_2) + 1) / 2.5f;
     float y = y1;
     for (int i=0; i<3; ++i) {
         if (i==1) {
-            x = 0.8 - x;
+            x = 0.8f - x;
             y = y2;
         } else if (i==2) {
-            y = 0.8 - y;
+            y = 0.8f - y;
         }
 
-        Rect rect(x,y,0.2, 0.2);
+        Rect rect(x,y,0.2f, 0.2f);
         _sprites[i]->setCenterRectNormalized(rect);
     }
 }
@@ -5496,7 +5502,7 @@ void SpriteSlice9Test6::update(float dt)
     // cap the value between 0 and 1
     float x = ((cos(angle*2) - sin(angle/2)) + 2) / 4;
     float y1 = (sin(angle) + 1) / 2;
-    float y2 = (sin(angle+M_PI_2) + 1) / 2;
+    float y2 = (sin(angle+(float)M_PI_2) + 1) / 2;
     float y = y1;
     for (int i=0; i<3; ++i) {
         if (i==1) {

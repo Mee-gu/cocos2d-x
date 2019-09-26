@@ -44,9 +44,9 @@ struct TextureDescriptor
     TextureType textureType = TextureType::TEXTURE_2D;
     PixelFormat textureFormat = PixelFormat::RGBA8888;
     TextureUsage textureUsage = TextureUsage::READ;
-    uint32_t width = 0;
-    uint32_t height = 0;
-    uint32_t depth = 0;
+    int width = 0;
+    int height = 0;
+    int depth = 0;
     SamplerDescriptor samplerDescriptor;
 };
 
@@ -115,8 +115,8 @@ protected:
     uint8_t _bitsPerElement = 0;
     bool _hasMipmaps = false;
     bool _isCompressed = false;
-    uint32_t _width = 0;
-    uint32_t _height = 0;
+    int _width = 0;
+    int _height = 0;
 
     TextureType _textureType = TextureType::TEXTURE_2D;
     PixelFormat _textureFormat = PixelFormat::RGBA8888;
@@ -136,7 +136,7 @@ public:
      * @param height Specifies the height of the texture image.
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      */
-    virtual void updateData(uint8_t* data, uint32_t width , uint32_t height, uint32_t level) = 0;
+    virtual void updateData(uint8_t* data, int width , int height, unsigned int level) = 0;
     
     /**
      * Update a two-dimensional texture image in a compressed format
@@ -146,7 +146,7 @@ public:
      * @param dataLen Specifies the totoal size of compressed image in bytes.
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      */
-    virtual void updateCompressedData(uint8_t* data, uint32_t width , uint32_t height, uint32_t dataLen, uint32_t level) = 0;
+    virtual void updateCompressedData(uint8_t* data, int width , int height, size_t dataLen, unsigned int level) = 0;
     
     /**
      * Update a two-dimensional texture subimage
@@ -157,7 +157,7 @@ public:
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      * @param data Specifies a pointer to the image data in memory.
      */
-    virtual void updateSubData(uint32_t xoffset, uint32_t yoffset, uint32_t width, uint32_t height, uint32_t level, uint8_t* data) = 0;
+    virtual void updateSubData(int xoffset, int yoffset, int width, int height, unsigned int level, uint8_t* data) = 0;
     
     /**
      * Update a two-dimensional texture subimage in a compressed format
@@ -169,19 +169,19 @@ public:
      * @param level Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
      * @param data Specifies a pointer to the compressed image data in memory.
      */
-    virtual void updateCompressedSubData(uint32_t xoffset, uint32_t yoffset, uint32_t width, uint32_t height, uint32_t dataLen, uint32_t level, uint8_t* data) = 0;
+    virtual void updateCompressedSubData(int xoffset, int yoffset, int width, int height, size_t dataLen, unsigned int level, uint8_t* data) = 0;
 
     /**
      * Get texture width.
      * @return Texture width.
      */
-    inline uint32_t getWidth() const { return _width; }
+    inline int getWidth() const { return _width; }
 
     /**
      * Get texture height.
      * @return Texture height.
      */
-    inline uint32_t getHeight() const { return _height; }
+    inline int getHeight() const { return _height; }
 
 protected:
     /**

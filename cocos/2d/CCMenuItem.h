@@ -249,13 +249,13 @@ public:
      * @js setFontSize
      * @js NA
      */
-    void setFontSizeObj(int size);
+    void setFontSizeObj(float size);
     
     /** get font size .
      * @js getFontSize
      * @js NA
      */
-    int getFontSizeObj() const;
+    float getFontSizeObj() const;
     
     /**
      * Set the font name .
@@ -287,7 +287,7 @@ CC_CONSTRUCTOR_ACCESS:
     bool initWithString(const std::string& value, const ccMenuCallback& callback);
     
 protected:
-    int _fontSize;
+    float _fontSize;
     std::string _fontName;
 
 private:

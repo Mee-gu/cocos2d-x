@@ -279,7 +279,7 @@ void SkeletonNode::batchDrawAllSubBones()
 //    CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1, _batchedVeticesCount);
 #else
     unsigned short* indices = (unsigned short*)malloc(sizeof(unsigned short) * _batchedVeticesCount);
-    for (int i = 0; i < _batchedVeticesCount; i += 4)
+    for (unsigned short i = 0; i < _batchedVeticesCount; i += 4)
     {
         *indices++ = i;
         *indices++ = i + 1;

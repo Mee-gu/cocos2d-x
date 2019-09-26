@@ -162,14 +162,14 @@ Color3B TileMapAtlas::getTileAt(const Vec2& position) const
     return value;    
 }
 
-void TileMapAtlas::updateAtlasValueAt(const Vec2& pos, const Color3B& value, int index)
+void TileMapAtlas::updateAtlasValueAt(const Vec2& pos, const Color3B& value, size_t index)
 {
     CCASSERT( index >= 0 && index < _textureAtlas->getCapacity(), "updateAtlasValueAt: Invalid index");
 
     V3F_C4B_T2F_Quad* quad = &((_textureAtlas->getQuads())[index]);
 
-    int x = pos.x;
-    int y = pos.y;
+    float x = pos.x;
+    float y = pos.y;
     float row = (float) (value.r % _itemsPerRow);
     float col = (float) (value.r / _itemsPerRow);
 
@@ -220,7 +220,7 @@ void TileMapAtlas::updateAtlasValueAt(const Vec2& pos, const Color3B& value, int
     quad->bl.colors = color;
 
     _textureAtlas->setDirty(true);
-    ssize_t totalQuads = _textureAtlas->getTotalQuads();
+    auto totalQuads = _textureAtlas->getTotalQuads();
     if (index + 1 > totalQuads) {
         _textureAtlas->increaseTotalQuadsWith(index + 1 - totalQuads);
     }
@@ -243,7 +243,7 @@ void TileMapAtlas::updateAtlasValues()
 
                 if( value.r != 0 )
                 {
-                    this->updateAtlasValueAt(Vec2(x,y), value, total);
+                    this->updateAtlasValueAt(Vec2((float)x,(float)y), value, total);
 
                     std::string key = StringUtils::toString(x) + "," + StringUtils::toString(y);
                     _posToAtlasIndex[key] = total;

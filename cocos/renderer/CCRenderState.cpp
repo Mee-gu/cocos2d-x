@@ -198,7 +198,7 @@ static backend::BlendFactor parseBlend(const std::string& value)
 {
     // Convert the string to uppercase for comparison.
     std::string upper(value);
-    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
+    std::transform(upper.begin(), upper.end(), upper.begin(), [](char c) { return static_cast<char>(::toupper(c)); });
     if (upper == "ZERO")
         return backend::BlendFactor::ZERO;
     else if (upper == "ONE")
@@ -236,7 +236,7 @@ static DepthFunction parseDepthFunc(const std::string& value)
 {
     // Convert string to uppercase for comparison
     std::string upper(value);
-    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
+    std::transform(upper.begin(), upper.end(), upper.begin(), [](char c) { return static_cast<char>(::toupper(c)); });
     if (upper == "NEVER")
         return DepthFunction::NEVER;
     else if (upper == "LESS")
@@ -264,7 +264,7 @@ static CullFaceSide parseCullFaceSide(const std::string& value)
 {
     // Convert string to uppercase for comparison
     std::string upper(value);
-    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
+    std::transform(upper.begin(), upper.end(), upper.begin(), [](char c) { return static_cast<char>(::toupper(c)); });
     if (upper == "BACK")
         return CullFaceSide::BACK;
     else if (upper == "FRONT")
@@ -283,7 +283,7 @@ static FrontFace parseFrontFace(const std::string& value)
 {
     // Convert string to uppercase for comparison
     std::string upper(value);
-    std::transform(upper.begin(), upper.end(), upper.begin(), (int(*)(int))toupper);
+    std::transform(upper.begin(), upper.end(), upper.begin(), [](char c) { return static_cast<char>(::toupper(c)); });
     if (upper == "CCW")
         return FrontFace::COUNTER_CLOCK_WISE;
     else if (upper == "CW")

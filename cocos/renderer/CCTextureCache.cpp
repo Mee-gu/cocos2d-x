@@ -453,7 +453,7 @@ void TextureCache::parseNinePatchImage(cocos2d::Image *image, cocos2d::Texture2D
 {
     if (NinePatchImageParser::isNinePatchImage(path))
     {
-        Rect frameRect = Rect(0, 0, image->getWidth(), image->getHeight());
+        Rect frameRect = Rect(0, 0, (float)image->getWidth(), (float)image->getHeight());
         NinePatchImageParser parser(image, frameRect, false);
         texture->addSpriteFrameCapInset(nullptr, parser.parseCapInset());
     }

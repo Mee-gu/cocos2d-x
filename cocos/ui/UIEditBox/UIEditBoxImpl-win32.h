@@ -47,9 +47,9 @@ namespace ui {
 
         virtual bool isEditing() override;
         virtual void createNativeControl(const Rect& frame) override;
-        virtual void setNativeFont(const char* pFontName, int fontSize) override;
+        virtual void setNativeFont(const char* pFontName, float fontSize) override;
         virtual void setNativeFontColor(const Color4B& color) override;
-        virtual void setNativePlaceholderFont(const char* pFontName, int fontSize) override;
+        virtual void setNativePlaceholderFont(const char* pFontName, float fontSize) override;
         virtual void setNativePlaceholderFontColor(const Color4B& color) override;
         virtual void setNativeInputMode(EditBox::InputMode inputMode) override;
         virtual void setNativeInputFlag(EditBox::InputFlag inputFlag) override;

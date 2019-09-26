@@ -44,8 +44,8 @@ HttpClientTest::HttpClientTest()
     const int MARGIN = 40;
     const int SPACE = 35;
 
-    const int LEFT = winSize.width / 4;
-    const int RIGHT = winSize.width / 4 * 3;
+    const float LEFT = winSize.width / 4;
+    const float RIGHT = winSize.width / 4 * 3;
     
     auto menuRequest = Menu::create();
     menuRequest->setPosition(Vec2::ZERO);
@@ -411,7 +411,7 @@ HttpClientClearRequestsTest::HttpClientClearRequestsTest()
     const int MARGIN = 40;
     const int SPACE = 35;
     
-    const int CENTER = winSize.width / 2;
+    const float CENTER = winSize.width / 2;
     
     auto menuRequest = Menu::create();
     menuRequest->setPosition(Vec2::ZERO);

@@ -1285,20 +1285,20 @@ cocos2d::Color3B RichText::color3BWithString(const std::string& color)
     if (color.length() == 4) {
         int r, g, b;
         sscanf(color.c_str(), "%*c%1x%1x%1x", &r, &g, &b);
-        r += r * 16;
-        g += g * 16;
-        b += b * 16;
-        return Color3B(r, g, b);
+        uint8_t red = static_cast<uint8_t>(r) * 16;
+        uint8_t green = static_cast<uint8_t>(g) * 16;
+        uint8_t blue = static_cast<uint8_t>(b) * 16;
+        return Color3B(red, green, blue);
     }
     else if (color.length() == 7) {
         int r, g, b;
         sscanf(color.c_str(), "%*c%2x%2x%2x", &r, &g, &b);
-        return Color3B(r, g, b);
+        return Color3B(static_cast<uint8_t>(r), static_cast<uint8_t>(g), static_cast<uint8_t>(b));
     }
     else if (color.length() == 9) {
         int r, g, b, a;
         sscanf(color.c_str(), "%*c%2x%2x%2x%2x", &r, &g, &b, &a);
-        return Color3B(r, g, b);
+        return Color3B(static_cast<uint8_t>(r), static_cast<uint8_t>(g), static_cast<uint8_t>(b));
     }
     return Color3B::WHITE;
 }
@@ -1389,7 +1389,7 @@ void RichText::formatText()
                             label->addComponent(ListenerComponent::create(label, elmtText->_url,
                                                                           std::bind(&RichText::openUrl, this, std::placeholders::_1)));
                         if (elmtText->_flags & RichElementText::OUTLINE_FLAG) {
-                            label->enableOutline(Color4B(elmtText->_outlineColor), elmtText->_outlineSize);
+                            label->enableOutline(Color4B(elmtText->_outlineColor), (float)elmtText->_outlineSize);
                         }
                         if (elmtText->_flags & RichElementText::SHADOW_FLAG) {
                             label->enableShadow(Color4B(elmtText->_shadowColor),
@@ -1687,7 +1687,7 @@ void RichText::handleTextRenderer(const std::string& text, const std::string& fo
                                                                      url,
                                                                      std::bind(&RichText::openUrl, this, std::placeholders::_1)));
             if (flags & RichElementText::OUTLINE_FLAG)
-                textRenderer->enableOutline(Color4B(outlineColor), outlineSize);
+                textRenderer->enableOutline(Color4B(outlineColor), (float)outlineSize);
             if (flags & RichElementText::SHADOW_FLAG)
                 textRenderer->enableShadow(Color4B(shadowColor), shadowOffset, shadowBlurRadius);
             if (flags & RichElementText::GLOW_FLAG)

@@ -75,7 +75,7 @@ bool PUTextureAnimatorTranslator::translateChildProperty( PUScriptCompiler* comp
             unsigned int val = 0;
             if(getUInt(*prop->values.front(), &val))
             {
-                affector->setTextureCoordsStart(val);
+                affector->setTextureCoordsStart((unsigned short)val);
                 return true;
             }
         }
@@ -88,7 +88,7 @@ bool PUTextureAnimatorTranslator::translateChildProperty( PUScriptCompiler* comp
             unsigned int val = 0;
             if(getUInt(*prop->values.front(), &val))
             {
-                affector->setTextureCoordsStart(val);
+                affector->setTextureCoordsStart((unsigned short)val);
                 return true;
             }
         }
@@ -101,7 +101,7 @@ bool PUTextureAnimatorTranslator::translateChildProperty( PUScriptCompiler* comp
             unsigned int val = 0;
             if(getUInt(*prop->values.front(), &val))
             {
-                affector->setTextureCoordsEnd(val);
+                affector->setTextureCoordsEnd((unsigned short)val);
                 return true;
             }
         }
@@ -114,7 +114,7 @@ bool PUTextureAnimatorTranslator::translateChildProperty( PUScriptCompiler* comp
             unsigned int val = 0;
             if(getUInt(*prop->values.front(), &val))
             {
-                affector->setTextureCoordsEnd(val);
+                affector->setTextureCoordsEnd((unsigned short)val);
                 return true;
             }
         }

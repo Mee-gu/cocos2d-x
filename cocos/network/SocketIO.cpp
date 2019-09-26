@@ -804,7 +804,7 @@ void SIOClientImpl::onMessage(WebSocket* /*ws*/, const WebSocket::Data& data)
             pos = payload.find(':');
             if (pos != std::string::npos)
             {
-                msgid = atoi(payload.substr(0, pos + 1).c_str());
+                msgid = static_cast<char>(atoi(payload.substr(0, pos + 1).c_str()));
             }
             payload.erase(0, pos + 1);
 

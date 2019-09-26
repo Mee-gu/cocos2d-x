@@ -302,7 +302,7 @@ namespace ui {
         * get tab header's height
         * @return header's height
         */
-        int   getHeaderHeight() const { return _headerHeight; }
+        float   getHeaderHeight() const { return _headerHeight; }
 
         /**
         * ignore the textures' size in header, scale them with _headerWidth and _headerHeight
@@ -371,8 +371,8 @@ namespace ui {
 
         TabItem*    _selectedItem;
 
-        int         _headerHeight;
-        int         _headerWidth;
+        float         _headerHeight;
+        float         _headerWidth;
         Dock        _headerDockPlace;
         Vec2        _containerPosition;
         Size        _containerSize;

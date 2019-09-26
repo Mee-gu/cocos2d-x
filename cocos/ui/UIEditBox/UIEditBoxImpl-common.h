@@ -54,9 +54,9 @@ public:
 
     virtual bool initWithSize(const Size& size) override;
 
-    virtual void setFont(const char* pFontName, int fontSize) override;
+    virtual void setFont(const char* pFontName, float fontSize) override;
     virtual void setFontColor(const Color4B& color) override;
-    virtual void setPlaceholderFont(const char* pFontName, int fontSize) override;
+    virtual void setPlaceholderFont(const char* pFontName, float fontSize) override;
     virtual void setPlaceholderFontColor(const Color4B& color) override;
     virtual void setInputMode(EditBox::InputMode inputMode) override;
     virtual void setInputFlag(EditBox::InputFlag inputFlag) override;
@@ -73,11 +73,11 @@ public:
     virtual const char* getPlaceHolder() override { return _placeHolder.c_str(); }
 
     virtual const char* getFontName() override { return _fontName.c_str(); }
-    virtual int getFontSize() override { return _fontSize; }
+    virtual float getFontSize() override { return _fontSize; }
     virtual const Color4B& getFontColor() override { return _colText; }
 
     virtual const char* getPlaceholderFontName() override { return _placeholderFontName.c_str(); }
-    virtual int getPlaceholderFontSize() override { return _placeholderFontSize; }
+    virtual float getPlaceholderFontSize() override { return _placeholderFontSize; }
     virtual const Color4B& getPlaceholderFontColor() override { return _colPlaceHolder; }
 
     virtual EditBox::InputMode getInputMode() override { return _editBoxInputMode; }
@@ -113,9 +113,9 @@ public:
 
     virtual bool isEditing() override = 0;
     virtual void createNativeControl(const Rect& frame) = 0;
-    virtual void setNativeFont(const char* pFontName, int fontSize) = 0;
+    virtual void setNativeFont(const char* pFontName, float fontSize) = 0;
     virtual void setNativeFontColor(const Color4B& color) = 0;
-    virtual void setNativePlaceholderFont(const char* pFontName, int fontSize) = 0;
+    virtual void setNativePlaceholderFont(const char* pFontName, float fontSize) = 0;
     virtual void setNativePlaceholderFontColor(const Color4B& color) = 0;
     virtual void setNativeInputMode(EditBox::InputMode inputMode) = 0;
     virtual void setNativeInputFlag(EditBox::InputFlag inputFlag) = 0;
@@ -151,8 +151,8 @@ protected:
     std::string _fontName;
     std::string _placeholderFontName;
 
-    int _fontSize;
-    int _placeholderFontSize;
+    float _fontSize;
+    float _placeholderFontSize;
 
     Color4B _colText;
     Color4B _colPlaceHolder;

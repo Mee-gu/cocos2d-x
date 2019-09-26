@@ -88,7 +88,7 @@ public:
      * @param percentage A percentage in float.
      * @return A LoadingBar instance.
      */
-    static LoadingBar* create(const std::string& textureName, float percentage = 0);
+    static LoadingBar* create(const std::string& textureName, int percentage = 0);
     
     
     /**
@@ -101,7 +101,7 @@ public:
      */
     static LoadingBar* create(const std::string& textureName,
                               TextureResType texType,
-                              float percentage = 0);
+                              int percentage = 0);
     
     /**
      * Change the progress direction of LoadingBar.
@@ -132,14 +132,14 @@ public:
      *
      * @param percent   Percent value from 1 to 100.
      */
-    void setPercent(float percent);
+    void setPercent(int percent);
     
     /**
      * Get the progress value of LoadingBar.
      *
      * @return Progress value from 1 to 100.
      */
-    float getPercent() const;
+    int getPercent() const;
     
     /**
      * Enable scale9 renderer.
@@ -195,7 +195,7 @@ protected:
     virtual void copySpecialProperties(Widget* model) override;
 protected:
     Direction _direction;
-    float _percent;
+    int _percent;
     float _totalLength;
     Scale9Sprite* _barRenderer;
     TextureResType _renderBarTexType;

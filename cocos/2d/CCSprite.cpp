@@ -772,7 +772,7 @@ void Sprite::setCenterRectNormalized(const cocos2d::Rect &rectTopLeft)
                 _trianglesIndex = (unsigned short*) malloc(sizeof(*_trianglesIndex) * 6 * 9);
 
                 // populate indices in CCW direction
-                for (int i=0; i<9; ++i)
+                for (unsigned short i=0; i<9; ++i)
                 {
                     _trianglesIndex[i * 6 + 0] = (i * 4 / 3) + 4;
                     _trianglesIndex[i * 6 + 1] = (i * 4 / 3) + 0;
@@ -1537,9 +1537,10 @@ void Sprite::updateColor()
     // special opacity for premultiplied textures
     if (_opacityModifyRGB)
     {
-        color4.r *= _displayedOpacity / 255.0f;
-        color4.g *= _displayedOpacity / 255.0f;
-        color4.b *= _displayedOpacity / 255.0f;
+        float opacity = _displayedOpacity / 255.0f;
+        color4.r = static_cast<uint8_t>(color4.r * opacity);
+        color4.g = static_cast<uint8_t>(color4.g * opacity);
+        color4.b = static_cast<uint8_t>(color4.b * opacity);
     }
 
     for (unsigned int i = 0; i < _polyInfo.triangles.vertCount; i++)

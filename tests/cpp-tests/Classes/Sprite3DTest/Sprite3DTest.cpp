@@ -295,16 +295,16 @@ void Sprite3DUVAnimationTest::cylinderUpdate(float dt)
 {
     //callback function to update cylinder's texcoord
     static bool fade_in = true;
-    _cylinder_texture_offset += 0.3*dt;
+    _cylinder_texture_offset += 0.3f*dt;
     _cylinder_texture_offset = (_cylinder_texture_offset > 1) ? 0 : _cylinder_texture_offset;
     if (fade_in)
     {
-        _shining_duration += 0.5 * dt;
+        _shining_duration += 0.5f * dt;
         if (_shining_duration > 1) fade_in = false;
     }
     else
     {
-        _shining_duration -= 0.5 * dt;
+        _shining_duration -= 0.5f * dt;
         if (_shining_duration < 0) fade_in = true;
     }
 
@@ -958,7 +958,7 @@ void Sprite3DWithSkinTest::addNewSpriteWithCoords(Vec2 p)
         }
         else if (rand2 % 3 == 2)
         {
-            speed = animate->getSpeed() - 0.5 * CCRANDOM_0_1();
+            speed = animate->getSpeed() - 0.5f * CCRANDOM_0_1();
         }
         animate->setSpeed(inverse ? -speed : speed);
         animate->setTag(110);
@@ -1075,7 +1075,7 @@ void Sprite3DWithSkinOutlineTest::addNewSpriteWithCoords(Vec2 p)
         }
         else if (rand2 % 3 == 2)
         {
-            speed = animate->getSpeed() - 0.5 * CCRANDOM_0_1();
+            speed = animate->getSpeed() - 0.5f * CCRANDOM_0_1();
         }
         animate->setSpeed(inverse ? -speed : speed);
 
@@ -1592,7 +1592,7 @@ void Sprite3DWithOBBPerformanceTest::addOBBCallback(Ref* sender)
     addOBBWithCount(10);
 }
 
-void Sprite3DWithOBBPerformanceTest::addOBBWithCount(float value)
+void Sprite3DWithOBBPerformanceTest::addOBBWithCount(int value)
 {
     for (int i = 0; i < value; i++)
     {
@@ -1610,7 +1610,7 @@ void Sprite3DWithOBBPerformanceTest::delOBBCallback(Ref* sender)
     delOBBWithCount(10);
 }
 
-void Sprite3DWithOBBPerformanceTest::delOBBWithCount(float value)
+void Sprite3DWithOBBPerformanceTest::delOBBWithCount(int value)
 {
     if (_obb.size() >= 10)
     {
@@ -2508,7 +2508,7 @@ void MotionStreak3DTest::update(float delta)
 {
     static float t = 0;
     t += delta;
-    float angle = t * M_PI;
+    float angle = t * (float)M_PI;
     float r = 20.f;
 
     _sprite->setPosition3D(Vec3(r * cosf(angle), 0, r * sinf(angle)));

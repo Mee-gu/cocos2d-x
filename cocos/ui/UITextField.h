@@ -279,7 +279,7 @@ public:
      */
     static TextField* create(const std::string& placeholder,
                              const std::string& fontName,
-                             int fontSize);
+                             float fontSize);
     
     /**
      * @brief Set the touch size
@@ -359,14 +359,14 @@ public:
      *
      * @param size The integer font size.
      */
-    void setFontSize(int size);
+    void setFontSize(float size);
     
     /**
      * @brief Query the font size.
      *
      * @return The integer font size.
      */
-    int getFontSize()const;
+    float getFontSize()const;
     
     /**
      * @brief Change the font name of TextField.
@@ -648,7 +648,7 @@ private:
     };
 
     std::string _fontName;
-    int _fontSize;
+    float _fontSize;
     FontType _fontType;
 };
 

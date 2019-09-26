@@ -113,7 +113,7 @@ void Particle3DQuadRender::render(Renderer* renderer, const Mat4 &transform, Par
     Vec3 backward(cameraMat.m[8], cameraMat.m[9], cameraMat.m[10]);
     
     Vec3 position; //particle position
-    int vertexindex = 0;
+    unsigned short vertexindex = 0;
     int index = 0;
     for (auto iter : activeParticleList)
     {

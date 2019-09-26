@@ -110,7 +110,7 @@ void EditBoxImplAndroid::createNativeControl(const Rect& frame)
     s_allEditBoxes[_editBoxIndex] = this;
 }
 
-void EditBoxImplAndroid::setNativeFont(const char* pFontName, int fontSize)
+void EditBoxImplAndroid::setNativeFont(const char* pFontName, float fontSize)
 {
     auto director = cocos2d::Director::getInstance();
     auto glView = director->getOpenGLView();
@@ -134,7 +134,7 @@ void EditBoxImplAndroid::setNativeFontColor(const Color4B& color)
                                     (int)color.r, (int)color.g, (int)color.b, (int)color.a);
 }
 
-void EditBoxImplAndroid::setNativePlaceholderFont(const char* pFontName, int fontSize)
+void EditBoxImplAndroid::setNativePlaceholderFont(const char* pFontName, float fontSize)
 {
     CCLOG("Warning! You can't change Android Hint fontName and fontSize");
 }

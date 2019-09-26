@@ -353,7 +353,7 @@ bool MenuItemFont::initWithString(const std::string& value, const ccMenuCallback
     CCASSERT( !value.empty(), "Value length must be greater than 0");
 
     _fontName = _globalFontName;
-    _fontSize = _globalFontSize;
+    _fontSize = (float)_globalFontSize;
 
     Label *label = Label::createWithSystemFont(value, _fontName, _fontSize);
     if (MenuItemLabel::initWithLabel(label, callback))
@@ -363,14 +363,14 @@ bool MenuItemFont::initWithString(const std::string& value, const ccMenuCallback
     return true;
 }
 
-void MenuItemFont::setFontSizeObj(int s)
+void MenuItemFont::setFontSizeObj(float s)
 {
     _fontSize = s;
     dynamic_cast<Label*>(_label)->setSystemFontSize(_fontSize);
     this->setContentSize(dynamic_cast<Label*>(_label)->getContentSize());
 }
 
-int MenuItemFont::getFontSizeObj() const
+float MenuItemFont::getFontSizeObj() const
 {
     return _fontSize;
 }

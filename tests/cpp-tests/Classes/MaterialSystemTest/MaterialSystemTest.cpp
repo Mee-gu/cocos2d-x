@@ -403,7 +403,7 @@ void Material_parsePerformance::onEnter()
 {
     MaterialSystemBaseTest::onEnter();
     
-    _maxParsingCoumt = 5e3;
+    _maxParsingCoumt = (unsigned int)5e3;
     
     auto screenSize = Director::getInstance()->getWinSize();
     
@@ -430,7 +430,7 @@ void Material_parsePerformance::onEnter()
             this->scheduleOnce(
                                [this, p, slider](float)
                                {
-                                   this->parsingTesting(p * _maxParsingCoumt);
+                                   this->parsingTesting((unsigned int)(p * _maxParsingCoumt));
                                    slider->setTouchEnabled(true);
                                },
                                1.0, "schedule test parsing");

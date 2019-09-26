@@ -215,15 +215,13 @@ void ChipmunkTest::reset(Ref* sender)
 void ChipmunkTest::addNewSpriteAtPosition(cocos2d::Vec2 pos)
 {
 #if CC_ENABLE_CHIPMUNK_INTEGRATION    
-    int posx, posy;
-
     auto parent = getChildByTag(kTagParentNode);
 
-    posx = CCRANDOM_0_1() * 200.0f;
-    posy = CCRANDOM_0_1() * 200.0f;
+    float posx = CCRANDOM_0_1() * 200.0f;
+    float posy = CCRANDOM_0_1() * 200.0f;
 
-    posx = (posx % 4) * 85;
-    posy = (posy % 3) * 121;
+    posx = ((int)posx % 4) * 85.0f;
+    posy = ((int)posy % 3) * 121.0f;
 
 
     int num = 4;

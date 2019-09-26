@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_backend_auto.hpp"
 #include "renderer/backend/Types.h"
 #include "renderer/backend/ProgramState.h"
@@ -1709,7 +1711,7 @@ int lua_cocos2dx_backend_TextureBackend_updateTextureDescriptor(lua_State* tolua
     {
         cocos2d::backend::TextureDescriptor arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR TextureDescriptor
+        //#pragma warning NO CONVERSION TO NATIVE FOR TextureDescriptor
 		ok = false;
         if(!ok)
         {
@@ -2000,7 +2002,7 @@ int lua_cocos2dx_backend_Texture2DBackend_getHeight(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_backend_Texture2DBackend_getHeight'", nullptr);
             return 0;
         }
-        unsigned int ret = cobj->getHeight();
+        int ret = cobj->getHeight();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -2047,7 +2049,7 @@ int lua_cocos2dx_backend_Texture2DBackend_getWidth(lua_State* tolua_S)
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_backend_Texture2DBackend_getWidth'", nullptr);
             return 0;
         }
-        unsigned int ret = cobj->getWidth();
+        int ret = cobj->getWidth();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -2090,16 +2092,16 @@ int lua_cocos2dx_backend_Texture2DBackend_updateData(lua_State* tolua_S)
     if (argc == 4) 
     {
         unsigned char* arg0;
-        unsigned int arg1;
-        unsigned int arg2;
+        int arg1;
+        int arg2;
         unsigned int arg3;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
+        //#pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
 		ok = false;
 
-        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "ccb.Texture2DBackend:updateData");
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccb.Texture2DBackend:updateData");
 
-        ok &= luaval_to_uint32(tolua_S, 4,&arg2, "ccb.Texture2DBackend:updateData");
+        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "ccb.Texture2DBackend:updateData");
 
         ok &= luaval_to_uint32(tolua_S, 5,&arg3, "ccb.Texture2DBackend:updateData");
         if(!ok)
@@ -2150,17 +2152,17 @@ int lua_cocos2dx_backend_Texture2DBackend_updateCompressedData(lua_State* tolua_
     if (argc == 5) 
     {
         unsigned char* arg0;
-        unsigned int arg1;
-        unsigned int arg2;
+        int arg1;
+        int arg2;
         unsigned int arg3;
         unsigned int arg4;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
+        //#pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
 		ok = false;
 
-        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "ccb.Texture2DBackend:updateCompressedData");
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccb.Texture2DBackend:updateCompressedData");
 
-        ok &= luaval_to_uint32(tolua_S, 4,&arg2, "ccb.Texture2DBackend:updateCompressedData");
+        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "ccb.Texture2DBackend:updateCompressedData");
 
         ok &= luaval_to_uint32(tolua_S, 5,&arg3, "ccb.Texture2DBackend:updateCompressedData");
 
@@ -2212,24 +2214,24 @@ int lua_cocos2dx_backend_Texture2DBackend_updateSubData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 6) 
     {
-        unsigned int arg0;
-        unsigned int arg1;
-        unsigned int arg2;
-        unsigned int arg3;
+        int arg0;
+        int arg1;
+        int arg2;
+        int arg3;
         unsigned int arg4;
         unsigned char* arg5;
 
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0, "ccb.Texture2DBackend:updateSubData");
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccb.Texture2DBackend:updateSubData");
 
-        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "ccb.Texture2DBackend:updateSubData");
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccb.Texture2DBackend:updateSubData");
 
-        ok &= luaval_to_uint32(tolua_S, 4,&arg2, "ccb.Texture2DBackend:updateSubData");
+        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "ccb.Texture2DBackend:updateSubData");
 
-        ok &= luaval_to_uint32(tolua_S, 5,&arg3, "ccb.Texture2DBackend:updateSubData");
+        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3, "ccb.Texture2DBackend:updateSubData");
 
         ok &= luaval_to_uint32(tolua_S, 6,&arg4, "ccb.Texture2DBackend:updateSubData");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
+        //#pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
 		ok = false;
         if(!ok)
         {
@@ -2278,27 +2280,27 @@ int lua_cocos2dx_backend_Texture2DBackend_updateCompressedSubData(lua_State* tol
     argc = lua_gettop(tolua_S)-1;
     if (argc == 7) 
     {
-        unsigned int arg0;
-        unsigned int arg1;
-        unsigned int arg2;
-        unsigned int arg3;
+        int arg0;
+        int arg1;
+        int arg2;
+        int arg3;
         unsigned int arg4;
         unsigned int arg5;
         unsigned char* arg6;
 
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0, "ccb.Texture2DBackend:updateCompressedSubData");
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccb.Texture2DBackend:updateCompressedSubData");
 
-        ok &= luaval_to_uint32(tolua_S, 3,&arg1, "ccb.Texture2DBackend:updateCompressedSubData");
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "ccb.Texture2DBackend:updateCompressedSubData");
 
-        ok &= luaval_to_uint32(tolua_S, 4,&arg2, "ccb.Texture2DBackend:updateCompressedSubData");
+        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2, "ccb.Texture2DBackend:updateCompressedSubData");
 
-        ok &= luaval_to_uint32(tolua_S, 5,&arg3, "ccb.Texture2DBackend:updateCompressedSubData");
+        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3, "ccb.Texture2DBackend:updateCompressedSubData");
 
         ok &= luaval_to_uint32(tolua_S, 6,&arg4, "ccb.Texture2DBackend:updateCompressedSubData");
 
         ok &= luaval_to_uint32(tolua_S, 7,&arg5, "ccb.Texture2DBackend:updateCompressedSubData");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
+        //#pragma warning NO CONVERSION TO NATIVE FOR unsigned char*
 		ok = false;
         if(!ok)
         {
@@ -2377,7 +2379,7 @@ int lua_cocos2dx_backend_TextureCubemapBackend_updateFaceData(lua_State* tolua_S
 
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "ccb.TextureCubemapBackend:updateFaceData");
 
-        #pragma warning NO CONVERSION TO NATIVE FOR void*
+        //#pragma warning NO CONVERSION TO NATIVE FOR void*
 		ok = false;
         if(!ok)
         {
@@ -2455,3 +2457,4 @@ TOLUA_API int register_all_cocos2dx_backend(lua_State* tolua_S)
 	return 1;
 }
 
+#pragma warning(pop)

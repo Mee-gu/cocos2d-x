@@ -865,7 +865,7 @@ bool luaval_to_fontdefinition(lua_State* L, int lo, FontDefinition* outValue , c
     {
         // default values
         const char *            defautlFontName         = "Arial";
-        const int               defaultFontSize         = 32;
+        const float             defaultFontSize         = 32.0f;
         TextHAlignment          defaultTextAlignment    = TextHAlignment::LEFT;
         TextVAlignment          defaultTextVAlignment   = TextVAlignment::TOP;
 
@@ -883,7 +883,7 @@ bool luaval_to_fontdefinition(lua_State* L, int lo, FontDefinition* outValue , c
 
         lua_pushstring(L, "fontSize");
         lua_gettable(L,lo);
-        outValue->_fontSize = lua_isnil(L,-1) ? defaultFontSize : (int)lua_tonumber(L,-1);
+        outValue->_fontSize = lua_isnil(L,-1) ? defaultFontSize : (float)lua_tonumber(L,-1);
         lua_pop(L,1);
 
         lua_pushstring(L, "fontAlignmentH");
@@ -1031,7 +1031,7 @@ bool luaval_to_ttfconfig(lua_State* L,int lo, cocos2d::TTFConfig* outValue, cons
 
         lua_pushstring(L, "outlineSize");
         lua_gettable(L, lo);
-        outValue->outlineSize = lua_isnumber(L, -1)?(int)lua_tointeger(L, -1) : 0;
+        outValue->outlineSize = lua_isnumber(L, -1)?(float)lua_tonumber(L, -1) : 0;
         lua_pop(L, 1);
 
         return true;

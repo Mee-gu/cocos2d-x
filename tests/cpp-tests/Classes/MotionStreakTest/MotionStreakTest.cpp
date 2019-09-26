@@ -166,8 +166,8 @@ void Issue1358::onEnter()
 void Issue1358::update(float dt)
 {
     _angle += 1.0f;
-    _streak->setPosition(Vec2(_center.x + cosf(_angle/180 * M_PI)*_radius,
-                            _center.y + sinf(_angle/ 180 * M_PI)*_radius));
+    _streak->setPosition(Vec2(_center.x + cosf(_angle/180 * (float)M_PI)*_radius,
+                            _center.y + sinf(_angle/ 180 * (float)M_PI)*_radius));
 }
 
 std::string Issue1358::title() const
@@ -208,7 +208,7 @@ void Issue12226::onEnter()
 
     outer->setUserData(_streak);
 
-    const uint32_t length = (radius * 0.95);
+    const uint32_t length = (uint32_t)(radius * 0.95f);
 
     std::function<void(float)> updateMotionStreak = [=](float dt) {
 

@@ -67,7 +67,7 @@ public:
      * @param format In Points and a pixel format( only RGB and RGBA formats are valid ).
      * @param depthStencilFormat The depthStencil format.
      */
-    static RenderTexture * create(int w ,int h, backend::PixelFormat format, backend::PixelFormat depthStencilFormat);
+    static RenderTexture * create(float w ,float h, backend::PixelFormat format, backend::PixelFormat depthStencilFormat);
 
     /** Creates a RenderTexture object with width and height in Points and a pixel format, only RGB and RGBA formats are valid. 
      *
@@ -75,14 +75,14 @@ public:
      * @param h The RenderTexture object height.
      * @param format In Points and a pixel format( only RGB and RGBA formats are valid ).
      */
-    static RenderTexture * create(int w, int h, backend::PixelFormat format);
+    static RenderTexture * create(float w, float h, backend::PixelFormat format);
 
     /** Creates a RenderTexture object with width and height in Points, pixel format is RGBA8888. 
      *
      * @param w The RenderTexture object width.
      * @param h The RenderTexture object height.
      */
-    static RenderTexture * create(int w, int h);
+    static RenderTexture * create(float w, float h);
 
     // Overrides
     virtual void visit(Renderer *renderer, const Mat4 &parentTransform, uint32_t parentFlags) override;
@@ -328,7 +328,7 @@ public:
      * @param format In Points and a pixel format( only RGB and RGBA formats are valid ).
      * @return If succeed, it will return true.
      */
-    bool initWithWidthAndHeight(int w, int h, backend::PixelFormat format);
+    bool initWithWidthAndHeight(float w, float h, backend::PixelFormat format);
     /** Initializes a RenderTexture object with width and height in Points and a pixel format( only RGB and RGBA formats are valid ) and depthStencil format. 
      *
      * @param w The RenderTexture object width.
@@ -337,7 +337,7 @@ public:
      * @param depthStencilFormat The depthStencil format.
      * @return If succeed, it will return true.
      */
-    bool initWithWidthAndHeight(int w, int h, backend::PixelFormat format, backend::PixelFormat depthStencilFormat);
+    bool initWithWidthAndHeight(float w, float h, backend::PixelFormat format, backend::PixelFormat depthStencilFormat);
 
 protected:
     virtual void beginWithClear(float r, float g, float b, float a, float depthValue, int stencilValue, ClearFlag flags);

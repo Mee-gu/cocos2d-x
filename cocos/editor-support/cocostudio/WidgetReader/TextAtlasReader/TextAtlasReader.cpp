@@ -88,8 +88,8 @@ namespace cocostudio
         std::string charMapFileName;
         std::string stringValue;
         std::string startCharMap;
-        float itemWidth;
-        float itemHeight;
+        int itemWidth = 0;
+        int itemHeight = 0;
         for (int i = 0; i < cocoNode->GetChildNum(); ++i) {
             std::string key = stChildArray[i].GetName(cocoLoader);
             std::string value = stChildArray[i].GetValue(cocoLoader);
@@ -114,9 +114,9 @@ namespace cocostudio
                 type  = imageFileNameType;
                 
             }else if(key == P_ItemWidth){
-                itemWidth = valueToFloat(value);
+                itemWidth = valueToInt(value);
             }else if(key == P_ItemHeight){
-                itemHeight = valueToFloat(value);
+                itemHeight = valueToInt(value);
             }else if(key == P_StartCharMap){
                 startCharMap = value;
             }

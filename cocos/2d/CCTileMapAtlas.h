@@ -102,7 +102,7 @@ public:
 protected:
     void loadTGAfile(const std::string& file);
     void calculateItemsToRender();
-    void updateAtlasValueAt(const Vec2& pos, const Color3B& value, int index);
+    void updateAtlasValueAt(const Vec2& pos, const Color3B& value, size_t index);
     void updateAtlasValues();
 
 

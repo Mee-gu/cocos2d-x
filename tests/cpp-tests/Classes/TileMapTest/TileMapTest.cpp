@@ -917,7 +917,7 @@ TMXIsoZorder::TMXIsoZorder()
     map->addChild(_tamara, (int)map->getChildren().size() );
     
     _tamara->retain();
-    int mapWidth = map->getMapSize().width * map->getTileSize().width;
+    auto mapWidth = map->getMapSize().width * map->getTileSize().width;
     _tamara->setPosition(CC_POINT_PIXELS_TO_POINTS(Vec2( mapWidth/2.0f,0.0f)));
     _tamara->setScale(0.5);
     _tamara->setAnchorPoint(Vec2(0.5f,0.0f));
@@ -1014,7 +1014,7 @@ void TMXOrthoZorder::repositionSprite(float dt)
     // if tamara < 243,z=2
 
     // -10: customization for this particular sample
-    int newZ = 4 - ( (p.y-10) / 81);
+    int newZ = 4 - ( ((int)p.y-10) / 81);
     newZ = std::max(newZ,0);
 
     map->reorderChild(_tamara, newZ);
@@ -1555,7 +1555,7 @@ TMXHexOddXTest::TMXHexOddXTest()
     auto floor = map->getLayer("Ground");
     for (auto x = 0; x < map->getMapSize().width; x++) {
         for (auto y = 0; y < map->getMapSize().height; y++) {
-            Vec2 p(x, y);
+            Vec2 p((float)x, (float)y);
             floor->getTileAt(p);
         }
     }
@@ -1586,7 +1586,7 @@ TMXHexOddYTest::TMXHexOddYTest()
     auto floor = map->getLayer("Ground");
     for (auto x = 0; x < map->getMapSize().width; x++) {
         for (auto y = 0; y < map->getMapSize().height; y++) {
-            Vec2 p(x, y);
+            Vec2 p((float)x, (float)y);
             floor->getTileAt(p);
         }
     }
@@ -1617,7 +1617,7 @@ TMXHexEvenXTest::TMXHexEvenXTest()
     auto floor = map->getLayer("Ground");
     for (auto x = 0; x < map->getMapSize().width; x++) {
         for (auto y = 0; y < map->getMapSize().height; y++) {
-            Vec2 p(x, y);
+            Vec2 p((float)x, (float)y);
             floor->getTileAt(p);
         }
     }
@@ -1648,7 +1648,7 @@ TMXHexEvenYTest::TMXHexEvenYTest()
     auto floor = map->getLayer("Ground");
     for (auto x = 0; x < map->getMapSize().width; x++) {
         for (auto y = 0; y < map->getMapSize().height; y++) {
-            Vec2 p(x, y);
+            Vec2 p((float)x, (float)y);
             floor->getTileAt(p);
         }
     }
@@ -1722,7 +1722,7 @@ Issue16512Test::Issue16512Test()
     auto floor = map->getLayer("Floor");
     for (auto x = 0; x < map->getMapSize().width; x++) {
         for (auto y = 0; y < map->getMapSize().height; y++) {
-            Vec2 p(x, y);
+            Vec2 p((float)x, (float)y);
             floor->getTileAt(p);
         }
     }

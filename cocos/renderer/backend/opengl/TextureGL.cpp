@@ -157,7 +157,7 @@ void Texture2DGL::updateSamplerDescriptor(const SamplerDescriptor &sampler) {
     }
 }
 
-void Texture2DGL::updateData(uint8_t* data, uint32_t width , uint32_t height, uint32_t level)
+void Texture2DGL::updateData(uint8_t* data, int width , int height, unsigned int level)
 {
     //Set the row align only when mipmapsNum == 1 and the data is uncompressed
     auto mipmapEnalbed = isMipmapEnabled(_textureInfo.minFilterGL) || isMipmapEnabled(_textureInfo.magFilterGL);
@@ -210,8 +210,8 @@ void Texture2DGL::updateData(uint8_t* data, uint32_t width , uint32_t height, ui
         _hasMipmaps = true;
 }
 
-void Texture2DGL::updateCompressedData(uint8_t *data, uint32_t width, uint32_t height,
-                                       uint32_t dataLen, uint32_t level)
+void Texture2DGL::updateCompressedData(uint8_t *data, int width, int height,
+                                       size_t dataLen, unsigned int level)
 {
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
@@ -237,7 +237,7 @@ void Texture2DGL::updateCompressedData(uint8_t *data, uint32_t width, uint32_t h
         _hasMipmaps = true;
 }
 
-void Texture2DGL::updateSubData(uint32_t xoffset, uint32_t yoffset, uint32_t width, uint32_t height, uint32_t level, uint8_t* data)
+void Texture2DGL::updateSubData(int xoffset, int yoffset, int width, int height, unsigned int level, uint8_t* data)
 {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _textureInfo.texture);
@@ -257,8 +257,8 @@ void Texture2DGL::updateSubData(uint32_t xoffset, uint32_t yoffset, uint32_t wid
         _hasMipmaps = true;
 }
 
-void Texture2DGL::updateCompressedSubData(uint32_t xoffset, uint32_t yoffset, uint32_t width,
-                                          uint32_t height, uint32_t dataLen, uint32_t level,
+void Texture2DGL::updateCompressedSubData(int xoffset, int yoffset, int width,
+    int height, size_t dataLen, unsigned int level,
                                           uint8_t *data)
 {
     glActiveTexture(GL_TEXTURE0);

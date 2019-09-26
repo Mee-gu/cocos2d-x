@@ -746,9 +746,9 @@ void UIButtonTestZoomScale::sliderEvent(Ref *pSender, Slider::EventType type)
     if (type == Slider::EventType::ON_PERCENTAGE_CHANGED)
     {
         Slider* slider = dynamic_cast<Slider*>(pSender);
-        int percent = slider->getPercent();
+        auto percent = slider->getPercent();
         Button* btn = (Button*)_uiLayer->getChildByName("button");
-        float zoomScale = percent * 0.01;
+        float zoomScale = percent * 0.01f;
         btn->setZoomScale(zoomScale);
         _displayValueLabel->setString(StringUtils::format("Zoom Scale: %f", zoomScale));
     }

@@ -1170,7 +1170,7 @@ bool UIS9GrayStateOpacityTest::init()
         slider->loadProgressBarTexture("cocosui/sliderProgress.png");
         slider->setContentSize(Size(300, slider->getContentSize().height * 1.5f));
         slider->setMaxPercent(100);
-        slider->setPercent(100 * 100.0f / 255.0);
+        slider->setPercent(100 * 100.0f / 255.0f);
         slider->setPosition(Vec2(winSize.width / 2.0f, winSize.height / 2.0f - 100));
         slider->addEventListener(CC_CALLBACK_2(UIS9GrayStateOpacityTest::sliderEvent, this));
         _uiLayer->addChild(slider);
@@ -1185,9 +1185,9 @@ void UIS9GrayStateOpacityTest::sliderEvent(cocos2d::Ref *sender, cocos2d::ui::Sl
     if (type == Slider::EventType::ON_PERCENTAGE_CHANGED)
     {
         Slider* slider = dynamic_cast<Slider*>(sender);
-        int percent = slider->getPercent();
-        int maxPercent = slider->getMaxPercent();
+        float percent = slider->getPercent();
+        float maxPercent = slider->getMaxPercent();
         auto scale9Sprite = (Scale9Sprite*)this->getChildByName("GrayScale9");
-        scale9Sprite->setOpacity(1.0 * percent / maxPercent * 255.0);
+        scale9Sprite->setOpacity(static_cast<uint8_t>(percent / maxPercent * 255.0f));
     }
 }

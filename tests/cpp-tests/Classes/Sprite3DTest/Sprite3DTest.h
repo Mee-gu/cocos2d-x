@@ -358,8 +358,8 @@ public:
     void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event* event);
     void addOBBCallback(cocos2d::Ref* sender);
     void delOBBCallback(cocos2d::Ref* sender);
-    void addOBBWithCount(float value);
-    void delOBBWithCount(float value);
+    void addOBBWithCount(int value);
+    void delOBBWithCount(int value);
 protected:
     cocos2d::Sprite3D*        _sprite;
     std::vector<cocos2d::OBB>          _obb;

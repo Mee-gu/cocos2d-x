@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_controller_auto.hpp"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "base/CCGameController.h"
@@ -913,3 +915,4 @@ TOLUA_API int register_all_cocos2dx_controller(lua_State* tolua_S)
 }
 
 #endif
+#pragma warning(pop)

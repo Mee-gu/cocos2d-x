@@ -105,7 +105,7 @@ namespace cocostudio
             else if(key == P_Text){
                 label->setString(value);
             }else if(key == P_FontSize){
-                label->setFontSize(valueToInt(value));
+                label->setFontSize(valueToFloat(value));
             }else if(key == P_FontName){
                 std::string fontFilePath;
                 fontFilePath = binaryFilePath.append(value);
@@ -141,7 +141,7 @@ namespace cocostudio
         const char* text = DICTOOL->getStringValue_json(options, P_Text,"Text Label");
         label->setString(text);
       
-        label->setFontSize(DICTOOL->getIntValue_json(options, P_FontSize,20));
+        label->setFontSize((float)DICTOOL->getIntValue_json(options, P_FontSize,20));
        
         std::string fontName = DICTOOL->getStringValue_json(options, P_FontName, "");
         
@@ -287,11 +287,11 @@ namespace cocostudio
             }
             else if (name == "ShadowOffsetX")
             {
-                shadowOffset.width = atof(value.c_str());
+                shadowOffset.width = (float)atof(value.c_str());
             }
             else if (name == "ShadowOffsetY")
             {
-                shadowOffset.height = atof(value.c_str());
+                shadowOffset.height = (float)atof(value.c_str());
             }
             else if (name == "ShadowBlurRadius")
             {
@@ -343,19 +343,19 @@ namespace cocostudio
                     
                     if (name == "A")
                     {
-                        outlineColor.a = atoi(value.c_str());
+                        outlineColor.a = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "R")
                     {
-                        outlineColor.r = atoi(value.c_str());
+                        outlineColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        outlineColor.g = atoi(value.c_str());
+                        outlineColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        outlineColor.b = atoi(value.c_str());
+                        outlineColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attribute = attribute->Next();
@@ -372,19 +372,19 @@ namespace cocostudio
                     
                     if (name == "A")
                     {
-                        shadowColor.a = atoi(value.c_str());
+                        shadowColor.a = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "R")
                     {
-                        shadowColor.r = atoi(value.c_str());
+                        shadowColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        shadowColor.g = atoi(value.c_str());
+                        shadowColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        shadowColor.b = atoi(value.c_str());
+                        shadowColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attribute = attribute->Next();
@@ -433,10 +433,10 @@ namespace cocostudio
         bool touchScaleEnabled = options->touchScaleEnable() != 0;
         label->setTouchScaleChangeEnabled(touchScaleEnabled);
         
-        int fontSize = options->fontSize();
+        float fontSize = (float)options->fontSize();
         label->setFontSize(fontSize);
 
-        Size areaSize = Size(options->areaWidth(), options->areaHeight());
+        Size areaSize = Size((float)options->areaWidth(), (float)options->areaHeight());
         if (!areaSize.equals(Size::ZERO))
         {
             label->setTextAreaSize(areaSize);
@@ -467,7 +467,7 @@ namespace cocostudio
             if (f_outlineColor)
             {
                 Color4B outlineColor(f_outlineColor->r(), f_outlineColor->g(), f_outlineColor->b(), f_outlineColor->a());
-                label->enableOutline(outlineColor, options->outlineSize());
+                label->enableOutline(outlineColor, (float)options->outlineSize());
             }
         }
         

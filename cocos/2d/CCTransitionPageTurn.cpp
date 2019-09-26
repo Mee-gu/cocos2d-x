@@ -100,16 +100,16 @@ void TransitionPageTurn::onEnter()
     _outSceneProxy->onEnter();
     
     Size s = Director::getInstance()->getWinSize();
-    int x,y;
+    float x,y;
     if (s.width > s.height)
     {
-        x=16;
-        y=12;
+        x=16.0f;
+        y=12.0f;
     }
     else
     {
-        x=12;
-        y=16;
+        x=12.0f;
+        y=16.0f;
     }
 
     ActionInterval *action  = this->actionWithSize(Size(x,y));

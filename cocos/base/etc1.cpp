@@ -421,12 +421,12 @@ static void etc_encodeBaseColors(etc1_byte* pBaseColors,
         pCompressed->high |= (r41 << 28) | (r42 << 24) | (g41 << 20) | (g42
                 << 16) | (b41 << 12) | (b42 << 8);
     }
-    pBaseColors[0] = r1;
-    pBaseColors[1] = g1;
-    pBaseColors[2] = b1;
-    pBaseColors[3] = r2;
-    pBaseColors[4] = g2;
-    pBaseColors[5] = b2;
+    pBaseColors[0] = static_cast<etc1_byte>(r1);
+    pBaseColors[1] = static_cast<etc1_byte>(g1);
+    pBaseColors[2] = static_cast<etc1_byte>(b1);
+    pBaseColors[3] = static_cast<etc1_byte>(r2);
+    pBaseColors[4] = static_cast<etc1_byte>(g2);
+    pBaseColors[5] = static_cast<etc1_byte>(b2);
 }
 
 static
@@ -543,9 +543,9 @@ int etc1_encode_image(const etc1_byte* pIn, etc1_uint32 width, etc1_uint32 heigh
                 } else {
                     for (etc1_uint32 cx = 0; cx < xEnd; cx++) {
                         int pixel = (p[1] << 8) | p[0];
-                        *q++ = convert5To8(pixel >> 11);
-                        *q++ = convert6To8(pixel >> 5);
-                        *q++ = convert5To8(pixel);
+                        *q++ = static_cast<etc1_byte>(convert5To8(pixel >> 11));
+                        *q++ = static_cast<etc1_byte>(convert6To8(pixel >> 5));
+                        *q++ = static_cast<etc1_byte>(convert5To8(pixel));
                         p += pixelSize;
                     }
                 }

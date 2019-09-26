@@ -576,8 +576,10 @@ bool Texture2D::initWithBackendTexture(backend::TextureBackend *texture)
     CC_SAFE_RELEASE(_texture);
     _texture = dynamic_cast<backend::Texture2DBackend*>(texture);
     CC_ASSERT(_texture);
-    _pixelsWide = _contentSize.width = _texture->getWidth();
-    _pixelsHigh = _contentSize.height = _texture->getHeight();
+    _pixelsWide = _texture->getWidth();
+    _pixelsHigh = _texture->getHeight();
+    _contentSize.width = (float)_pixelsWide;
+    _contentSize.height = (float)_pixelsHigh;
     return true;
 }
 

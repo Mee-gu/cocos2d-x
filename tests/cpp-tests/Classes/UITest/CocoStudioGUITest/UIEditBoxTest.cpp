@@ -57,7 +57,7 @@ bool UIEditBoxTest::init()
         addChild(_TTFShowEditReturn);
         
         
-        auto editBoxSize = Size(visibleSize.width - 100, visibleSize.height * 0.1);
+        auto editBoxSize = Size(visibleSize.width - 100, visibleSize.height * 0.1f);
         
         // top
         std::string pNormalSprite = "extensions/green_edit.png";
@@ -67,7 +67,7 @@ bool UIEditBoxTest::init()
         _editName->setPlaceHolder("Name:");
         _editName->setPlaceholderFontColor(Color3B::WHITE);
         _editName->setMaxLength(8);
-        _editName->setFontSize((int)editBoxSize.height/2);
+        _editName->setFontSize(editBoxSize.height/2);
         _editName->setText("v👐👊💝");
         _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
         _editName->setDelegate(this);
@@ -93,7 +93,7 @@ bool UIEditBoxTest::init()
         _editPassword->setMaxLength(6);
         _editPassword->setInputFlag(ui::EditBox::InputFlag::PASSWORD);
         _editPassword->setInputMode(ui::EditBox::InputMode::SINGLE_LINE);
-        _editPassword->setFontSize((int)editBoxSize.height/2);
+        _editPassword->setFontSize(editBoxSize.height/2);
         _editPassword->setDelegate(this);
         _editPassword->setVisible(true);
         addChild(_editPassword);
@@ -200,7 +200,7 @@ bool UIEditBoxTestToggleVisibility::init()
         _editName->setPlaceHolder("Name:");
         _editName->setPlaceholderFontColor(Color3B::WHITE);
         _editName->setMaxLength(8);
-        _editName->setFontSize((int)editBoxSize.height/2);
+        _editName->setFontSize(editBoxSize.height/2);
         _editName->setText("v👐👊💝");
         _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
         _editName->setDelegate(this);
@@ -225,7 +225,7 @@ bool UIEditBoxTestToggleVisibility::init()
         _editPassword->setMaxLength(6);
         _editPassword->setInputFlag(ui::EditBox::InputFlag::PASSWORD);
         _editPassword->setInputMode(ui::EditBox::InputMode::SINGLE_LINE);
-        _editPassword->setFontSize((float)editBoxSize.height/2);
+        _editPassword->setFontSize(editBoxSize.height/2);
         _editPassword->setDelegate(this);
         _editPassword->setVisible(true);
         addChild(_editPassword);
@@ -317,8 +317,8 @@ bool UIEditBoxTestTextHorizontalAlignment::init() {
         editbox->setFontColor(Color3B::RED);
         editbox->setPlaceHolder(text.c_str());
         editbox->setPlaceholderFontColor(Color3B::WHITE);
-        editbox->setPlaceholderFontSize((int)editBoxSize.height/2);
-        editbox->setFontSize((int)editBoxSize.height/2);
+        editbox->setPlaceholderFontSize(editBoxSize.height/2);
+        editbox->setFontSize(editBoxSize.height/2);
         editbox->setText(text.c_str());
         editbox->setTextHorizontalAlignment(alignment);
         editbox->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
@@ -348,8 +348,8 @@ bool UIEditBoxTestPressedAndDisabled::init() {
     editbox->setFontColor(Color3B::GREEN);
     editbox->setPlaceHolder("Test Pressed Image");
     editbox->setPlaceholderFontColor(Color3B::WHITE);
-    editbox->setPlaceholderFontSize((int)editBoxSize.height/2);
-    editbox->setFontSize((int)editBoxSize.height/2);
+    editbox->setPlaceholderFontSize(editBoxSize.height/2);
+    editbox->setFontSize(editBoxSize.height/2);
     editbox->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     addChild(editbox);
 
@@ -358,8 +358,8 @@ bool UIEditBoxTestPressedAndDisabled::init() {
     editbox->setFontColor(Color3B::GREEN);
     editbox->setPlaceHolder("Test Disabled Image - green");
     editbox->setPlaceholderFontColor(Color3B::WHITE);
-    editbox->setPlaceholderFontSize((int)editBoxSize.height/2);
-    editbox->setFontSize((int)editBoxSize.height/2);
+    editbox->setPlaceholderFontSize(editBoxSize.height/2);
+    editbox->setFontSize(editBoxSize.height/2);
     editbox->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     addChild(editbox);
     editbox->setEnabled(false);
@@ -369,8 +369,8 @@ bool UIEditBoxTestPressedAndDisabled::init() {
     editbox->setFontColor(Color3B::GREEN);
     editbox->setPlaceHolder("Disabled Gray effect");
     editbox->setPlaceholderFontColor(Color3B::WHITE);
-    editbox->setPlaceholderFontSize((int)editBoxSize.height/2);
-    editbox->setFontSize((int)editBoxSize.height/2);
+    editbox->setPlaceholderFontSize(editBoxSize.height/2);
+    editbox->setFontSize(editBoxSize.height/2);
     editbox->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     addChild(editbox);
     editbox->setEnabled(false);

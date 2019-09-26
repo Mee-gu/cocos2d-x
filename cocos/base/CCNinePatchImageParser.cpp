@@ -47,7 +47,7 @@ NinePatchImageParser::NinePatchImageParser(Image* image)
 ,_imageFrame(Rect::ZERO)
 ,_isRotated(false)
 {
-    this->_imageFrame = Rect(0,0,image->getWidth(), image->getHeight());
+    this->_imageFrame = Rect(0,0,(float)image->getWidth(), (float)image->getHeight());
     CCASSERT(image->getPixelFormat()==backend::PixelFormat::RGBA8888,
              "unsupported format, currently only supports rgba8888");
 }
@@ -61,7 +61,7 @@ NinePatchImageParser::NinePatchImageParser(Image* image, const Rect& frame, bool
              "unsupported format, currently only supports rgba8888");
 }
 
-int NinePatchImageParser::getFrameHeight()const
+float NinePatchImageParser::getFrameHeight()const
 {
     if (_isRotated)
     {
@@ -70,7 +70,7 @@ int NinePatchImageParser::getFrameHeight()const
     return _imageFrame.size.height;
 }
 
-int NinePatchImageParser::getFrameWidth()const
+float NinePatchImageParser::getFrameWidth()const
 {
     if (_isRotated)
     {
@@ -82,7 +82,7 @@ int NinePatchImageParser::getFrameWidth()const
 int NinePatchImageParser::getPixelOriginOffset(Direction direction)const
 {
     int imageWidth = _image->getWidth();
-    int frameWidth = this->getFrameWidth();
+    int frameWidth = (int)this->getFrameWidth();
     
     int topLineLeftOffset = (int)_imageFrame.origin.y * imageWidth * 4 + (int)_imageFrame.origin.x * 4;
     if(direction == Direction::HORIZONTAL)
@@ -108,10 +108,10 @@ Vec2 NinePatchImageParser::parseHorizontalMargin()const
     
     data = data + this->getPixelOriginOffset(Direction::HORIZONTAL);
     unsigned char lastPixel = *(data + 3);
-    int x1 = 0;
-    int x2 = 0;
+    float x1 = 0;
+    float x2 = 0;
     
-    int length = _imageFrame.origin.x + this->getFrameWidth();
+    int length = (int)(_imageFrame.origin.x + this->getFrameWidth());
     for(int i = (int)_imageFrame.origin.x; i <= length ; i++)
     {
         unsigned char pixel = *(data + (i - (int)_imageFrame.origin.x) * 4 +3);
@@ -119,11 +119,11 @@ Vec2 NinePatchImageParser::parseHorizontalMargin()const
         {
             if (pixel > 0)
             {
-                x1 = (i - (int)_imageFrame.origin.x);
+                x1 = (float)i - _imageFrame.origin.x;
             }
             else
             {
-                x2 = (i - (int)_imageFrame.origin.x);
+                x2 = (float)i - _imageFrame.origin.x;
                 break;
             }
         }
@@ -137,25 +137,25 @@ Vec2 NinePatchImageParser::parseVerticalMargin()const
     unsigned char* data = _image->getData();
     int imageWidth = _image->getWidth();
     
-    int y1 = 0;
-    int y2 = 0;
+    float y1 = 0;
+    float y2 = 0;
     
     data = data + this->getPixelOriginOffset(Direction::VERTICAL);
     unsigned char lastPixel = *(data + 3);
     
     int length = (int)(_imageFrame.origin.y + this->getFrameHeight());
-    for(int i = _imageFrame.origin.y; i <= length; i++)
+    for(int i = (int)_imageFrame.origin.y; i <= length; i++)
     {
         unsigned char pixel = *(data + (i - (int)_imageFrame.origin.y) * imageWidth * 4 + 3);
         if(pixel != lastPixel)
         {
             if(pixel > 0)
             {
-                y1 = (i - (int)_imageFrame.origin.y);
+                y1 = (float)i - _imageFrame.origin.y;
             }
             else
             {
-                y2 = (i - (int)_imageFrame.origin.y);
+                y2 = (float)i - _imageFrame.origin.y;
                 break;
             }
         }

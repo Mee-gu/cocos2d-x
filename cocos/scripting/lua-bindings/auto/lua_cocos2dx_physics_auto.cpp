@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_physics_auto.hpp"
 #if CC_USE_PHYSICS
 #include "cocos2d.h"
@@ -12778,3 +12780,4 @@ TOLUA_API int register_all_cocos2dx_physics(lua_State* tolua_S)
 }
 
 #endif
+#pragma warning(pop)

@@ -87,7 +87,7 @@ namespace cocostudio
         Slider* slider = static_cast<Slider*>(widget);
         
         float barLength = 0.0f;
-        int percent = slider->getPercent();
+        auto percent = slider->getPercent();
         stExpCocoNode *stChildArray = cocoNode->GetChildArray(cocoLoader);
         
         for (int i = 0; i < cocoNode->GetChildNum(); ++i) {
@@ -104,7 +104,7 @@ namespace cocostudio
                 slider->setScale9Enabled(valueToBool(value));
             }
             else if(key == P_Percent){
-                percent = valueToInt(value);
+                percent = valueToFloat(value);
             }else if(key == P_BarFileNameData){
                 stExpCocoNode *backGroundChildren = stChildArray[i].GetChildArray(cocoLoader);
                 std::string resType = backGroundChildren[2].GetValue(cocoLoader);
@@ -179,7 +179,7 @@ namespace cocostudio
         bool barTextureScale9Enable = DICTOOL->getBooleanValue_json(options, P_Scale9Enable);
         slider->setScale9Enabled(barTextureScale9Enable);
         
-        slider->setPercent(DICTOOL->getIntValue_json(options, P_Percent));
+        slider->setPercent(DICTOOL->getFloatValue_json(options, P_Percent));
 
         
 //        bool bt = DICTOOL->checkObjectExist_json(options, P_BarFileName);
@@ -492,7 +492,7 @@ namespace cocostudio
         Slider* slider = static_cast<Slider*>(node);
         auto options = (SliderOptions*)sliderOptions;
         
-        int percent = options->percent();
+        float percent = static_cast<float>(options->percent());
         //slider->setPercent(percent);
         
         bool imageFileExist = false;

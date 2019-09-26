@@ -106,7 +106,7 @@ void RenderTextureSave::saveImageWithPremultipliedAlpha(cocos2d::Ref* sender)
         addChild(sprite);
         sprite->setScale(0.3f);
         sprite->setPosition(Vec2(40.0f, 40.0f));
-        sprite->setRotation(counter * 3);
+        sprite->setRotation(counter * 3.0f);
         _target->release();
     };
 
@@ -132,7 +132,7 @@ void RenderTextureSave::saveImageWithNonPremultipliedAlpha(cocos2d::Ref *sender)
         addChild(sprite);
         sprite->setScale(0.3f);
         sprite->setPosition(Vec2(40.0f, 40.0f));
-        sprite->setRotation(counter * 3);
+        sprite->setRotation(counter * 3.0f);
         rt->release();
     };
     
@@ -196,7 +196,7 @@ void RenderTextureSave::onTouchesMoved(const std::vector<Touch*>& touches, Event
              float dify = end.y - start.y;
              float delta = (float)i / distance;
              _brushs.at(i)->setPosition(Vec2(start.x + (difx * delta), start.y + (dify * delta)));
-             _brushs.at(i)->setRotation(rand() % 360);
+             _brushs.at(i)->setRotation((float)(rand() % 360));
              float r = (float)(rand() % 50 / 50.f) + 0.25f;
              _brushs.at(i)->setScale(r);
              /*_brush->setColor(Color3B(CCRANDOM_0_1() * 127 + 128, 255, 255));*/
@@ -709,12 +709,14 @@ SpriteRenderTextureBug::SpriteRenderTextureBug()
 
 SpriteRenderTextureBug::SimpleSprite* SpriteRenderTextureBug::addNewSpriteWithCoords(const Vec2& p)
 {
-    int idx = CCRANDOM_0_1() * 1400 / 100;
-	int x = (idx%5) * 85;
-	int y = (idx/5) * 121;
+    int idx = (int)(CCRANDOM_0_1() * 1400 / 100);
+    float w = 85.0f;
+    float h = 121.0f;
+	float x = (idx%5) * w;
+	float y = (idx/5) * h;
     
     auto sprite = SpriteRenderTextureBug::SimpleSprite::create("Images/grossini_dance_atlas.png",
-                                                                                                Rect(x,y,85,121));
+                                                                                                Rect(x,y,w,h));
     addChild(sprite);
     
     sprite->setPosition(p);
@@ -722,13 +724,13 @@ SpriteRenderTextureBug::SimpleSprite* SpriteRenderTextureBug::addNewSpriteWithCo
 	FiniteTimeAction *action = nullptr;
 	float rd = CCRANDOM_0_1();
     
-	if (rd < 0.20)
+	if (rd < 0.20f)
         action = ScaleBy::create(3, 2);
-	else if (rd < 0.40)
+	else if (rd < 0.40f)
 		action = RotateBy::create(3, 360);
-	else if (rd < 0.60)
+	else if (rd < 0.60f)
 		action = Blink::create(1, 3);
-	else if (rd < 0.8 )
+	else if (rd < 0.8f)
 		action = TintBy::create(2, 0, -255, -255);
 	else
 		action = FadeOut::create(2);

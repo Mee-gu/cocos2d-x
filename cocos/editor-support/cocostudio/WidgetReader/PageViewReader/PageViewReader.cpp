@@ -120,7 +120,7 @@ namespace cocostudio
             }
             else if (name == "BackColorAlpha")
             {
-                bgColorOpacity = atoi(value.c_str());
+                bgColorOpacity = static_cast<uint8_t>(atoi(value.c_str()));
             }
             else if (name == "Scale9Enable")
             {
@@ -131,19 +131,19 @@ namespace cocostudio
             }
             else if (name == "Scale9OriginX")
             {
-                capInsets.origin.x = atof(value.c_str());
+                capInsets.origin.x = (float)atof(value.c_str());
             }
             else if (name == "Scale9OriginY")
             {
-                capInsets.origin.y = atof(value.c_str());
+                capInsets.origin.y = (float)atof(value.c_str());
             }
             else if (name == "Scale9Width")
             {
-                capInsets.size.width = atof(value.c_str());
+                capInsets.size.width = (float)atof(value.c_str());
             }
             else if (name == "Scale9Height")
             {
-                capInsets.size.height = atof(value.c_str());
+                capInsets.size.height = (float)atof(value.c_str());
             }
             
             attribute = attribute->Next();
@@ -166,11 +166,11 @@ namespace cocostudio
                     
                     if (name == "X")
                     {
-                        scale9Size.width = atof(value.c_str());
+                        scale9Size.width = (float)atof(value.c_str());
                     }
                     else if (name == "Y")
                     {
-                        scale9Size.height = atof(value.c_str());
+                        scale9Size.height = (float)atof(value.c_str());
                     }
                     
                     attribute = attribute->Next();
@@ -187,15 +187,15 @@ namespace cocostudio
                     
                     if (name == "R")
                     {
-                        bgColor.r = atoi(value.c_str());
+                        bgColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        bgColor.g = atoi(value.c_str());
+                        bgColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        bgColor.b = atoi(value.c_str());
+                        bgColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attribute = attribute->Next();
@@ -212,15 +212,15 @@ namespace cocostudio
                     
                     if (name == "R")
                     {
-                        bgEndColor.r = atoi(value.c_str());
+                        bgEndColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        bgEndColor.g = atoi(value.c_str());
+                        bgEndColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        bgEndColor.b = atoi(value.c_str());
+                        bgEndColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attribute = attribute->Next();
@@ -237,15 +237,15 @@ namespace cocostudio
                     
                     if (name == "R")
                     {
-                        bgStartColor.r = atoi(value.c_str());
+                        bgStartColor.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "G")
                     {
-                        bgStartColor.g = atoi(value.c_str());
+                        bgStartColor.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (name == "B")
                     {
-                        bgStartColor.b = atoi(value.c_str());
+                        bgStartColor.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attribute = attribute->Next();
@@ -261,11 +261,11 @@ namespace cocostudio
                     
                     if (name == "ScaleX")
                     {
-                        colorVector.x = atof(value.c_str());
+                        colorVector.x = (float)atof(value.c_str());
                     }
                     else if (name == "ScaleY")
                     {
-                        colorVector.y = atof(value.c_str());
+                        colorVector.y = (float)atof(value.c_str());
                     }
                     
                     attribute = attribute->Next();
@@ -360,7 +360,7 @@ namespace cocostudio
         Vec2 colorVector(f_colorVecor->vectorX(), f_colorVecor->vectorY());
         pageView->setBackGroundColorVector(colorVector);
         
-        int bgColorOpacity = options->bgColorOpacity();
+        auto bgColorOpacity = options->bgColorOpacity();
         
         int colorType = options->colorType();
         pageView->setBackGroundColorType(Layout::BackGroundColorType(colorType));
@@ -436,7 +436,7 @@ namespace cocostudio
         Color3B color(f_color->r(), f_color->g(), f_color->b());
         pageView->setColor(color);
         
-        int opacity = widgetOptions->alpha();
+        auto opacity = widgetOptions->alpha();
         pageView->setOpacity(opacity);
         
         

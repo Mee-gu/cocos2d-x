@@ -472,7 +472,6 @@ if(APPLE)
     endif()
 elseif(WINDOWS)
     # "too large PDB" error often occurs in cpp-tests when using default "/Zi"
-    target_compile_options(${APP_NAME} PRIVATE /Z7)
     cocos_copy_target_dll(${APP_NAME})
 endif()
 
@@ -487,3 +486,9 @@ if(WINDOWS)
     set_target_properties(${APP_NAME} PROPERTIES COMPILE_FLAGS "/Yuprecheader.h /FIprecheader.h")
     set_source_files_properties("${CMAKE_CURRENT_SOURCE_DIR}/Classes/precheader.cpp" PROPERTIES COMPILE_FLAGS "/Ycprecheader.h")
 endif()
+
+# if(WINDOWS)
+#     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /we4244")
+# else()
+#     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=conversion")
+# endif()

@@ -209,7 +209,7 @@ void PURendererTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode 
                             unsigned int val = 0;
                             if(getUInt(*prop->values.front(), &val))
                             {
-                                static_cast<PUParticle3DQuadRender *>(_renderer)->setTextureCoordsRows(val);
+                                static_cast<PUParticle3DQuadRender *>(_renderer)->setTextureCoordsRows((unsigned short)val);
                             }
                         }
                     }
@@ -221,7 +221,7 @@ void PURendererTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode 
                             unsigned int val = 0;
                             if(getUInt(*prop->values.front(), &val))
                             {
-                                static_cast<PUParticle3DQuadRender *>(_renderer)->setTextureCoordsColumns(val);
+                                static_cast<PUParticle3DQuadRender *>(_renderer)->setTextureCoordsColumns((unsigned short)val);
                             }
                         }
                     }

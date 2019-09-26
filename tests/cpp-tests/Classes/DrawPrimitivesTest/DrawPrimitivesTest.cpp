@@ -108,7 +108,7 @@ DrawNodeTest::DrawNodeTest()
     // Draw 10 circles
     for( int i=0; i < 10; i++)
     {
-        draw->drawDot(Vec2(s.width/2, s.height/2), 10*(10-i), Color4F(CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1.0f));
+        draw->drawDot(Vec2(s.width/2, s.height/2), 10.0f*(10-i), Color4F(CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1.0f));
     }
     
     // Draw polygons
@@ -173,8 +173,8 @@ DrawNodeTest::DrawNodeTest()
     draw1->drawLine(Vec2(0.0f, s.height), Vec2(s.width, s.height - 20), Color4F::YELLOW);
     draw1->drawLine(Vec2(0.0f, 0.0f), Vec2(s.width, s.height - 20), Color4F::YELLOW);
 
-    draw->runAction(RepeatForever::create(Sequence::create(FadeIn::create(1.2),FadeOut::create(1.2), NULL)));
-    draw1->runAction(RepeatForever::create(Sequence::create(FadeIn::create(1.2),FadeOut::create(1.2), NULL)));
+    draw->runAction(RepeatForever::create(Sequence::create(FadeIn::create(1.2f),FadeOut::create(1.2f), NULL)));
+    draw1->runAction(RepeatForever::create(Sequence::create(FadeIn::create(1.2f),FadeOut::create(1.2f), NULL)));
 }
 
 string DrawNodeTest::title() const

@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_spine_auto.hpp"
 #include "editor-support/spine/spine-cocos2dx.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
@@ -177,7 +179,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_initWithData(lua_State* tolua_S)
     {
         spSkeletonData* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
 		ok = false;
         if(!ok)
         {
@@ -193,7 +195,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_initWithData(lua_State* tolua_S)
         spSkeletonData* arg0;
         bool arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
 		ok = false;
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1, "sp.SkeletonRenderer:initWithData");
@@ -330,7 +332,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_initWithJsonFile(lua_State* tolua_S)
 
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
 
             if (!ok) { break; }
@@ -347,7 +349,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_initWithJsonFile(lua_State* tolua_S)
 
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
 
             if (!ok) { break; }
@@ -482,7 +484,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_initWithBinaryFile(lua_State* tolua_S)
 
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
 
             if (!ok) { break; }
@@ -499,7 +501,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_initWithBinaryFile(lua_State* tolua_S)
 
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
 
             if (!ok) { break; }
@@ -1082,7 +1084,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_setVertexEffect(lua_State* tolua_S)
     {
         spVertexEffect* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spVertexEffect*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spVertexEffect*
 		ok = false;
         if(!ok)
         {
@@ -1262,7 +1264,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_createWithFile(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sp.SkeletonRenderer:createWithFile");
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
             if (!ok) { break; }
             spine::SkeletonRenderer* ret = spine::SkeletonRenderer::createWithFile(arg0, arg1);
@@ -1279,7 +1281,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_createWithFile(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sp.SkeletonRenderer:createWithFile");
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
             if (!ok) { break; }
             double arg2;
@@ -1346,7 +1348,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_constructor(lua_State* tolua_S)
     do{
         if (argc == 1) {
             spSkeletonData* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
 		ok = false;
 
             if (!ok) { break; }
@@ -1362,7 +1364,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_constructor(lua_State* tolua_S)
     do{
         if (argc == 2) {
             spSkeletonData* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*
 		ok = false;
 
             if (!ok) { break; }
@@ -1397,7 +1399,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_constructor(lua_State* tolua_S)
 
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
 
             if (!ok) { break; }
@@ -1417,7 +1419,7 @@ int lua_cocos2dx_spine_SkeletonRenderer_constructor(lua_State* tolua_S)
 
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
 
             if (!ok) { break; }
@@ -1561,7 +1563,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_setTrackCompleteListener(lua_State* tol
         spTrackEntry* arg0;
         std::function<void (spTrackEntry *)> arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
 		ok = false;
 
         do {
@@ -1779,7 +1781,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_setTrackStartListener(lua_State* tolua_
         spTrackEntry* arg0;
         std::function<void (spTrackEntry *)> arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
 		ok = false;
 
         do {
@@ -1964,7 +1966,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_setTrackInterruptListener(lua_State* to
         spTrackEntry* arg0;
         std::function<void (spTrackEntry *)> arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
 		ok = false;
 
         do {
@@ -2076,7 +2078,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_setTrackDisposeListener(lua_State* tolu
         spTrackEntry* arg0;
         std::function<void (spTrackEntry *)> arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
 		ok = false;
 
         do {
@@ -2241,7 +2243,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_setTrackEventListener(lua_State* tolua_
         spTrackEntry* arg0;
         std::function<void (spTrackEntry *, spEvent *)> arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
 		ok = false;
 
         do {
@@ -2511,7 +2513,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_setTrackEndListener(lua_State* tolua_S)
         spTrackEntry* arg0;
         std::function<void (spTrackEntry *)> arg1;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
+        //#pragma warning NO CONVERSION TO NATIVE FOR spTrackEntry*
 		ok = false;
 
         do {
@@ -2649,7 +2651,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_createWithBinaryFile(lua_State* tolua_S
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sp.SkeletonAnimation:createWithBinaryFile");
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
             if (!ok) { break; }
             spine::SkeletonAnimation* ret = spine::SkeletonAnimation::createWithBinaryFile(arg0, arg1);
@@ -2666,7 +2668,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_createWithBinaryFile(lua_State* tolua_S
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sp.SkeletonAnimation:createWithBinaryFile");
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
             if (!ok) { break; }
             double arg2;
@@ -2777,7 +2779,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_createWithJsonFile(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sp.SkeletonAnimation:createWithJsonFile");
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
             if (!ok) { break; }
             spine::SkeletonAnimation* ret = spine::SkeletonAnimation::createWithJsonFile(arg0, arg1);
@@ -2794,7 +2796,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_createWithJsonFile(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "sp.SkeletonAnimation:createWithJsonFile");
             if (!ok) { break; }
             spAtlas* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
+            //#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*
 		ok = false;
             if (!ok) { break; }
             double arg2;
@@ -2868,3 +2870,4 @@ TOLUA_API int register_all_cocos2dx_spine(lua_State* tolua_S)
 	return 1;
 }
 
+#pragma warning(pop)

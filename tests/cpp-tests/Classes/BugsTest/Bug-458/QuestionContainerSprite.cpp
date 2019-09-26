@@ -40,9 +40,9 @@ bool QuestionContainerSprite::init()
         auto size = Director::getInstance()->getWinSize();
         auto corner = Sprite::create("Images/bugs/corner.png");
 
-        int width = size.width * 0.9f - (corner->getContentSize().width * 2);
-        int height = size.height * 0.15f  - (corner->getContentSize().height * 2);
-        auto layer = LayerColor::create(Color4B(255, 255, 255, 255 * .75), width, height);
+        float width = size.width * 0.9f - (corner->getContentSize().width * 2);
+        float height = size.height * 0.15f  - (corner->getContentSize().height * 2);
+        auto layer = LayerColor::create(Color4B(255, 255, 255, static_cast<uint8_t>(255 * .75f)), width, height);
         layer->setPosition(Vec2(-width / 2, -height / 2));
 
         //First button is blue,

@@ -246,7 +246,7 @@ void PUEmitterTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode *
                     unsigned int val = 0;
                     if(getUInt(*prop->values.front(), &val))
                     {
-                        _emitter->setParticleTextureCoordsRangeStart(val);
+                        _emitter->setParticleTextureCoordsRangeStart((unsigned short)val);
                     }
                 }
             }
@@ -258,7 +258,7 @@ void PUEmitterTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode *
                     unsigned int val = 0;
                     if(getUInt(*prop->values.front(), &val))
                     {
-                        _emitter->setParticleTextureCoordsRangeStart(val);
+                        _emitter->setParticleTextureCoordsRangeStart((unsigned short)val);
                     }
                 }
             }
@@ -270,7 +270,7 @@ void PUEmitterTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode *
                     unsigned int val = 0;
                     if(getUInt(*prop->values.front(), &val))
                     {
-                        _emitter->setParticleTextureCoordsRangeEnd(val);
+                        _emitter->setParticleTextureCoordsRangeEnd((unsigned short)val);
                     }
                 }
             }
@@ -282,7 +282,7 @@ void PUEmitterTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode *
                     unsigned int val = 0;
                     if(getUInt(*prop->values.front(), &val))
                     {
-                        _emitter->setParticleTextureCoordsRangeEnd(val);
+                        _emitter->setParticleTextureCoordsRangeEnd((unsigned short)val);
                     }
                 }
             }
@@ -294,7 +294,7 @@ void PUEmitterTranslator::translate(PUScriptCompiler* compiler, PUAbstractNode *
                     unsigned int val = 0;
                     if(getUInt(*prop->values.front(), &val))
                     {
-                        _emitter->setParticleTextureCoords(val);
+                        _emitter->setParticleTextureCoords((unsigned short)val);
                     }
                 }
             }

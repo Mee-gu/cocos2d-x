@@ -113,7 +113,7 @@ void RenderTexture::listenToForeground(EventCustom* /*event*/)
 #endif
 }
 
-RenderTexture * RenderTexture::create(int w, int h, backend::PixelFormat eFormat)
+RenderTexture * RenderTexture::create(float w, float h, backend::PixelFormat eFormat)
 {
     RenderTexture *ret = new (std::nothrow) RenderTexture();
 
@@ -126,7 +126,7 @@ RenderTexture * RenderTexture::create(int w, int h, backend::PixelFormat eFormat
     return nullptr;
 }
 
-RenderTexture * RenderTexture::create(int w ,int h, backend::PixelFormat eFormat, PixelFormat uDepthStencilFormat)
+RenderTexture * RenderTexture::create(float w , float h, backend::PixelFormat eFormat, PixelFormat uDepthStencilFormat)
 {
     RenderTexture *ret = new (std::nothrow) RenderTexture();
 
@@ -139,7 +139,7 @@ RenderTexture * RenderTexture::create(int w ,int h, backend::PixelFormat eFormat
     return nullptr;
 }
 
-RenderTexture * RenderTexture::create(int w, int h)
+RenderTexture * RenderTexture::create(float w, float h)
 {
     RenderTexture *ret = new (std::nothrow) RenderTexture();
 
@@ -152,12 +152,12 @@ RenderTexture * RenderTexture::create(int w, int h)
     return nullptr;
 }
 
-bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat eFormat)
+bool RenderTexture::initWithWidthAndHeight(float w, float h, backend::PixelFormat eFormat)
 {
     return initWithWidthAndHeight(w, h, eFormat, PixelFormat::NONE);
 }
 
-bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat format, PixelFormat depthStencilFormat)
+bool RenderTexture::initWithWidthAndHeight(float w, float h, backend::PixelFormat format, PixelFormat depthStencilFormat)
 {
     CCASSERT(format != backend::PixelFormat::A8, "only RGB and RGBA formats are valid for a render texture");
 
@@ -165,8 +165,8 @@ bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat fo
     do
     {
         _fullRect = _rtTextureRect = Rect(0,0,w,h);
-        w = (int)(w * CC_CONTENT_SCALE_FACTOR());
-        h = (int)(h * CC_CONTENT_SCALE_FACTOR());
+        w = w * CC_CONTENT_SCALE_FACTOR();
+        h = h * CC_CONTENT_SCALE_FACTOR();
         _fullviewPort = Rect(0,0,w,h);
         
         // textures must be power of two squared
@@ -175,13 +175,13 @@ bool RenderTexture::initWithWidthAndHeight(int w, int h, backend::PixelFormat fo
 
         if (Configuration::getInstance()->supportsNPOT())
         {
-            powW = w;
-            powH = h;
+            powW = (int)w;
+            powH = (int)h;
         }
         else
         {
-            powW = ccNextPOT(w);
-            powH = ccNextPOT(h);
+            powW = ccNextPOT((int)w);
+            powH = ccNextPOT((int)h);
         }
         
         backend::TextureDescriptor descriptor;
@@ -357,7 +357,7 @@ void RenderTexture::visit(Renderer *renderer, const Mat4 &parentTransform, uint3
 bool RenderTexture::saveToFileAsNonPMA(const std::string& filename, bool isRGBA, std::function<void(RenderTexture*, const std::string&)> callback)
 {
     std::string basename(filename);
-    std::transform(basename.begin(), basename.end(), basename.begin(), ::tolower);
+    std::transform(basename.begin(), basename.end(), basename.begin(), [](char c) {return static_cast<char>(::tolower(c)); });
 
     if (basename.find(".png") != std::string::npos)
     {
@@ -379,7 +379,7 @@ bool RenderTexture::saveToFileAsNonPMA(const std::string& filename, bool isRGBA,
 bool RenderTexture::saveToFile(const std::string& filename, bool isRGBA, std::function<void (RenderTexture*, const std::string&)> callback)
 {
     std::string basename(filename);
-    std::transform(basename.begin(), basename.end(), basename.begin(), ::tolower);
+    std::transform(basename.begin(), basename.end(), basename.begin(), [](char c) { return static_cast<char>(::tolower(c)); });
     
     if (basename.find(".png") != std::string::npos)
     {
@@ -555,7 +555,7 @@ void RenderTexture::onBegin()
     Renderer *renderer =  director->getRenderer();
     
     _oldViewport = renderer->getViewport();
-    renderer->setViewPort(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
+    renderer->setViewPort((int)viewport.origin.x, (int)viewport.origin.y, (unsigned int)viewport.size.width, (unsigned int)viewport.size.height);
 
     _oldColorAttachment = renderer->getColorAttachment();
     _oldDepthAttachment = renderer->getDepthAttachment();

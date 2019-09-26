@@ -444,7 +444,7 @@ const char* EditBox::getText() const
     return "";
 }
 
-void EditBox::setFont(const char* pFontName, int fontSize)
+void EditBox::setFont(const char* pFontName, float fontSize)
 {
     CCASSERT(pFontName != nullptr, "fontName can't be nullptr");
     if (pFontName != nullptr)
@@ -474,7 +474,7 @@ const char* EditBox::getFontName() const
     return "";
 }
 
-void EditBox::setFontSize(int fontSize)
+void EditBox::setFontSize(float fontSize)
 {
     if (_editBoxImpl != nullptr)
     {
@@ -482,13 +482,13 @@ void EditBox::setFontSize(int fontSize)
     }
 }
 
-int EditBox::getFontSize() const
+float EditBox::getFontSize() const
 {
     if (_editBoxImpl != nullptr)
     {
         return _editBoxImpl->getFontSize();
     }
-    return -1;
+    return -1.0f;
 }
 void EditBox::setFontColor(const Color3B& color)
 {
@@ -512,7 +512,7 @@ const Color4B& EditBox::getFontColor() const
     return Color4B::WHITE;
 }
 
-void EditBox::setPlaceholderFont(const char* pFontName, int fontSize)
+void EditBox::setPlaceholderFont(const char* pFontName, float fontSize)
 {
     CCASSERT(pFontName != nullptr, "fontName can't be nullptr");
     if (pFontName != nullptr)
@@ -542,7 +542,7 @@ const char* EditBox::getPlaceholderFontName() const
     return "";
 }
 
-void EditBox::setPlaceholderFontSize(int fontSize)
+void EditBox::setPlaceholderFontSize(float fontSize)
 {
     if (_editBoxImpl != nullptr)
     {
@@ -550,13 +550,13 @@ void EditBox::setPlaceholderFontSize(int fontSize)
     }
 }
 
-int EditBox::getPlaceholderFontSize() const
+float EditBox::getPlaceholderFontSize() const
 {
     if (_editBoxImpl != nullptr)
     {
         return _editBoxImpl->getPlaceholderFontSize();
     }
-    return -1;
+    return -1.0f;
 }
 
 void EditBox::setPlaceholderFontColor(const Color3B& color)

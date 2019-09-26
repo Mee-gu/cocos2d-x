@@ -978,7 +978,7 @@ bool UIListViewTest_Padding::init()
             {
                 auto text = Text::create(str, "fonts/Marker Felt.ttf", 12);
                 text->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-                text->setPosition(Vec2(3, 150 - (25 * i)));
+                text->setPosition(Vec2(3.0f, 150.0f - (25 * i)));
                 _uiLayer->addChild(text);
             }
             // Show value of paddings
@@ -1050,34 +1050,34 @@ void UIListViewTest_Padding::sliderEvent(Ref *pSender, Slider::EventType type)
         // left
         if (slider && slider->getTag() == 0)
         {
-            int left = slider->getPercent() / 100.f * 50.f;
-            CCLOG("Left Padding: %d", left);
+            auto left = slider->getPercent() / 100.f * 50.f;
+            CCLOG("Left Padding: %f", left);
             _listView->setLeftPadding(left);
-            _paddingLabels[0]->setString(StringUtils::format("Left\nPadding=%d", left));
+            _paddingLabels[0]->setString(StringUtils::format("Left\nPadding=%f", left));
         }
         // top
         if (slider && slider->getTag() == 1)
         {
-            int top = slider->getPercent() / 100.f * 50.f;
-            CCLOG("Top Padding: %d", top);
+            auto top = slider->getPercent() / 100.f * 50.f;
+            CCLOG("Top Padding: %f", top);
             _listView->setTopPadding(top);
-            _paddingLabels[1]->setString(StringUtils::format("Top\nPadding=%d", top));
+            _paddingLabels[1]->setString(StringUtils::format("Top\nPadding=%f", top));
         }
         // right
         if (slider && slider->getTag() == 2)
         {
-            int right = slider->getPercent() / 100.f * 50.f;
-            CCLOG("Right Padding: %d", right);
+            auto right = slider->getPercent() / 100.f * 50.f;
+            CCLOG("Right Padding: %f", right);
             _listView->setRightPadding(right);
-            _paddingLabels[2]->setString(StringUtils::format("Right\nPadding=%d", right));
+            _paddingLabels[2]->setString(StringUtils::format("Right\nPadding=%f", right));
         }
         // bottom
         if (slider && slider->getTag() == 3)
         {
-            int bottom = slider->getPercent() / 100.f * 50.f;
-            CCLOG("Bottom Padding: %d", bottom);
+            auto bottom = slider->getPercent() / 100.f * 50.f;
+            CCLOG("Bottom Padding: %f", bottom);
             _listView->setBottomPadding(bottom);
-            _paddingLabels[3]->setString(StringUtils::format("Bottom\nPadding=%d", bottom));
+            _paddingLabels[3]->setString(StringUtils::format("Bottom\nPadding=%f", bottom));
         }
     }
 }

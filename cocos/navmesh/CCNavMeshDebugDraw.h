@@ -91,8 +91,8 @@ private:
     {
         backend::PrimitiveType  type        = backend::PrimitiveType::LINE;
         bool                    depthMask   = false;
-        unsigned short          start       = 0;
-        unsigned short          end         = 0;
+        size_t                  start       = 0;
+        size_t                  end         = 0;
         float                   size        = 1.0f;
     };
 

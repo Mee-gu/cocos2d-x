@@ -44,7 +44,7 @@ IMPLEMENT_CLASS_GUI_INFO(LoadingBar)
     
 LoadingBar::LoadingBar():
 _direction(Direction::LEFT),
-_percent(100.0),
+_percent(100),
 _totalLength(0),
 _barRenderer(nullptr),
 _renderBarTexType(TextureResType::LOCAL),
@@ -75,14 +75,14 @@ LoadingBar* LoadingBar::create()
     return nullptr;
 }
     
-LoadingBar* LoadingBar::create(const std::string &textureName, float percentage)
+LoadingBar* LoadingBar::create(const std::string &textureName, int percentage)
 {
     return LoadingBar::create(textureName, TextureResType::LOCAL, percentage);
 }
     
 LoadingBar* LoadingBar::create(const std::string &textureName,
                                TextureResType texType,
-                               float percentage)
+                               int percentage)
 {
     LoadingBar* widget = new (std::nothrow) LoadingBar;
     if (widget && widget->init())
@@ -264,7 +264,7 @@ const Rect& LoadingBar::getCapInsets()const
     return _capInsets;
 }
     
-void LoadingBar::setPercent(float percent)
+void LoadingBar::setPercent(int percent)
 {
     if (percent > 100)
     {
@@ -303,7 +303,7 @@ void LoadingBar::updateProgressBar()
     }
 }
 
-float LoadingBar::getPercent() const
+int LoadingBar::getPercent() const
 {
     return _percent;
 }

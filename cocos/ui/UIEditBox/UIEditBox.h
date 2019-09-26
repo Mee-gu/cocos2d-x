@@ -443,7 +443,7 @@ namespace ui {
          * @param pFontName The font name.
          * @param fontSize The font size.
          */
-        void setFont(const char* pFontName, int fontSize);
+        void setFont(const char* pFontName, float fontSize);
 
         /**
          * Set the font name. Only system font is allowed.
@@ -461,13 +461,13 @@ namespace ui {
          * Set the font size.
          * @param fontSize The font size.
          */
-        void setFontSize(int fontSize);
+        void setFontSize(float fontSize);
 
         /**
          * Get the font size.
          * @return The font size.
          */
-        int getFontSize() const;
+        float getFontSize() const;
 
         /**
          * Set the font color of the widget's text.
@@ -485,7 +485,7 @@ namespace ui {
          * @param pFontName The font name.
          * @param fontSize The font size.
          */
-        void setPlaceholderFont(const char* pFontName, int fontSize);
+        void setPlaceholderFont(const char* pFontName, float fontSize);
 
         /**
          * Set the placeholder's font name. only system font is allowed.
@@ -503,13 +503,13 @@ namespace ui {
          * Set the placeholder's font size.
          * @param fontSize The font size.
          */
-        void setPlaceholderFontSize(int fontSize);
+        void setPlaceholderFontSize(float fontSize);
 
         /**
          * Get the placeholder's font size.
          * @return The font size.
          */
-        int getPlaceholderFontSize() const;
+        float getPlaceholderFontSize() const;
 
         /**
          * Set the font color of the placeholder text when the edit box is empty.

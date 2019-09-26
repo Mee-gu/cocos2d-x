@@ -1443,14 +1443,14 @@ void TextureBlend::onEnter()
         // they use by default BlendFactor::ONE, BlendFactor::ONE_MINUS_SRC_ALPHA
         auto cloud = Sprite::create("Images/test_blend.png");
         addChild(cloud, i+1, 100+i);
-        cloud->setPosition(Vec2(50+25*i, 80));
+        cloud->setPosition(Vec2(50.0f+25*i, 80.0f));
         cloud->setBlendFunc( BlendFunc::ALPHA_PREMULTIPLIED );
 
         // CENTER sprites have also alpha pre-multiplied
         // they use by default BlendFactor::SRC_ALPHA, BlendFactor::ONE_MINUS_SRC_ALPHA
         cloud = Sprite::create("Images/test_blend.png");
         addChild(cloud, i+1, 200+i);
-        cloud->setPosition(Vec2(50+25*i, 160));
+        cloud->setPosition(Vec2(50.0f +25*i, 160.0f));
         BlendFunc blendFunc2 = { backend::BlendFactor::ONE_MINUS_DST_COLOR, backend::BlendFactor::ZERO };
         cloud->setBlendFunc(blendFunc2);
 
@@ -1458,7 +1458,7 @@ void TextureBlend::onEnter()
         // You can set any blend function to your sprites
         cloud = Sprite::create("Images/test_blend.png");
         addChild(cloud, i+1, 200+i);
-        cloud->setPosition(Vec2(50+25*i, 320-80));
+        cloud->setPosition(Vec2(50.0f +25*i, 320.0f -80.0f));
         BlendFunc blendFunc3 = { backend::BlendFactor::SRC_ALPHA, backend::BlendFactor::ONE };
         cloud->setBlendFunc(blendFunc3);  // additive blending
     }
@@ -1543,7 +1543,7 @@ void TextureAsync::imageLoaded(Texture2D* texture)
 
     auto size = director->getWinSize();
     int i = _imageOffset * 32;
-    sprite->setPosition(Vec2( i % (int)size.width, (i / (int)size.width) * 32 ));
+    sprite->setPosition(Vec2((float)(i % (int)size.width), (i / size.width) * 32 ));
 
     _imageOffset++;
 

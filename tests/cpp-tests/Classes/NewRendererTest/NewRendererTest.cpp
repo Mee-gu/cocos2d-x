@@ -34,7 +34,7 @@ public:
         _durations[key] = - now();
     }
 
-    int endTick(const std::string &key) {
+    int64_t endTick(const std::string &key) {
         auto n = now();
         auto itr = _durations.find(key);
         if(_durations.find(key) == _durations.end())
@@ -794,8 +794,8 @@ RendererBatchQuadTri::RendererBatchQuadTri()
 
     for (int i=0; i<250; i++)
     {
-        int x = CCRANDOM_0_1() * s.width;
-        int y = CCRANDOM_0_1() * s.height;
+        auto x = CCRANDOM_0_1() * s.width;
+        auto y = CCRANDOM_0_1() * s.height;
 
         auto label = LabelAtlas::create("This is a label", "fonts/tuffy_bold_italic-charmap.plist");
         label->setColor(Color3B::RED);
@@ -842,7 +842,7 @@ RendererUniformBatch::RendererUniformBatch()
         {
             auto sprite = Sprite::create("Images/grossini.png");
             sprite->setPosition(Vec2(x * x_inc, y * y_inc));
-            sprite->setScale(0.4);
+            sprite->setScale(0.4f);
             addChild(sprite);
 
             if (y>=4) {
@@ -924,7 +924,7 @@ RendererUniformBatch2::RendererUniformBatch2()
         {
             auto sprite = Sprite::create("Images/grossini.png");
             sprite->setPosition(Vec2(x * x_inc, y * y_inc));
-            sprite->setScale(0.4);
+            sprite->setScale(0.4f);
             addChild(sprite);
 
             auto r = CCRANDOM_0_1();
@@ -1018,7 +1018,7 @@ void NonBatchSprites::createSprite()
     }
 
     if (!sprite) return;
-    auto r = rand_0_1() * 0.6 + 0.2;
+    auto r = rand_0_1() * 0.6f + 0.2f;
     sprite->setScale(r, r);
     float x = ((float)std::rand()) / RAND_MAX;
     float y = ((float)std::rand()) / RAND_MAX;
@@ -1069,7 +1069,7 @@ void NonBatchSprites::update(float dt)
         std::stringstream ss;
         ss << _spriteIndex << " sprites, DONE!";
         _totalSprites->setString(ss.str());
-        _totalSprites->setScale(1.2);
+        _totalSprites->setScale(1.2f);
     }
 }
 

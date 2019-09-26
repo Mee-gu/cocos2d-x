@@ -159,7 +159,7 @@ void ActionNode::initWithDictionary(const rapidjson::Value& dic, Ref* root)
         bool existOpacity = DICTOOL->checkObjectExist_json(actionFrameDic,"opacity");
         if (existOpacity)
         {
-            int opacity = DICTOOL->getIntValue_json(actionFrameDic, "opacity");
+            uint8_t opacity = static_cast<uint8_t>(DICTOOL->getIntValue_json(actionFrameDic, "opacity"));
             ActionFadeFrame* actionFrame = new (std::nothrow) ActionFadeFrame();
             actionFrame->setFrameIndex(frameInex);
             actionFrame->setEasingType(frameTweenType);
@@ -173,9 +173,9 @@ void ActionNode::initWithDictionary(const rapidjson::Value& dic, Ref* root)
         bool existColor = DICTOOL->checkObjectExist_json(actionFrameDic,"colorr");
         if (existColor)
         {
-            int colorR = DICTOOL->getIntValue_json(actionFrameDic, "colorr");
-            int colorG = DICTOOL->getIntValue_json(actionFrameDic, "colorg");
-            int colorB = DICTOOL->getIntValue_json(actionFrameDic, "colorb");
+            uint8_t colorR = static_cast<uint8_t>(DICTOOL->getIntValue_json(actionFrameDic, "colorr"));
+            uint8_t colorG = static_cast<uint8_t>(DICTOOL->getIntValue_json(actionFrameDic, "colorg"));
+            uint8_t colorB = static_cast<uint8_t>(DICTOOL->getIntValue_json(actionFrameDic, "colorb"));
             ActionTintFrame* actionFrame = new (std::nothrow) ActionTintFrame();
             actionFrame->setFrameIndex(frameInex);
             actionFrame->setEasingType(frameTweenType);
@@ -204,7 +204,7 @@ void ActionNode::initWithDictionary(const rapidjson::Value& dic, Ref* root)
     }
     float ActionNode::valueToFloat(const std::string& value)
     {
-        return utils::atof(value.c_str());
+        return (float)utils::atof(value.c_str());
     }
     
     void ActionNode::initWithBinary(CocoLoader *cocoLoader,
@@ -238,10 +238,10 @@ void ActionNode::initWithDictionary(const rapidjson::Value& dic, Ref* root)
             float scaleX;
             float scaleY;
             float rotation;
-            int opacity;
-            int colorR = -1;
-            int colorG = -1;
-            int colorB = -1;
+            uint8_t opacity;
+            uint8_t colorR = 0;
+            uint8_t colorG = 0;
+            uint8_t colorB = 0;
             std::vector<float> frameTweenParameter;
             
             int framesCount = stFrameChildNode[i].GetChildNum();
@@ -299,7 +299,7 @@ void ActionNode::initWithDictionary(const rapidjson::Value& dic, Ref* root)
                     auto cActionArray = _frameArray.at((int)kKeyframeRotate);
                     cActionArray->pushBack(actionFrame);
                 }else if (key == "opacity"){
-                    opacity = valueToInt(value);
+                    opacity = static_cast<uint8_t>(valueToInt(value));
                     ActionFadeFrame* actionFrame = new (std::nothrow) ActionFadeFrame();
                     actionFrame->autorelease();
                     actionFrame->setEasingType(frameTweenType);
@@ -309,11 +309,11 @@ void ActionNode::initWithDictionary(const rapidjson::Value& dic, Ref* root)
                     auto cActionArray = _frameArray.at((int)kKeyframeFade);
                     cActionArray->pushBack(actionFrame);
                 }else if (key == "colorb"){
-                    colorB = valueToInt(value);
+                    colorB = static_cast<uint8_t>(valueToInt(value));
                 }else if(key == "colorg"){
-                    colorG = valueToInt(value);
+                    colorG = static_cast<uint8_t>(valueToInt(value));
                 }else if(key == "colorr"){
-                    colorR = valueToInt(value);
+                    colorR = static_cast<uint8_t>(valueToInt(value));
                     
                     ActionTintFrame* actionFrame = new (std::nothrow) ActionTintFrame();
                     actionFrame->autorelease();

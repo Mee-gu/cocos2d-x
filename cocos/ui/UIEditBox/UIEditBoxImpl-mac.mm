@@ -73,7 +73,7 @@ void EditBoxImplMac::createNativeControl(const cocos2d::Rect &frame)
     this->setNativeVisible(false);
 }
     
-NSFont* EditBoxImplMac::constructFont(const char *fontName, int fontSize)
+NSFont* EditBoxImplMac::constructFont(const char *fontName, float fontSize)
 {
     NSString * fntName = [NSString stringWithUTF8String:fontName];
     fntName = [[fntName lastPathComponent] stringByDeletingPathExtension];
@@ -107,13 +107,13 @@ NSFont* EditBoxImplMac::constructFont(const char *fontName, int fontSize)
     return textFont;
 }
 
-void EditBoxImplMac::setNativeFont(const char *pFontName, int fontSize)
+void EditBoxImplMac::setNativeFont(const char *pFontName, float fontSize)
 {
     NSFont* textFont = constructFont(pFontName, fontSize);
     [_sysEdit setFont:textFont];
 }
 
-void EditBoxImplMac::setNativePlaceholderFont(const char *pFontName, int fontSize)
+void EditBoxImplMac::setNativePlaceholderFont(const char *pFontName, float fontSize)
 {
     NSFont *textFont = constructFont(pFontName, fontSize);
     

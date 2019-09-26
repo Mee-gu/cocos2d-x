@@ -102,7 +102,7 @@ namespace cocostudio
             }else if(key == P_Text){
                 textField->setString(value);
             }else if(key == P_FontSize){
-                textField->setFontSize(valueToInt(value));
+                textField->setFontSize(valueToFloat(value));
             }else if(key == P_FontName){
                 textField->setFontName(value);
             }else if(key == P_TouchSizeWidth){
@@ -135,7 +135,7 @@ namespace cocostudio
         }
         textField->setString(DICTOOL->getStringValue_json(options, P_Text,"Text Tield"));
        
-        textField->setFontSize(DICTOOL->getIntValue_json(options, P_FontSize,20));
+        textField->setFontSize((float)DICTOOL->getIntValue_json(options, P_FontSize,20));
     
         std::string jsonPath = GUIReader::getInstance()->getFilePath();
         std::string fontName = DICTOOL->getStringValue_json(options, P_FontName, "");
@@ -334,7 +334,7 @@ namespace cocostudio
             textField->setString(text);
         }
         
-        int fontSize = options->fontSize();
+        float fontSize = (float)options->fontSize();
         textField->setFontSize(fontSize);
         
         std::string fontName = options->fontName()->c_str();

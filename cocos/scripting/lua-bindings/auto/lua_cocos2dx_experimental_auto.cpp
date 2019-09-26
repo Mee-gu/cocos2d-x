@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4244)
 #include "scripting/lua-bindings/auto/lua_cocos2dx_experimental_auto.hpp"
 #include "2d/CCFastTMXLayer.h"
 #include "2d/CCFastTMXTiledMap.h"
@@ -1880,3 +1882,4 @@ TOLUA_API int register_all_cocos2dx_experimental(lua_State* tolua_S)
 	return 1;
 }
 
+#pragma warning(pop)

@@ -317,7 +317,7 @@ void NestedTest::setup()
     
     for (int i = 0; i < depth; i++) {
                 
-        int size = 225 - i * (225 / (depth * 2));
+        float size = 225.0f - i * (225 / (depth * 2));
 
         auto clipper = ClippingNode::create();
         clipper->setContentSize(Size(size, size));
@@ -332,7 +332,7 @@ void NestedTest::setup()
         stencil->setAnchorPoint( Vec2(0.5f, 0.5f) );
         stencil->setPosition(clipper->getContentSize().width / 2, clipper->getContentSize().height / 2);
         stencil->setVisible(false);
-        stencil->runAction(Sequence::createWithTwoActions(DelayTime::create(i), Show::create()));
+        stencil->runAction(Sequence::createWithTwoActions(DelayTime::create((float)i), Show::create()));
         clipper->setStencil(stencil);
 
         clipper->addChild(stencil);
@@ -406,7 +406,7 @@ void HoleDemo::setup()
 
 void HoleDemo::pokeHoleAtPoint(Vec2 point)
 {
-    float scale = CCRANDOM_0_1() * 0.2 + 0.9;
+    float scale = CCRANDOM_0_1() * 0.2f + 0.9f;
     float rotation = CCRANDOM_0_1() * 360;
     
     auto hole = Sprite::create("Images/hole_effect.png");
@@ -586,13 +586,13 @@ void RawStencilBufferTest::initCommands()
     size_t neededCmdSize = _planeCount * 2;
     _renderCmds.resize(neededCmdSize);
     auto winPoint = Vec2(Director::getInstance()->getWinSize());
-    auto planeSize = winPoint * (1.0 / _planeCount);
+    auto planeSize = winPoint * (1.0f / _planeCount);
     BlendFunc blend;
     blend.src = backend::BlendFactor::ONE;
     blend.dst = backend::BlendFactor::ONE_MINUS_SRC_ALPHA;
     for (int i = 0, cmdIndex = 0; i < _planeCount; i++)
     {
-        auto stencilPoint = planeSize * (_planeCount - i);
+        auto stencilPoint = planeSize * (float)(_planeCount - i);
         stencilPoint.x = winPoint.x;
 
         auto& cmd = _renderCmds[cmdIndex];
@@ -646,7 +646,7 @@ void RawStencilBufferTest::draw(Renderer *renderer, const Mat4 &transform, uint3
 
     for (int i = 0, cmdIndex = 0; i < _planeCount; i++)
     {
-        auto spritePoint = planeSize * i;
+        auto spritePoint = planeSize * (float)i;
         spritePoint.x += planeSize.x / 2;
         spritePoint.y = 0;
         _sprites.at(i)->setPosition( spritePoint );

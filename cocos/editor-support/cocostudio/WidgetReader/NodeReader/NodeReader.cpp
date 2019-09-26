@@ -142,11 +142,11 @@ namespace cocostudio
             }
             else if (attriname == "RotationSkewX")
             {
-                rotationSkew.x = atof(value.c_str());
+                rotationSkew.x = (float)atof(value.c_str());
             }
             else if (attriname == "RotationSkewY")
             {
-                rotationSkew.y = atof(value.c_str());
+                rotationSkew.y = (float)atof(value.c_str());
             }
             else if (attriname == "Rotation")
             {
@@ -174,7 +174,7 @@ namespace cocostudio
             }
             else if (attriname == "Alpha")
             {
-                alpha = atoi(value.c_str());
+                alpha = static_cast<uint8_t>(atoi(value.c_str()));
             }
             else if (attriname == "Tag")
             {
@@ -226,19 +226,19 @@ namespace cocostudio
             }
             else if (attriname == Layout_LeftMargin)
             {
-                leftMargin = atof(value.c_str());
+                leftMargin = (float)atof(value.c_str());
             }
             else if (attriname == Layout_RightMargin)
             {
-                rightMargin = atof(value.c_str());
+                rightMargin = (float)atof(value.c_str());
             }
             else if (attriname == Layout_TopMargin)
             {
-                topMargin = atof(value.c_str());
+                topMargin = (float)atof(value.c_str());
             }
             else if (attriname == Layout_BottomMargin)
             {
-                bottomMargin = atof(value.c_str());
+                bottomMargin = (float)atof(value.c_str());
             }
             
             attribute = attribute->Next();
@@ -259,11 +259,11 @@ namespace cocostudio
                     
                     if (attriname == "X")
                     {
-                        position.x = atof(value.c_str());
+                        position.x = (float)atof(value.c_str());
                     }
                     else if (attriname == "Y")
                     {
-                        position.y = atof(value.c_str());
+                        position.y = (float)atof(value.c_str());
                     }
                     
                     attribute = attribute->Next();
@@ -280,11 +280,11 @@ namespace cocostudio
                     
                     if (attriname == "ScaleX")
                     {
-                        scale.x = atof(value.c_str());
+                        scale.x = (float)atof(value.c_str());
                     }
                     else if (attriname == "ScaleY")
                     {
-                        scale.y = atof(value.c_str());
+                        scale.y = (float)atof(value.c_str());
                     }
                     
                     attribute = attribute->Next();
@@ -301,11 +301,11 @@ namespace cocostudio
                     
                     if (attriname == "ScaleX")
                     {
-                        anchorPoint.x = atof(value.c_str());
+                        anchorPoint.x = (float)atof(value.c_str());
                     }
                     else if (attriname == "ScaleY")
                     {
-                        anchorPoint.y = atof(value.c_str());
+                        anchorPoint.y = (float)atof(value.c_str());
                     }
                     
                     attribute = attribute->Next();
@@ -322,19 +322,19 @@ namespace cocostudio
                     
                     if (attriname == "A")
                     {
-                        color.a = atoi(value.c_str());
+                        color.a = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (attriname == "R")
                     {
-                        color.r = atoi(value.c_str());
+                        color.r = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (attriname == "G")
                     {
-                        color.g = atoi(value.c_str());
+                        color.g = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     else if (attriname == "B")
                     {
-                        color.b = atoi(value.c_str());
+                        color.b = static_cast<uint8_t>(atoi(value.c_str()));
                     }
                     
                     attribute = attribute->Next();
@@ -351,11 +351,11 @@ namespace cocostudio
                     
                     if (attriname == "X")
                     {
-                        size.x = atof(value.c_str());
+                        size.x = (float)atof(value.c_str());
                     }
                     else if (attriname == "Y")
                     {
-                        size.y = atof(value.c_str());
+                        size.y = (float)atof(value.c_str());
                     }
                     
                     attribute = attribute->Next();
@@ -372,11 +372,11 @@ namespace cocostudio
 
                     if (attriname == "X")
                     {
-                        positionXPercent = atof(value.c_str());
+                        positionXPercent = (float)atof(value.c_str());
                     }
                     else if (attriname == "Y")
                     {
-                        positionYPercent = atof(value.c_str());
+                        positionYPercent = (float)atof(value.c_str());
                     }
 
                     attribute = attribute->Next();
@@ -393,11 +393,11 @@ namespace cocostudio
 
                     if (attriname == "X")
                     {
-                        sizeXPercent = atof(value.c_str());
+                        sizeXPercent = (float)atof(value.c_str());
                     }
                     else if (attriname == "Y")
                     {
-                        sizeYPercent = atof(value.c_str());
+                        sizeYPercent = (float)atof(value.c_str());
                     }
 
                     attribute = attribute->Next();
@@ -477,7 +477,7 @@ namespace cocostudio
         bool visible        = options->visible() != 0;
         float w             = options->size()->width();
         float h             = options->size()->height();
-        int alpha           = options->alpha();
+        auto alpha           = options->alpha();
         Color3B color(options->color()->r(), options->color()->g(), options->color()->b());
         std::string customProperty = options->customProperty()->c_str();
         

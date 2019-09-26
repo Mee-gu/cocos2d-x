@@ -133,8 +133,8 @@ endfunction()
  # Set compiler options
  function(use_cocos2dx_compile_options target)
     if(MSVC)
-        target_compile_options(${target}
-            PUBLIC /MP
-        )
+        target_compile_options(${target} PUBLIC /MP /we4244)
+    else()
+        target_compile_options(${target} PUBLIC -Werror=conversion)
     endif()
  endfunction()

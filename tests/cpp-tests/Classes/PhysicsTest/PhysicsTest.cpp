@@ -110,15 +110,16 @@ Sprite* PhysicsDemo::addGrossiniAtPosition(Vec2 p, float scale/* = 1.0*/)
 {
     CCLOG("Add sprite %0.2f x %02.f", p.x, p.y);
     
-    int posx, posy;
+    float posx, posy, posw, posh;
     
     posx = CCRANDOM_0_1() * 200.0f;
     posy = CCRANDOM_0_1() * 200.0f;
+    posw = 85.0f;
+    posh = 121.0f;
+    posx = ((int)posx % 4) * posw;
+    posy = ((int)posy % 3) * posh;
     
-    posx = (posx % 4) * 85;
-    posy = (posy % 3) * 121;
-    
-    auto sp = Sprite::createWithTexture(_spriteTexture, Rect(posx, posy, 85, 121));
+    auto sp = Sprite::createWithTexture(_spriteTexture, Rect(posx, posy, posw, posh));
     
     sp->setScale(scale);
     sp->setPosition(p);
@@ -182,7 +183,7 @@ namespace
     
     float frand()
     {
-        return rand() / RAND_MAX;
+        return (float)rand() / RAND_MAX;
     }
 }
 
@@ -319,7 +320,7 @@ void PhysicsDemoLogoSmash::onEnter()
     PhysicsDemo::onEnter();
     
     _physicsWorld->setGravity(Vec2(0.0f, 0.0f));
-    _physicsWorld->setUpdateRate(5.0f);
+    _physicsWorld->setUpdateRate(5);
     
     _ball = SpriteBatchNode::create("Images/ball.png", sizeof(LOGO_IMAGE)/sizeof(LOGO_IMAGE[0]));
     addChild(_ball);
@@ -329,8 +330,8 @@ void PhysicsDemoLogoSmash::onEnter()
         {
             if (getPixel(x, y))
             {
-                float xJitter = 0.05 * frand();
-                float yJitter = 0.05 * frand();
+                float xJitter = 0.05f * frand();
+                float yJitter = 0.05f * frand();
                 
                 Node* ball = makeBall(Vec2(2*(x - LOGO_WIDTH/2 + xJitter) + VisibleRect::getVisibleRect().size.width/2,
                                            2*(LOGO_HEIGHT-y + yJitter) + VisibleRect::getVisibleRect().size.height/2 - LOGO_HEIGHT/2),
@@ -451,7 +452,7 @@ void PhysicsDemoPyramidStack::onEnter()
     {
         for (int j = 0; j <= i; j++)
         {
-            auto sp = addGrossiniAtPosition(VisibleRect::bottom() + Vec2((i / 2 - j) * 11, (14 - i) * 23 + 100), 0.2f);
+            auto sp = addGrossiniAtPosition(VisibleRect::bottom() + Vec2((i / 2 - j) * 11.0f, (14 - i) * 23 + 100.0f), 0.2f);
             sp->getPhysicsBody()->setTag(DRAG_BODYS_TAG);
         }
     }

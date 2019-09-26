@@ -313,7 +313,7 @@ namespace backend { namespace PixelFormatUtils {
     {
         for (ssize_t i = 0, l = dataLen - 2; i < l; i += 3)
         {
-            *outData++ = (data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000;  //A =  (R*299 + G*587 + B*114 + 500) / 1000
+            *outData++ = (unsigned char)((data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000);  //A =  (R*299 + G*587 + B*114 + 500) / 1000
         }
     }
     
@@ -322,7 +322,7 @@ namespace backend { namespace PixelFormatUtils {
     {
         for (ssize_t i = 0, l = dataLen - 2; i < l; i += 3)
         {
-            *outData++ = (data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000;  //I =  (R*299 + G*587 + B*114 + 500) / 1000
+            *outData++ = (unsigned char)((data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000);  //I =  (R*299 + G*587 + B*114 + 500) / 1000
         }
     }
     
@@ -331,7 +331,7 @@ namespace backend { namespace PixelFormatUtils {
     {
         for (ssize_t i = 0, l = dataLen - 3; i < l; i += 4)
         {
-            *outData++ = (data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000;  //I =  (R*299 + G*587 + B*114 + 500) / 1000
+            *outData++ = (unsigned char)((data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000);  //I =  (R*299 + G*587 + B*114 + 500) / 1000
         }
     }
     
@@ -349,7 +349,7 @@ namespace backend { namespace PixelFormatUtils {
     {
         for (ssize_t i = 0, l = dataLen - 2; i < l; i += 3)
         {
-            *outData++ = (data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000;  //I =  (R*299 + G*587 + B*114 + 500) / 1000
+            *outData++ = (unsigned char)((data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000);  //I =  (R*299 + G*587 + B*114 + 500) / 1000
             *outData++ = 0xFF;
         }
     }
@@ -360,7 +360,7 @@ namespace backend { namespace PixelFormatUtils {
     {
         for (ssize_t i = 0, l = dataLen - 3; i < l; i += 4)
         {
-            *outData++ = (data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000;  //I =  (R*299 + G*587 + B*114 + 500) / 1000
+            *outData++ = (unsigned char)((data[i] * 299 + data[i + 1] * 587 + data[i + 2] * 114 + 500) / 1000);  //I =  (R*299 + G*587 + B*114 + 500) / 1000
             *outData++ = data[i + 3];
         }
     }
@@ -503,7 +503,7 @@ namespace backend { namespace PixelFormatUtils {
         {
             pixel = inData[i];
             *outData++ = (pixel & (0x001F << 11)) >> 8;
-            *outData++ = (pixel & (0x001F << 6)) >> 3;
+            *outData++ = (unsigned char)((pixel & (0x001F << 6)) >> 3);
             *outData++ = (pixel & (0x001F << 1)) << 2;
             *outData++ = (pixel & 0x0001) * 255;
         }
@@ -533,7 +533,7 @@ namespace backend { namespace PixelFormatUtils {
         {
             pixel = inData[i];
             *outData++ = (pixel & (0x001F << 11)) >> 8;
-            *outData++ = (pixel & (0x003F << 5)) >> 3;
+            *outData++ = (unsigned char)((pixel & (0x003F << 5)) >> 3);
             *outData++ = (pixel & (0x001F)) << 3;
             *outData++ = 0xFF;
         }

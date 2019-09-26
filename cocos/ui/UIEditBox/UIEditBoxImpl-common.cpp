@@ -156,7 +156,7 @@ void EditBoxImplCommon::setInactiveText(const char* pText)
     }
 }
 
-void EditBoxImplCommon::setFont(const char* pFontName, int fontSize)
+void EditBoxImplCommon::setFont(const char* pFontName, float fontSize)
 {
     _fontName = pFontName;
     _fontSize = fontSize;
@@ -178,7 +178,7 @@ void EditBoxImplCommon::setFontColor(const Color4B& color)
     _label->setTextColor(color);
 }
 
-void EditBoxImplCommon::setPlaceholderFont(const char* pFontName, int fontSize)
+void EditBoxImplCommon::setPlaceholderFont(const char* pFontName, float fontSize)
 {
     _placeholderFontName = pFontName;
     _placeholderFontSize = fontSize;

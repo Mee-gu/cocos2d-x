@@ -300,7 +300,7 @@ TextField* TextField::create()
     return nullptr;
 }
     
-TextField* TextField::create(const std::string &placeholder, const std::string &fontName, int fontSize)
+TextField* TextField::create(const std::string &placeholder, const std::string &fontName, float fontSize)
 {
     TextField* widget = new (std::nothrow) TextField();
     if (widget && widget->init())
@@ -439,7 +439,7 @@ void TextField::setTextColor(const cocos2d::Color4B &textColor)
     _textFieldRenderer->setTextColor(textColor);
 }
 
-void TextField::setFontSize(int size)
+void TextField::setFontSize(float size)
 {
     if (_fontType == FontType::SYSTEM)
     {
@@ -459,7 +459,7 @@ void TextField::setFontSize(int size)
     updateContentSizeWithTextureSize(_textFieldRenderer->getContentSize());
 }
     
-int TextField::getFontSize()const
+float TextField::getFontSize()const
 {
     return _fontSize;
 }
@@ -469,7 +469,7 @@ void TextField::setFontName(const std::string& name)
     if(FileUtils::getInstance()->isFileExist(name))
     {
         std::string lcName = name;
-        std::transform(lcName.begin(), lcName.end(), lcName.begin(), ::tolower);
+        std::transform(lcName.begin(), lcName.end(), lcName.begin(), [](char c) { return static_cast<char>(::tolower(c)); });
         if(lcName.substr(lcName.length() - 4) == ".fnt") {
             _textFieldRenderer->setBMFontFilePath(name);
             _fontType = FontType::BMFONT;
