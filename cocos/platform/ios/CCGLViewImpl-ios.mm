@@ -164,10 +164,10 @@ bool GLViewImpl::initWithFullScreen(const std::string& viewName)
 {
     CGRect rect = [[UIScreen mainScreen] bounds];
     Rect r;
-    r.origin.x = rect.origin.x;
-    r.origin.y = rect.origin.y;
-    r.size.width = rect.size.width;
-    r.size.height = rect.size.height;
+    r.origin.x = (float)rect.origin.x;
+    r.origin.y = (float)rect.origin.y;
+    r.size.width = (float)rect.size.width;
+    r.size.height = (float)rect.size.height;
 
     return initWithRect(viewName, r, 1);
 }
@@ -192,7 +192,7 @@ float GLViewImpl::getContentScaleFactor() const
 {
     CCEAGLView *eaglview = (CCEAGLView*) _eaglview;
 
-    float scaleFactor = [eaglview contentScaleFactor];
+    float scaleFactor = (float)[eaglview contentScaleFactor];
 
 //    CCASSERT(scaleFactor == _scaleX == _scaleY, "Logic error in GLView::getContentScaleFactor");
 
@@ -252,8 +252,8 @@ Rect GLViewImpl::getSafeAreaRect() const
         safeAreaInsets.bottom *= eaglview.contentScaleFactor;
 
         // Get leftBottom and rightTop point in UI coordinates
-        Vec2 leftBottom = Vec2(safeAreaInsets.left, _screenSize.height - safeAreaInsets.bottom);
-        Vec2 rightTop = Vec2(_screenSize.width - safeAreaInsets.right, safeAreaInsets.top);
+        Vec2 leftBottom = Vec2((float)safeAreaInsets.left, (float)(_screenSize.height - safeAreaInsets.bottom));
+        Vec2 rightTop = Vec2((float)(_screenSize.width - safeAreaInsets.right), (float)safeAreaInsets.top);
 
         // Convert a point from UI coordinates to which in design resolution coordinate.
         leftBottom.x = (leftBottom.x - _viewPortRect.origin.x) / _scaleX,

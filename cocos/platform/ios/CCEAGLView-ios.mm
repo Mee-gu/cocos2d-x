@@ -188,13 +188,13 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 -(int) getWidth
 {
     CGSize bound = [self bounds].size;
-    return (int)bound.width * self.contentScaleFactor;
+    return (int)(bound.width * self.contentScaleFactor);
 }
 
 -(int) getHeight
 {
     CGSize bound = [self bounds].size;
-    return (int)bound.height * self.contentScaleFactor;
+    return (int)(bound.height * self.contentScaleFactor);
 }
 
 - (void) dealloc
@@ -290,8 +290,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         }
 
         ids[i] = touch;
-        xs[i] = [touch locationInView: [touch view]].x * self.contentScaleFactor;
-        ys[i] = [touch locationInView: [touch view]].y * self.contentScaleFactor;
+        xs[i] = (float)([touch locationInView: [touch view]].x * self.contentScaleFactor);
+        ys[i] = (float)([touch locationInView: [touch view]].y * self.contentScaleFactor);
         ++i;
     }
 
@@ -315,13 +315,13 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         }
 
         ids[i] = touch;
-        xs[i] = [touch locationInView: [touch view]].x * self.contentScaleFactor;
-        ys[i] = [touch locationInView: [touch view]].y * self.contentScaleFactor;
+        xs[i] = (float)([touch locationInView: [touch view]].x * self.contentScaleFactor);
+        ys[i] = (float)([touch locationInView: [touch view]].y * self.contentScaleFactor);
 #if defined(__IPHONE_9_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0)
         // running on iOS 9.0 or higher version
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0f) {
-            fs[i] = touch.force;
-            ms[i] = touch.maximumPossibleForce;
+            fs[i] = (float)touch.force;
+            ms[i] = (float)touch.maximumPossibleForce;
         }
 #endif
         ++i;
@@ -345,8 +345,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         }
 
         ids[i] = touch;
-        xs[i] = [touch locationInView: [touch view]].x * self.contentScaleFactor;
-        ys[i] = [touch locationInView: [touch view]].y * self.contentScaleFactor;
+        xs[i] = (float)([touch locationInView: [touch view]].x * self.contentScaleFactor);
+        ys[i] = (float)([touch locationInView: [touch view]].y * self.contentScaleFactor);
         ++i;
     }
 
@@ -368,8 +368,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         }
         
         ids[i] = touch;
-        xs[i] = [touch locationInView: [touch view]].x * self.contentScaleFactor;
-        ys[i] = [touch locationInView: [touch view]].y * self.contentScaleFactor;
+        xs[i] = (float)([touch locationInView: [touch view]].x * self.contentScaleFactor);
+        ys[i] = (float)([touch locationInView: [touch view]].y * self.contentScaleFactor);
         ++i;
     }
 
@@ -706,14 +706,14 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
     
     cocos2d::IMEKeyboardNotificationInfo notiInfo;
-    notiInfo.begin = cocos2d::Rect(begin.origin.x,
-                                     begin.origin.y,
-                                     begin.size.width,
-                                     begin.size.height);
-    notiInfo.end = cocos2d::Rect(end.origin.x,
-                                   end.origin.y,
-                                   end.size.width,
-                                   end.size.height);
+    notiInfo.begin = cocos2d::Rect((float)begin.origin.x,
+                                     (float)begin.origin.y,
+                                     (float)begin.size.width,
+                                     (float)begin.size.height);
+    notiInfo.end = cocos2d::Rect((float)end.origin.x,
+                                   (float)end.origin.y,
+                                   (float)end.size.width,
+                                   (float)end.size.height);
     notiInfo.duration = (float)aniDuration;
     
     cocos2d::IMEDispatcher* dispatcher = cocos2d::IMEDispatcher::sharedDispatcher();
@@ -728,7 +728,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
         dispatcher->dispatchKeyboardDidShow(notiInfo);
         caretRect_ = end;
 
-        int fontSize = [UIFont smallSystemFontSize];
+        int fontSize = (int)[UIFont smallSystemFontSize];
         caretRect_.origin.y = viewSize.height - (caretRect_.origin.y + caretRect_.size.height + fontSize);
         caretRect_.size.height = 0;
         isKeyboardShown_ = YES;
@@ -771,7 +771,7 @@ UIInterfaceOrientation getFixedOrientation(UIInterfaceOrientation statusBarOrien
     auto glview = cocos2d::Director::getInstance()->getOpenGLView();
     dis *= glview->getScaleY();
     
-    dis /= self.contentScaleFactor;
+    dis /= (float)self.contentScaleFactor;
 
 #if defined(CC_TARGET_OS_TVOS)
     self.frame = CGRectMake(originalRect_.origin.x, originalRect_.origin.y - dis, originalRect_.size.width, originalRect_.size.height);

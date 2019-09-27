@@ -188,7 +188,7 @@ void EditBoxImplIOS::updateNativeFrame(const Rect& rect)
     auto glview = cocos2d::Director::getInstance()->getOpenGLView();
     CCEAGLView *eaglview = (CCEAGLView *) glview->getEAGLView();
 
-    float factor = eaglview.contentScaleFactor;
+    float factor = (float)eaglview.contentScaleFactor;
     
     [_systemControl updateFrame:CGRectMake(rect.origin.x / factor,
                                            rect.origin.y / factor,
@@ -218,7 +218,7 @@ UIFont* EditBoxImplIOS::constructFont(const char *fontName, float fontSize)
 {
     CCASSERT(fontName != nullptr, "fontName can't be nullptr");
     CCEAGLView *eaglview = static_cast<CCEAGLView *>(cocos2d::Director::getInstance()->getOpenGLView()->getEAGLView());
-    float retinaFactor = eaglview.contentScaleFactor;
+    float retinaFactor = (float)eaglview.contentScaleFactor;
     NSString * fntName = [NSString stringWithUTF8String:fontName];
     
     fntName = [[fntName lastPathComponent] stringByDeletingPathExtension];
@@ -228,7 +228,7 @@ UIFont* EditBoxImplIOS::constructFont(const char *fontName, float fontSize)
     
     if (fontSize == -1)
     {
-        fontSize = _systemControl.frameRect.size.height*2/3;
+        fontSize = (float)_systemControl.frameRect.size.height*2/3;
     }
     else
     {

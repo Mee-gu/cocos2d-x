@@ -125,7 +125,7 @@ static id s_sharedDirectorCaller;
     // Director::setAnimationInterval() is called, we should invalidate it first
     [self stopMainLoop];
         
-    self.interval = 60.0 * intervalNew;
+    self.interval = (int)(60.0f * intervalNew);
         
     displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(doCaller:)];
     [displayLink setFrameInterval: self.interval];
@@ -144,7 +144,7 @@ static id s_sharedDirectorCaller;
 
         CFTimeInterval dt = ((CADisplayLink*)displayLink).timestamp - lastDisplayTime;
         lastDisplayTime = ((CADisplayLink*)displayLink).timestamp;
-        director->mainLoop(dt);
+        director->mainLoop(static_cast<float>(dt));
     }
 }
 

@@ -151,7 +151,7 @@
 }
 
 -(float) getOpacityWebView{
-    return self.wkWebView.alpha;
+    return (float)self.wkWebView.alpha;
 }
 
 -(void) setBackgroundTransparent{
@@ -415,7 +415,7 @@ void WebViewImpl::draw(cocos2d::Renderer *renderer, cocos2d::Mat4 const &transfo
         auto glView = director->getOpenGLView();
         auto frameSize = glView->getFrameSize();
         
-        auto scaleFactor = [static_cast<CCEAGLView *>(glView->getEAGLView()) contentScaleFactor];
+        float scaleFactor = (float)[static_cast<CCEAGLView *>(glView->getEAGLView()) contentScaleFactor];
 
         auto winSize = director->getWinSize();
 

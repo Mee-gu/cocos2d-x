@@ -71,7 +71,7 @@ static NSAttributedString* __attributedStringWithFontSize(NSMutableAttributedStr
 
 static CGFloat _calculateTextDrawStartHeight(cocos2d::Device::TextAlign align, CGSize realDimensions, CGSize dimensions)
 {
-    float startH = 0;
+    CGFloat startH = 0;
     // vertical alignment
     unsigned int vAlignment = ((int)align >> 4) & 0x0F;
     switch (vAlignment) {
@@ -94,7 +94,7 @@ static CGSize _calculateShrinkedSizeForString(NSAttributedString **str,
                                               int& newFontSize)
 {
     CGRect actualSize = CGRectMake(0, 0, constrainSize.width + 1, constrainSize.height + 1);
-    int fontSize = [font pointSize];
+    int fontSize = (int)[font pointSize];
     fontSize = fontSize + 1;
 
     if (!enableWrap) {
@@ -169,7 +169,7 @@ static CGSize _calculateShrinkedSizeForString(NSAttributedString **str,
 
     newFontSize = fontSize;
 
-    return CGSizeMake(ceilf(actualSize.size.width), ceilf(actualSize.size.height));
+    return CGSizeMake(ceilf((float)actualSize.size.width), ceilf((float)actualSize.size.height));
 }
 
 #define SENSOR_DELAY_GAME 0.02
@@ -291,15 +291,15 @@ int Device::getDPI()
         float scale = 1.0f;
 
         if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-            scale = [[UIScreen mainScreen] scale];
+            scale = (float)[[UIScreen mainScreen] scale];
         }
 
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            dpi = 132 * scale;
+            dpi = (int)(132 * scale);
         } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            dpi = 163 * scale;
+            dpi = (int)(163 * scale);
         } else {
-            dpi = 160 * scale;
+            dpi = (int)(160 * scale);
         }
     }
     return dpi;
@@ -366,8 +366,8 @@ static CGSize _calculateStringSize(NSAttributedString *str, id font, CGSize *con
                                  options:(NSStringDrawingUsesLineFragmentOrigin)
                             context:nil].size;
 
-    dim.width = ceilf(dim.width);
-    dim.height = ceilf(dim.height);
+    dim.width = ceilf((float)dim.width);
+    dim.height = ceilf((float)dim.height);
 
     return dim;
 }
@@ -452,8 +452,8 @@ static bool _initWithString(const char * text, cocos2d::Device::TextAlign align,
         CGFloat yPadding = _calculateTextDrawStartHeight(align, realDimensions, dimensions);
         CGFloat xPadding = FontUtils::_calculateTextDrawStartWidth(align, realDimensions, dimensions);
         
-        NSInteger POTWide = dimensions.width;
-        NSInteger POTHigh = dimensions.height;
+        NSInteger POTWide = (NSInteger)dimensions.width;
+        NSInteger POTHigh = (NSInteger)dimensions.height;
         
         CGRect textRect = CGRectMake(xPadding, yPadding,
                                      realDimensions.width, realDimensions.height);
@@ -562,8 +562,8 @@ Data Device::getTextureDataForText(const char * text, const FontDefinition& text
 
     do {
         tImageInfo info = {0};
-        info.width                  = textDefinition._dimensions.width;
-        info.height                 = textDefinition._dimensions.height;
+        info.width                  = (unsigned int)textDefinition._dimensions.width;
+        info.height                 = (unsigned int)textDefinition._dimensions.height;
         info.hasShadow              = textDefinition._shadow._shadowEnabled;
         info.shadowOffset.width     = textDefinition._shadow._shadowOffset.width;
         info.shadowOffset.height    = textDefinition._shadow._shadowOffset.height;
@@ -580,7 +580,7 @@ Data Device::getTextureDataForText(const char * text, const FontDefinition& text
         info.tintColorB             = textDefinition._fontFillColor.b / 255.0f;
         info.tintColorA             = textDefinition._fontAlpha / 255.0f;
 
-        if (! _initWithString(text, align, textDefinition._fontName.c_str(), textDefinition._fontSize, &info, textDefinition._enableWrap, textDefinition._overflow))
+        if (! _initWithString(text, align, textDefinition._fontName.c_str(), (int)textDefinition._fontSize, &info, textDefinition._enableWrap, textDefinition._overflow))
         {
             break;
         }

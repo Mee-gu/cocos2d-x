@@ -195,7 +195,7 @@ typedef NS_ENUM(NSInteger, PlayerbackState) {
 -(void) seekTo:(float)sec
 {
     if (self.playerController.player)
-        [self.playerController.player seekToTime:CMTimeMake(sec, 1)];
+        [self.playerController.player seekToTime:CMTimeMake(static_cast<int64_t>(sec), 1)];
 }
 
 -(void) setVisible:(BOOL)visible
@@ -344,19 +344,22 @@ void VideoPlayer::draw(Renderer* renderer, const Mat4 &transform, uint32_t flags
         auto directorInstance = Director::getInstance();
         auto glView = directorInstance->getOpenGLView();
         auto frameSize = glView->getFrameSize();
-        auto scaleFactor = [static_cast<CCEAGLView *>(glView->getEAGLView()) contentScaleFactor];
+        float scaleFactor = (float)[static_cast<CCEAGLView *>(glView->getEAGLView()) contentScaleFactor];
 
         auto winSize = directorInstance->getWinSize();
 
         auto leftBottom = convertToWorldSpace(Vec2::ZERO);
         auto rightTop = convertToWorldSpace(Vec2(_contentSize.width,_contentSize.height));
 
-        auto uiLeft = (frameSize.width / 2 + (leftBottom.x - winSize.width / 2 ) * glView->getScaleX()) / scaleFactor;
-        auto uiTop = (frameSize.height /2 - (rightTop.y - winSize.height / 2) * glView->getScaleY()) / scaleFactor;
+        int uiLeft = (int)((frameSize.width / 2 + (leftBottom.x - winSize.width / 2 ) * glView->getScaleX()) / scaleFactor);
+        int uiTop = (int)((frameSize.height /2 - (rightTop.y - winSize.height / 2) * glView->getScaleY()) / scaleFactor);
 
-        [((UIVideoViewWrapperIos*)_videoView) setFrame :uiLeft :uiTop
-                                                          :(rightTop.x - leftBottom.x) * glView->getScaleX() / scaleFactor
-                                                          :( (rightTop.y - leftBottom.y) * glView->getScaleY()/scaleFactor)];
+        [((UIVideoViewWrapperIos*)_videoView) setFrame :uiLeft
+                                                       :uiTop
+         
+                                                       :(int)((rightTop.x - leftBottom.x) * glView->getScaleX() / scaleFactor)
+         
+                                                       :(int)(((rightTop.y - leftBottom.y) * glView->getScaleY()/scaleFactor))];
     }
 
 #if CC_VIDEOPLAYER_DEBUG_DRAW
