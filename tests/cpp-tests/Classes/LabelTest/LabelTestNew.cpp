@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
@@ -1116,12 +1116,12 @@ LabelTTFUnicodeNew::LabelTTFUnicodeNew()
     auto winSize = Director::getInstance()->getWinSize();
 
     // Spanish
-    auto label1 = Label::createWithTTF("Buen día, ¿cómo te llamas?", "fonts/arial.ttf", 23);
+    auto label1 = Label::createWithTTF(u8"Buen día, ¿cómo te llamas?", "fonts/arial.ttf", 23);
     label1->setPosition(winSize.width / 2, winSize.height * 0.65f);
     addChild(label1);
     
     // German
-    auto label2 = Label::createWithTTF("In welcher Straße haben Sie gelebt?", "fonts/arial.ttf", 23);
+    auto label2 = Label::createWithTTF(u8"In welcher Straße haben Sie gelebt?", "fonts/arial.ttf", 23);
     label2->setPosition(winSize.width / 2, winSize.height * 0.5f);
     addChild(label2);
     
