@@ -79,7 +79,6 @@ ComponentLua* ComponentLua::create(const std::string& scriptFileName)
 
 ComponentLua::ComponentLua(const std::string& scriptFileName)
 : _scriptFileName(scriptFileName)
-, _table(nullptr)
 , _strIndex("")
 {
     _succeedLoadingScript = loadAndExecuteScript();
