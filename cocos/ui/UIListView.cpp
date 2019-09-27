@@ -382,7 +382,7 @@ void ListView::removeAllItems()
 
 Widget* ListView::getItem(ssize_t index) const
 {
-    if (index < 0 || index >= _items.size())
+    if (index < 0 || static_cast<size_t>(index) >= _items.size())
     {
         return nullptr;
     }
@@ -648,7 +648,7 @@ static Vec2 calculateItemPositionWithAnchor(Widget* item, const Vec2& itemAnchor
     
 static Widget* findClosestItem(const Vec2& targetPosition, const Vector<Widget*>& items, const Vec2& itemAnchorPoint, ssize_t firstIndex, float distanceFromFirst, ssize_t lastIndex, float distanceFromLast)
 {
-    CCASSERT(firstIndex >= 0 && lastIndex < items.size() && firstIndex <= lastIndex, "");
+    CCASSERT(firstIndex >= 0 && static_cast<size_t>(lastIndex) < items.size() && firstIndex <= lastIndex, "");
     if (firstIndex == lastIndex)
     {
         return items.at(firstIndex);

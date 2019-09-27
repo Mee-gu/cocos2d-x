@@ -8831,7 +8831,7 @@ static int tolua_cocos2d_bytearray_floatv(lua_State *L)
             }
             lua_pop(L, 1);
             lua_newtable(L);
-            for (auto idx = 0; idx < arg.size(); idx++)
+            for (size_t idx = 0; idx < arg.size(); idx++)
             {
                 lua_pushnumber(L, arg[idx]);
                 lua_rawseti(L, 1, idx + 1);

@@ -1851,7 +1851,7 @@ int lua_cocos2dx_3d_OBB_getCorners(lua_State* L)
             return 0;
         }
 
-        for (int i = 1 ; i <= len; i++)
+        for (size_t i = 1 ; i <= len; i++)
         {
             lua_pushnumber(L,i);
             lua_gettable(L,2);
@@ -1870,7 +1870,7 @@ int lua_cocos2dx_3d_OBB_getCorners(lua_State* L)
 
         lua_newtable(L);
 
-        for (int i = 1; i <= len; i++)
+        for (size_t i = 1; i <= len; i++)
         {
             lua_pushnumber(L, i);
             vec3_to_luaval(L, arg0[i - 1]);

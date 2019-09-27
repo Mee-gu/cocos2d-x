@@ -275,8 +275,8 @@ void Layout::stencilClippingVisit(Renderer *renderer, const Mat4& parentTransfor
     _afterDrawStencilCmd.func = CC_CALLBACK_0(StencilStateManager::onAfterDrawStencil, _stencilStateManager);
     renderer->addCommand(&_afterDrawStencilCmd);
     
-    int i = 0;      // used by _children
-    int j = 0;      // used by _protectedChildren
+    size_t i = 0;      // used by _children
+    size_t j = 0;      // used by _protectedChildren
     
     sortAllChildren();
     sortAllProtectedChildren();
@@ -1571,7 +1571,7 @@ Widget* Layout::getNextFocusedWidget(FocusDirection direction, Widget *current)
     Widget *nextWidget = nullptr;
     ssize_t previousWidgetPos = _children.getIndex(current);
     previousWidgetPos = previousWidgetPos + 1;
-    if (previousWidgetPos < _children.size())
+    if (previousWidgetPos < static_cast<ssize_t>(_children.size()))
     {
         nextWidget = this->getChildWidgetByIndex(previousWidgetPos);
         //handle widget

@@ -240,7 +240,7 @@ ssize_t RadioButtonGroup::getNumberOfRadioButtons() const
 
 RadioButton* RadioButtonGroup::getRadioButtonByIndex(int index) const
 {
-    if(index >= _radioButtons.size())
+    if(static_cast<size_t>(index) >= _radioButtons.size())
     {
         CCLOGERROR("Out of array index! length=%d, requestedIndex=%d", (int)_radioButtons.size(), index);
         return nullptr;
@@ -265,7 +265,7 @@ int RadioButtonGroup::getSelectedButtonIndex() const
 
 void RadioButtonGroup::setSelectedButton(int index)
 {
-    CCASSERT(index < _radioButtons.size(), "Out of array index!");
+    CCASSERT(static_cast<size_t>(index) < _radioButtons.size(), "Out of array index!");
     setSelectedButton(_radioButtons.at(index));
 }
 

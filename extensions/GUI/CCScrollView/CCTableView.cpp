@@ -203,7 +203,7 @@ void TableView::insertCellAtIndex(ssize_t idx)
     {
         newIdx = _cellsUsed.getIndex(cell);
         // Move all cells behind the inserted position
-        for (long i = newIdx; i < _cellsUsed.size(); i++)
+        for (size_t i = newIdx; i < _cellsUsed.size(); i++)
         {
             cell = _cellsUsed.at(i);
             this->_setIndexForCell(cell->getIdx()+1, cell);

@@ -212,7 +212,7 @@ void ConsoleUploadFile::uploadFile()
     send(sfd,cmd,strlen(cmd),0);
 
     ssize_t offset = 0;
-    auto readBuffer = [&offset](char* buf, size_t bytes, const Data& data) -> ssize_t {
+    auto readBuffer = [&offset](char* buf, ssize_t bytes, const Data& data) -> ssize_t {
         if (offset >= data.getSize())
             return 0;
         ssize_t actualReadBytes = (offset + bytes) > data.getSize() ? (data.getSize() - offset) : bytes;

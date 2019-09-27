@@ -285,8 +285,8 @@ void ProtectedNode::visit(Renderer* renderer, const Mat4 &parentTransform, uint3
     director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
     director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, _modelViewTransform);
     
-    int i = 0;      // used by _children
-    int j = 0;      // used by _protectedChildren
+    size_t i = 0;      // used by _children
+    size_t j = 0;      // used by _protectedChildren
     
     sortAllChildren();
     sortAllProtectedChildren();

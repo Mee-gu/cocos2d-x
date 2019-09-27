@@ -1397,7 +1397,7 @@ void Sprite3DReskinTest::onTouchesEnded(const std::vector<Touch*>& touches, Even
 
 void Sprite3DReskinTest::applyCurSkin()
 {
-    for (ssize_t i = 0; i < _sprite->getMeshCount(); i++) {
+    for (size_t i = 0; i < _sprite->getMeshCount(); i++) {
         auto mesh = _sprite->getMeshByIndex(static_cast<int>(i));
         bool isVisible = false;
         for (int j = 0; j < (int)SkinType::MAX_TYPE; j++) {

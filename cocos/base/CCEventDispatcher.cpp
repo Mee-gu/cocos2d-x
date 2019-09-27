@@ -226,7 +226,7 @@ void EventDispatcher::visitTarget(Node* node, bool isRootNode)
 {
     node->sortAllChildren();
     
-    int i = 0;
+    size_t i = 0;
     auto& children = node->getChildren();
     
     auto childrenCount = children.size();

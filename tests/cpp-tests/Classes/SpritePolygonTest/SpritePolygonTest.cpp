@@ -79,14 +79,14 @@ bool SpritePolygonTestCase::init()
                 if (_isDebugDraw){
                     _isDebugDraw = false;
                     label->setString("DebugDraw ON");
-                    for (int i = 0; i < _drawNodes.size(); i++)
+                    for (size_t i = 0; i < _drawNodes.size(); i++)
                     {
                         _drawNodes.at(i)->setVisible(false);
                     }
                 }else{
                     _isDebugDraw = true;
                     label->setString("DebugDraw OFF");
-                    for (int i = 0; i < _drawNodes.size(); i++)
+                    for (size_t i = 0; i < _drawNodes.size(); i++)
                     {
                         _drawNodes.at(i)->setVisible(true);
                         updateDrawNode();
@@ -108,7 +108,7 @@ bool SpritePolygonTestCase::init()
 void SpritePolygonTestCase::updateDrawNode()
 {
     if (_isDebugDraw && _drawNodes.size() > 0) {
-        for (int i = 0; i < _drawNodes.size(); i++)
+        for (size_t i = 0; i < _drawNodes.size(); i++)
         {
                 auto drawnode = _drawNodes.at(i);
                 auto sp = (Sprite*)drawnode->getParent();
@@ -118,7 +118,7 @@ void SpritePolygonTestCase::updateDrawNode()
                 const auto count = polygoninfo.triangles.indexCount/3;
                 const auto indices = polygoninfo.triangles.indices;
                 const auto verts = polygoninfo.triangles.verts;
-                for(ssize_t i = 0; i < count; i++)
+                for(size_t i = 0; i < count; i++)
                 {
                     //draw 3 lines
                     Vec3 from = verts[indices[i*3]].vertices;

@@ -239,8 +239,7 @@ int ParticleBatchNode::addChildHelper(ParticleSystem* child, int z, int aTag, co
     _children.reserve(4);
 
     //don't use a lazy insert
-    auto pos = searchNewPositionInChildrenForZ(z);
-
+    ssize_t pos = static_cast<ssize_t>(searchNewPositionInChildrenForZ(z));
     _children.insert(pos, child);
 
     if (setTag)
@@ -286,7 +285,7 @@ void ParticleBatchNode::reorderChild(Node * aChild, int zOrder)
 
             // reorder _children->array
             child->retain();
-            _children.erase(oldIndex);
+            _children.erase(static_cast<ssize_t>(oldIndex));
             _children.insert(newIndex, child);
             child->release();
 
@@ -326,7 +325,7 @@ void ParticleBatchNode::getCurrentIndex(int* oldIndex, int* newIndex, Node* chil
     int  minusOne = 0;
     auto count = _children.size();
 
-    for( int i=0; i < count; i++ )
+    for( size_t i=0; i < count; i++ )
     {
         Node* pNode = _children.at(i);
 
@@ -373,7 +372,7 @@ int ParticleBatchNode::searchNewPositionInChildrenForZ(int z)
 {
     auto count = _children.size();
 
-    for( int i=0; i < count; i++ )
+    for( size_t i=0; i < count; i++ )
     {
         Node *child = _children.at(i);
         if (child->getLocalZOrder() > z)

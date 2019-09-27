@@ -324,7 +324,7 @@ void TemplateVectorTest::onEnter()
     std::srand((unsigned)time(nullptr));
     Vector<Node*> vecForRandom = createVector();
     log("<--- begin ---->");
-    for (int i = 0; i < vecForRandom.size(); ++i)
+    for (size_t i = 0; i < vecForRandom.size(); ++i)
     {
         log("Vector: random object tag = %d", vecForRandom.getRandomObject()->getTag());
     }
@@ -441,7 +441,7 @@ void TemplateMapTest::onEnter()
     log("--------------");
     log("bucket_count = %d", static_cast<int>(map4.bucketCount()));
     log("size = %d", static_cast<int>(map4.size()));
-    for (int i = 0; i < map4.bucketCount(); ++i)
+    for (size_t i = 0; i < map4.bucketCount(); ++i)
     {
         log("bucket_size(%d) = %d", i, static_cast<int>(map4.bucketSize(i)));
     }
@@ -532,7 +532,7 @@ void TemplateMapTest::onEnter()
     std::srand((unsigned)time(nullptr));
     Map<std::string, Node*> mapForRandom = createMap();
     log("<--- begin ---->");
-    for (int i = 0; i < mapForRandom.size(); ++i)
+    for (size_t i = 0; i < mapForRandom.size(); ++i)
     {
         log("Map: random object tag = %d", mapForRandom.getRandomObject()->getTag());
     }

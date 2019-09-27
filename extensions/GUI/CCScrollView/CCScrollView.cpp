@@ -659,9 +659,8 @@ void ScrollView::visit(Renderer *renderer, const Mat4 &parentTransform, uint32_t
 
     if (!_children.empty())
     {
-        int i=0;
-		
-		// draw children zOrder < 0
+        size_t i=0;
+        // draw children zOrder < 0
         for( ; i < _children.size(); i++ )
         {
             Node *child = _children.at(i);

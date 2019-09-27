@@ -459,7 +459,7 @@ Spawn * ActionNode::refreshActionProperty()
         auto frameCount = cArray->size();
 		if(frameCount > 1)
  		{ 
- 			for (int i = 0; i < frameCount; i++)
+ 			for (size_t i = 0; i < frameCount; i++)
  			{
  				auto frame = cArray->at(i);
  				if (i == 0)

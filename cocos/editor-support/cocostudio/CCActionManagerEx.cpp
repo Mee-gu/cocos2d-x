@@ -124,7 +124,7 @@ ActionObject* ActionManagerEx::getActionByName(const char* jsonName,const char* 
         return nullptr;
     }
     auto actionList = iterator->second;
-    for (int i = 0; i < actionList.size(); i++)
+    for (size_t i = 0; i < actionList.size(); i++)
     {
         ActionObject* action = actionList.at(i);
         if (strcmp(actionName, action->getName()) == 0)

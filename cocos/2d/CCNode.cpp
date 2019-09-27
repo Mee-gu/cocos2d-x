@@ -1221,7 +1221,7 @@ void Node::visit(Renderer* renderer, const Mat4 &parentTransform, uint32_t paren
     
     bool visibleByCamera = isVisitableByVisitingCamera();
 
-    int i = 0;
+    size_t i = 0;
 
     if(!_children.empty())
     {

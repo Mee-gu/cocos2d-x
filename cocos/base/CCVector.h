@@ -352,7 +352,7 @@ public:
      */
     void insert(ssize_t index, T object)
     {
-        CCASSERT(index >= 0 && index <= size(), "Invalid index!");
+        CCASSERT(index >= 0 && index <= static_cast<ssize_t>(size()), "Invalid index!");
         CCASSERT(object != nullptr, "The object should not be nullptr");
         _data.insert((std::begin(_data) + index), object);
         object->retain();
@@ -438,7 +438,7 @@ public:
      */
     iterator erase(ssize_t index)
     {
-        CCASSERT(!_data.empty() && index >=0 && index < size(), "Invalid index!");
+        CCASSERT(!_data.empty() && index >=0 && index < static_cast<ssize_t>(size()), "Invalid index!");
         auto it = std::next( begin(), index );
         (*it)->release();
         return _data.erase(it);
@@ -471,13 +471,13 @@ public:
     /** Swap two elements by indexes. */
     void swap(ssize_t index1, ssize_t index2)
     {
-        CCASSERT(index1 >=0 && index1 < size() && index2 >= 0 && index2 < size(), "Invalid indices");
+        CCASSERT(index1 >=0 && index1 < static_cast<ssize_t>(size()) && index2 >= 0 && index2 < static_cast<ssize_t>(size()), "Invalid indices");
 
         std::swap( _data[index1], _data[index2] );
     }
 
     /** Replace value at index with given object. */
-    void replace(ssize_t index, T object)
+    void replace(size_t index, T object)
     {
         CCASSERT(index >= 0 && index < size(), "Invalid index!");
         CCASSERT(object != nullptr, "The object should not be nullptr");

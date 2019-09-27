@@ -68,9 +68,9 @@ public:
      *    @param     index the index of the display you want to replace or add to
      *                    -1 : append display from back
      */
-    void addDisplay(DisplayData *displayData, int index);
+    void addDisplay(DisplayData *displayData, size_t index);
 
-    void addDisplay(cocos2d::Node *display, int index);
+    void addDisplay(cocos2d::Node *display, size_t index);
 
     void removeDisplay(int index);
 

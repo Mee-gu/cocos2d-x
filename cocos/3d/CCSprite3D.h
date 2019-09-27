@@ -85,7 +85,7 @@ public:
     void setTexture(Texture2D* texture);
     
     /**get Mesh by index*/
-    Mesh* getMeshByIndex(int index) const;
+    Mesh* getMeshByIndex(size_t index) const;
     
     /**get Mesh by Name, it returns the first one if there are more than one mesh with the same name */
     Mesh* getMeshByName(const std::string& name) const;
@@ -188,7 +188,7 @@ public:
      meshIndex is the mesh that will be applied to.
      if meshIndex == -1, then it will be applied to all the meshes that belong to the sprite.
      */
-    Material* getMaterial(int meshIndex) const;
+    Material* getMaterial(size_t meshIndex) const;
     
     /**
     * force set this Sprite3D to 2D render queue

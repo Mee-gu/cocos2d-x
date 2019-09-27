@@ -480,7 +480,7 @@ bool EffectSpriteTest::init()
         auto itemNext = MenuItemImage::create("Images/f1.png", "Images/f2.png",
                                           [&](Ref *sender) {
                                               _vectorIndex++;
-                                              if(_vectorIndex>=_effects.size())
+                                              if(_vectorIndex>=static_cast<ssize_t>(_effects.size()))
                                                   _vectorIndex = 0;
                                               _sprite->setEffect(_effects.at(_vectorIndex));
                                           });

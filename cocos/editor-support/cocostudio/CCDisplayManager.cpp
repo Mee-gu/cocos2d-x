@@ -91,7 +91,7 @@ bool DisplayManager::init(Bone *bone)
 }
 
 
-void DisplayManager::addDisplay(DisplayData *displayData, int index)
+void DisplayManager::addDisplay(DisplayData *displayData, size_t index)
 {
     DecorativeDisplay *decoDisplay = nullptr;
 
@@ -115,7 +115,7 @@ void DisplayManager::addDisplay(DisplayData *displayData, int index)
     }
 }
 
-void DisplayManager::addDisplay(Node *display, int index)
+void DisplayManager::addDisplay(Node *display, size_t index)
 {
     DecorativeDisplay *decoDisplay = nullptr;
 
@@ -249,7 +249,7 @@ void DisplayManager::changeDisplayWithIndex(int index, bool force)
 
 void DisplayManager::changeDisplayWithName(const std::string& name, bool force)
 {
-    for (int i = 0; i<_decoDisplayList.size(); i++)
+    for (size_t i = 0; i<_decoDisplayList.size(); i++)
     {
         if (_decoDisplayList.at(i)->getDisplayData()->displayName == name)
         {

@@ -83,7 +83,7 @@ void PageViewIndicator::setDirection(PageView::Direction direction)
     rearrange();
 }
 
-void PageViewIndicator::reset(ssize_t numberOfTotalPages)
+void PageViewIndicator::reset(size_t numberOfTotalPages)
 {
     while(_indexNodes.size() < numberOfTotalPages)
     {
@@ -99,7 +99,7 @@ void PageViewIndicator::reset(ssize_t numberOfTotalPages)
 
 void PageViewIndicator::indicate(ssize_t index)
 {
-    if (index < 0 || index >= _indexNodes.size())
+    if (index < 0 || index >= static_cast<ssize_t>(_indexNodes.size()))
     {
         return;
     }

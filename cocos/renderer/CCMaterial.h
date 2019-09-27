@@ -113,7 +113,7 @@ public:
     /** Returns a Technique by index. 
      returns `nullptr` if the index is invalid.
      */
-    Technique* getTechniqueByIndex(ssize_t index);
+    Technique* getTechniqueByIndex(size_t index);
 
     /** Returns the Technique used by the Material */
     Technique* getTechnique() const;

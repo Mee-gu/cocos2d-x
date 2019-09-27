@@ -1869,7 +1869,7 @@ void Label::visit(Renderer *renderer, const Mat4 &parentTransform, uint32_t pare
     {
         sortAllChildren();
 
-        int i = 0;
+        size_t i = 0;
         // draw children zOrder < 0
         for (auto size = _children.size(); i < size; ++i)
         {
