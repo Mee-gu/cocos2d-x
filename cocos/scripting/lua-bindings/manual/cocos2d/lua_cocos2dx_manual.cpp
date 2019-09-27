@@ -1189,7 +1189,7 @@ static int lua_cocos2dx_Layer_setKeyboardEnabled(lua_State* L)
         if (enabled)
         {
             auto listener = EventListenerKeyboard::create();
-            listener->onKeyPressed = [self](EventKeyboard::KeyCode keyCode, Event* event){
+            listener->onKeyPressed = [](EventKeyboard::KeyCode keyCode, Event* event){
 
             };
             listener->onKeyReleased = [self](EventKeyboard::KeyCode keyCode, Event* event){
@@ -4162,7 +4162,6 @@ int lua_cocos2dx_Scene_setPhysics3DDebugCamera(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Scene* cobj = nullptr;
-    bool ok  = true;
 
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;

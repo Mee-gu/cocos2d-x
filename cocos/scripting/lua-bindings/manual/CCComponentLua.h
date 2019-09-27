@@ -62,9 +62,6 @@ private:
     std::string _scriptFileName;
     bool _succeedLoadingScript;
     
-    // a table returned from lua
-    const void* _table;
-    
     // string value of index
     std::string _strIndex;
     

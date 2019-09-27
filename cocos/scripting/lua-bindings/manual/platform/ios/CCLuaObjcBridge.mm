@@ -49,11 +49,11 @@ static void luaTableToObjcDictionary(lua_State *L, NSMutableDictionary *dict,NSS
         switch (lua_type(L, -1))
         {
             case LUA_TNUMBER:
-                [dict2 setObject:[NSNumber numberWithFloat:lua_tonumber(L, -1)] forKey:key2];
+                [dict2 setObject:[NSNumber numberWithFloat:(float)lua_tonumber(L, -1)] forKey:key2];
                 break;
                 
             case LUA_TBOOLEAN:
-                [dict2 setObject:[NSNumber numberWithBool:lua_toboolean(L, -1)] forKey:key2];
+                [dict2 setObject:[NSNumber numberWithBool:(BOOL)lua_toboolean(L, -1)] forKey:key2];
                 break;
                 
             case LUA_TSTRING:
@@ -149,11 +149,11 @@ int LuaObjcBridge::callObjcStaticMethod(lua_State *L)
                 switch (lua_type(L, -1))
                 {
                     case LUA_TNUMBER:
-                        [dict setObject:[NSNumber numberWithFloat:lua_tonumber(L, -1)] forKey:key];
+                        [dict setObject:[NSNumber numberWithFloat:(float)lua_tonumber(L, -1)] forKey:key];
                         break;
                         
                     case LUA_TBOOLEAN:
-                        [dict setObject:[NSNumber numberWithBool:lua_toboolean(L, -1)] forKey:key];
+                        [dict setObject:[NSNumber numberWithBool:(BOOL)lua_toboolean(L, -1)] forKey:key];
                         break;
                         
                     case LUA_TSTRING:
